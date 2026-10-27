@@ -217,7 +217,7 @@ Les figures réunissent les points détectés, la coloration continue par score 
 
 ![LOF : décisions, scores et histogramme](figures/p1_lof_mouse.png)
 
-Temps mesurés sur Mouse : IF, apprentissage 0,0617 s et score 0,0053 s ; LOF, apprentissage 0,0027 s et récupération du score 0,0000 s à la précision d'affichage. Ce dernier affichage ne signifie pas un coût rigoureusement nul.
+Temps mesurés sur Mouse : IF, apprentissage 0.0655 s et score 0.0058 s ; LOF, apprentissage 0.0029 s et récupération du score 0.0000 s. Ces durées dépendent de cette exécution.
 
 Pour LOF, `negative_outlier_factor_` décrit les points ayant servi à l'ajustement. En mode `novelty=True`, `score_samples` est destiné aux observations nouvelles : ce n'est pas un remplacement interchangeable pour réévaluer l'apprentissage. Dans la démonstration du notebook, son emploi incorrect sur les points appris donne des scores moyens différents (normaux : 1,042 contre 1,050 ; anomalies : 2,322 contre 2,407), même si l'AP reste ici égale à 1. Ce constat particulier ne rend pas le protocole incorrect valide.
 
@@ -241,6 +241,8 @@ Dans tous les tableaux suivants, une matrice est notée `[[VN, FP], [FN, VP]]` :
 
 ![Comparaison visuelle des seuils Mouse](figures/p1_seuils.png)
 
+![Matrices de confusion et F1 — Mouse](figures/p1_matrices_confusion.png)
+
 Sur cet échantillon, IQR améliore le F1 d'IF, mais dégrade celui de LOF. Le défaut LOF retrouve exactement les dix anomalies ; KMeans en manque deux. IF et LOF ne sont pas interchangeables : IF exploite l'isolement global, LOF une comparaison locale de densité. Au seuil IQR, 17 points sont signalés par les deux, 4 par IF seul et 20 par LOF seul. Ces différences observées ne démontrent pas à elles seules la cause géométrique de chaque décision.
 
 </details>
@@ -257,7 +259,7 @@ Ces résultats concernent la détection dans l'ensemble même qui a servi à l'a
 <details>
 <summary>1.3.a–b. Comment passer à la détection de nouveautés et quelles informations supplémentaires utilise-t-on ?</summary>
 
-on réserve 30 % des 490 normaux, soit 147 normaux, et toutes les anomalies. LOF (`novelty=True`, 20 voisins) apprend sur les 343 normaux restants et évalue uniquement le test distinct de 157 points, dont dix anomalies. Les scores de test sont obtenus par `-score_samples`. Le seuil IQR est calculé sur `-negative_outlier_factor_` de l'apprentissage, sans consulter le test. Les temps mesurés sont 0,0018 s pour l'apprentissage et 0,0010 s pour scorer le test.
+on réserve 30 % des 490 normaux, soit 147 normaux, et toutes les anomalies. LOF (`novelty=True`, 20 voisins) apprend sur les 343 normaux restants et évalue uniquement le test distinct de 157 points, dont dix anomalies. Les scores de test sont obtenus par `-score_samples`. Le seuil IQR est calculé sur `-negative_outlier_factor_` de l'apprentissage, sans consulter le test. Les temps mesurés sont 0.0018 s pour l’apprentissage et 0.0009 s pour scorer le test.
 
 | Règle | Seuil | AP test | AUC-ROC test | Alertes | Matrice test | Précision | Rappel | F1 | BA |
 |---|---:|---:|---:|---:|---|---:|---:|---:|---:|
@@ -265,6 +267,8 @@ on réserve 30 % des 490 normaux, soit 147 normaux, et toutes les anomalies. LOF
 | IQR apprentissage | 1,232 | 0,977 | 0,998 | 23 | [[134,13],[0,10]] | 0,435 | 1,000 | 0,606 | 0,9558 |
 
 ![LOF nouveautés : apprentissage, test et frontière](figures/p1_nouveautes.png)
+
+![Courbes ROC et précision-rappel du test réservé Mouse](figures/p1_courbes_nouveautes.png)
 
 Au seuil par défaut, neuf anomalies sont retrouvées, une est manquée et deux normaux déclenchent une alerte. Le seuil IQR retrouve toutes les anomalies mais déclenche treize fausses alertes. La figure distingue les normaux d'apprentissage et les observations réservées ; la frontière représente le seuil par défaut.
 
@@ -333,7 +337,7 @@ Les transformations ajustables sont apprises exclusivement sur l'apprentissage d
 <details>
 <summary>2.2.a–b. Quelles variantes supervisées et quelles six configurations comparer ?</summary>
 
-chaque famille supervisée utilise exactement six configurations, toutes variantes comprises : deux valeurs d'hyperparamètre croisées avec trois traitements du déséquilibre. L'arbre compare les profondeurs 4 et 8 ; la régression logistique compare `C=0,01` et `C=1` (régularisation plus ou moins forte, `max_iter=2000`). Les variantes sont : aucun traitement, `class_weight="balanced"`, ou SMOTE (`sampling_strategy=0.1`, `k_neighbors=5`, graine 42). Les poids équilibrés sont inversement proportionnels aux effectifs de classe. SMOTE interpole des exemples minoritaires au lieu de simplement dupliquer les fraudes ou supprimer la majorité des normales. Le ratio ciblé de 1 fraude pour 10 normales limite le volume synthétique par rapport à un équilibre complet ; il ne garantit pas une amélioration.
+chaque famille supervisée utilise exactement six configurations, toutes variantes comprises : deux valeurs d'hyperparamètre croisées avec trois traitements du déséquilibre. L'arbre compare les profondeurs 4 et 8 ; la régression logistique compare `C=0,01` et `C=1` (régularisation plus ou moins forte, `max_iter=2000`). Les variantes sont : aucun traitement, `class_weight="balanced"`, ou SMOTE (`sampling_strategy=0.1`, `k_neighbors=5`, graine 42). Les poids équilibrés sont inversement proportionnels aux effectifs de classe. SMOTE interpole des exemples minoritaires au lieu de simplement dupliquer les fraudes ou supprimer la majorité des normales. Le ratio ciblé de 1 fraude pour 10 normales limite le volume synthétique par rapport à un équilibre complet ; il ne garantit pas une amélioration. Les variantes SMOTE apprennent effectivement sur 181 624 observations, dont 16 511 positives, contre 165 397 observations et 284 positives avant rééchantillonnage.
 
 Résultats sur la **validation** ; les seuils des lignes « non » sont des compromis de F1, pas des seuils satisfaisant la contrainte :
 
@@ -429,10 +433,10 @@ le test comprend 55 133 transactions, dont 94 fraudes et 55 039 normales. Les mo
 
 | Méthode | Matrice test | Alertes | Fausses alertes | Fraudes manquées | Apprentissage (s) | Score validation (s) | Score test (s) |
 |---|---|---:|---:|---:|---:|---:|---:|
-| Logistique sélectionnée | [[55019,20],[25,69]] | 89 | 20 | 25 | 0,2009 | 0,0045 | 0,0053 |
-| Arbre | [[55033,6],[25,69]] | 75 | 6 | 25 | 3,2121 | 0,0029 | 0,0027 |
-| LOF | [[54973,66],[36,58]] | 124 | 66 | 36 | 0,3920 | 0,7221 | 0,7580 |
-| IF | [[54979,60],[79,15]] | 75 | 60 | 79 | 0,7097 | 0,4589 | 0,4651 |
+| Logistique sélectionnée | [[55019,20],[25,69]] | 89 | 20 | 25 | 0,2123 | 0,0038 | 0,0060 |
+| Arbre | [[55033,6],[25,69]] | 75 | 6 | 25 | 3,3262 | 0,0033 | 0,0029 |
+| LOF | [[54973,66],[36,58]] | 124 | 66 | 36 | 0,5006 | 0,7588 | 0,8629 |
+| IF | [[54979,60],[79,15]] | 75 | 60 | 79 | 0,7646 | 0,4695 | 0,5036 |
 
 Ces temps sont ceux mesurés pendant l'exécution fournie, pas une moyenne de benchmarks. LOF n'apprend que sur 30 000 lignes alors que les autres utilisent les 165 397 lignes d'apprentissage ; son coût d'apprentissage ne se compare donc pas à effectifs égaux. Tous scorent les mêmes validations et tests complets.
 
@@ -476,7 +480,7 @@ Pour chaque variable, un histogramme à cases de même largeur est ajusté sur l
 
 $$S(x)=\sum_{j=1}^{d}\log\frac{1}{\operatorname{hist}_j(x_j)+\alpha}.$$
 
-Le lissage `alpha` évite le logarithme de zéro. Dans cette implémentation, une valeur hors de l'étendue d'apprentissage reçoit une hauteur nulle. Une grande valeur de $S$ indique une observation suspecte. `score_samples` renvoie son opposé pour respecter la convention sklearn ; la fonction commune réoriente ensuite le score vers « grand = suspect ».
+Le lissage `alpha` évite le logarithme de zéro. Avec alpha = 0,1, une contribution plafonne à environ 2,303 : les variables proches de ce plafond ne permettent pas un classement fin de leur importance. Dans cette implémentation, une valeur hors de l'étendue d'apprentissage reçoit une hauteur nulle. Une grande valeur de $S$ indique une observation suspecte. `score_samples` renvoie son opposé pour respecter la convention sklearn ; la fonction commune réoriente ensuite le score vers « grand = suspect ».
 
 Cette somme repose sur une approximation par distributions marginales indépendantes. Elle ressemble à une log-vraisemblance négative sous indépendance, sans être une densité jointe calibrée : les hauteurs sont normalisées par leur maximum et lissées. Les hypothèses sont que les anomalies présentent des valeurs marginalement rares et que les histogrammes représentent suffisamment les distributions. Une combinaison inhabituelle de valeurs individuellement courantes peut échapper à HBOS.
 
@@ -500,9 +504,9 @@ Voici les **résultats de validation** exécutés. Les temps sont en secondes ; 
 
 | n_bins | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif précision ≥ 0,80 | Temps apprentissage | Temps score validation |
 |---:|---:|---:|---:|---:|---:|---:|---:|---:|:---|---:|---:|
-| 10 | 165397 | 0.1631 | 0.9501 | 26.102088 | 0.2440 | 0.4316 | 0.3118 | 168 | non atteint | 0.1318 | 0.0284 |
-| 50 | 165397 | 0.1681 | 0.9483 | 39.477502 | 0.2360 | 0.4000 | 0.2969 | 161 | non atteint | 0.1765 | 0.0458 |
-| 200 | 165397 | 0.2008 | 0.9416 | 46.664026 | 0.3441 | 0.3368 | 0.3404 | 93 | non atteint | 0.2302 | 0.0623 |
+| 10 | 0.1486 | 0.1631 | 0.9501 | 26.102088 | 0.2440 | 0.4316 | 0.3118 | 168 | non atteint | 0.1486 | 0.0338 |
+| 50 | 0.1935 | 0.1681 | 0.9483 | 39.477502 | 0.2360 | 0.4000 | 0.2969 | 161 | non atteint | 0.1935 | 0.0500 |
+| 200 | 0.2425 | 0.2008 | 0.9416 | 46.664026 | 0.3441 | 0.3368 | 0.3404 | 93 | non atteint | 0.2425 | 0.0681 |
 
 Aucune configuration n'atteint la précision de 80 %. Les seuils affichés sont donc des **compromis**, pas des seuils satisfaisant la contrainte. La configuration **200 cases, alpha=0.1** est retenue au meilleur F1 de validation (0.3404), avec départage prévu par rappel, précision puis AP. Son modèle et son seuil sont figés avant le test.
 
@@ -515,9 +519,9 @@ Les configurations retenues sont LOF avec 100 voisins, IF avec 300 arbres et `ma
 
 | Méthode | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Temps apprentissage (s) | Temps score validation (s) |
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| LOF | 30000 | 0.3825 | 0.9487 | 2.796372 | 0.4336 | 0.6526 | 0.5210 | 143 | 0.3920 | 0.7221 |
-| HBOS | 165397 | 0.2008 | 0.9416 | 46.664026 | 0.3441 | 0.3368 | 0.3404 | 93 | 0.2302 | 0.0623 |
-| Isolation Forest | 165397 | 0.2086 | 0.9493 | 0.649011 | 0.2991 | 0.3368 | 0.3168 | 107 | 0.7097 | 0.4589 |
+| LOF | 0.5006 | 0.3825 | 0.9487 | 2.796372 | 0.4336 | 0.6526 | 0.5210 | 143 | 0.5006 | 0.7588 |
+| HBOS | 0.2425 | 0.2008 | 0.9416 | 46.664026 | 0.3441 | 0.3368 | 0.3404 | 93 | 0.2425 | 0.0681 |
+| Isolation Forest | 0.7646 | 0.2086 | 0.9493 | 0.649011 | 0.2991 | 0.3368 | 0.3168 | 107 | 0.7646 | 0.4695 |
 
 Les courbes de validation sont conservées ici :
 
@@ -527,9 +531,9 @@ Sur le **test Credit Card**, sans retoucher les seuils :
 
 | Méthode | Prétraitement | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Balanced accuracy | Alertes | Fausses alertes | Fraudes manquées | Temps apprentissage (s) | Temps score test (s) |
 |:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| LOF | log_amount + standard | 0.3295 | 0.9396 | 2.796372 | 0.4677 | 0.6170 | 0.5321 | 0.8079 | 124 | 66 | 36 | 0.3920 | 0.7308 |
-| HBOS | log_amount | 0.1640 | 0.9265 | 46.664026 | 0.3065 | 0.2021 | 0.2436 | 0.6007 | 62 | 43 | 75 | 0.2302 | 0.0644 |
-| Isolation Forest | log_amount | 0.1524 | 0.9430 | 0.649011 | 0.2000 | 0.1596 | 0.1775 | 0.5792 | 75 | 60 | 79 | 0.7097 | 0.4565 |
+| LOF | log_amount + standard | 0.3295 | 0.9396 | 2.796372 | 0.4677 | 0.6170 | 0.5321 | 0.8079 | 124 | 66 | 36 | 0.5006 | 0.8254 |
+| HBOS | log_amount | 0.1640 | 0.9265 | 46.664026 | 0.3065 | 0.2021 | 0.2436 | 0.6007 | 62 | 43 | 75 | 0.2425 | 0.0702 |
+| Isolation Forest | log_amount | 0.1524 | 0.9430 | 0.649011 | 0.2000 | 0.1596 | 0.1775 | 0.5792 | 75 | 60 | 79 | 0.7646 | 0.6914 |
 
 Aucun de ces trois modèles ne reçoit de correction supervisée du déséquilibre. Leurs matrices de test, dans l'ordre `[[TN, FP], [FN, TP]]`, sont : LOF `[[54973, 66], [36, 58]]`, HBOS `[[54996, 43], [75, 19]]`, IF `[[54979, 60], [79, 15]]`.
 
@@ -550,7 +554,7 @@ Une réussite concrète de HBOS est de retrouver **19 fraudes sur le test**, ave
 
 Les fraudes manquées restent sous le seuil pour leur **somme** de contributions ; cela ne signifie pas qu'elles sont banales sur chaque variable. LOF obtient ici la meilleure AP et le meilleur rappel des trois, mais n'atteint pas non plus la contrainte. HBOS dépasse IF en AP sur ce test, alors que l'ordre était inverse en validation : ce constat ne justifie aucun changement de sélection après coup. La corrélation de Spearman IF/HBOS sur validation vaut 0.918 ; elle décrit des classements proches, pas des mécanismes identiques.
 
-HBOS est le moins coûteux dans les temps mesurés ci-dessus, notamment pour scorer le test (0.0644 s). La comparaison doit garder les tailles d'apprentissage visibles : LOF utilise 30 000 observations, contre 165 397 pour les deux autres. Ces temps dépendent de cette exécution et ne constituent pas un rapport de vitesse universel.
+HBOS est le moins coûteux dans les temps mesurés ci-dessus, notamment pour scorer le test (voir le temps actualisé dans le tableau). La comparaison doit garder les tailles d'apprentissage visibles : LOF utilise 30 000 observations, contre 165 397 pour les deux autres. Ces temps dépendent de cette exécution et ne constituent pas un rapport de vitesse universel.
 
 </details>
 
@@ -626,8 +630,8 @@ Sur la **validation AI4I**, on maximise le rappel parmi les seuils produisant au
 
 | Méthode | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif | Temps apprentissage (s) | Temps score validation (s) |
 |:---|---:|---:|---:|---:|---:|---:|---:|---:|:---|---:|---:|
-| Logistique pondérée | 6000 | 0.4072 | 0.8811 | 0.979916 | 0.9167 | 0.1618 | 0.2750 | 12 | atteint | 0.0072 | 0.0014 |
-| Isolation Forest | 6000 | 0.1514 | 0.7816 | 0.681207 | 1.0000 | 0.0294 | 0.0571 | 2 | atteint | 0.1874 | 0.0444 |
+| Logistique pondérée | 0.0228 | 0.4072 | 0.8811 | 0.979916 | 0.9167 | 0.1618 | 0.2750 | 12 | atteint | 0.0228 | 0.0050 |
+| Isolation Forest | 0.5973 | 0.1514 | 0.7816 | 0.681207 | 1.0000 | 0.0294 | 0.0571 | 2 | atteint | 0.5973 | 0.0746 |
 
 La **logistique est sélectionnée sur validation** : elle retrouve 11 pannes avec 12 alertes, contre deux pannes avec deux alertes pour IF. Une précision élevée soutenue par si peu de cas reste fragile.
 
@@ -637,8 +641,8 @@ Sur le **test AI4I**, en conservant les seuils :
 
 | Méthode | Prétraitement | Déséquilibre | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Balanced accuracy | Alertes | Interventions inutiles | Pannes manquées | Temps apprentissage (s) | Temps score test (s) |
 |:---|:---|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Logistique pondérée | one-hot Type + standard | class_weight | 0.4087 | 0.9046 | 0.979916 | 1.0 | 0.0588 | 0.1111 | 0.5294 | 4 | 0 | 64 | 0.0072 | 0.0025 |
-| Isolation Forest | one-hot Type | aucun (non supervisé) | 0.0919 | 0.7465 | 0.681207 | 0.5 | 0.0147 | 0.0286 | 0.5071 | 2 | 1 | 67 | 0.1874 | 0.0436 |
+| Logistique pondérée | one-hot Type + standard | class_weight | 0.4087 | 0.9046 | 0.979916 | 1.0 | 0.0588 | 0.1111 | 0.5294 | 4 | 0 | 64 | 0.0228 | 0.0075 |
+| Isolation Forest | one-hot Type | aucun (non supervisé) | 0.0919 | 0.7465 | 0.681207 | 0.5 | 0.0147 | 0.0286 | 0.5071 | 2 | 1 | 67 | 0.5973 | 0.0737 |
 
 Matrices de confusion du **test**, lignes = réalité, colonnes = prédiction :
 
