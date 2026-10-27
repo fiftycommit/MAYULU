@@ -40,7 +40,7 @@ def arrondir(table, decimales=4):
 # Chargement des données
 # ---------------------------------------------------------------------------
 
-def charger_mouse(chemin="mouse.txt"):
+def charger_mouse(chemin="data/mouse.txt"):
     """
     Rôles : Charger Mouse et construire les étiquettes d'évaluation.
     Saisies :
@@ -55,7 +55,7 @@ def charger_mouse(chemin="mouse.txt"):
     return X, pd.Series(y, name="anomalie")
 
 
-def charger_creditcard(chemin="creditcard.csv"):
+def charger_creditcard(chemin="data/creditcard.csv"):
     """
     Rôles : Charger Credit Card et retirer les transactions dupliquées.
     Saisies :
@@ -69,7 +69,7 @@ def charger_creditcard(chemin="creditcard.csv"):
     return df[variables], df["Class"], df["Time"]
 
 
-def charger_ai4i(chemin="ai4i2020.csv"):
+def charger_ai4i(chemin="data/ai4i2020.csv"):
     """
     Rôles : Charger AI4I 2020 sans identifiants ni types de panne.
     Saisies :
