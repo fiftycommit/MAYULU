@@ -7,14 +7,16 @@ data/
   mouse.txt
   ai4i2020.csv
   creditcard.csv              # suivi avec Git LFS
-figures/                     # figures du compte rendu
+rendus/
+  compte_rendu.md
+  rendu_questions_reponses.md
+  rendu_questions_reponses.html
+  synthese.md
+  synthese.pdf
+  figures/                   # images utilisées par les documents
 TP_detection_anomalies.ipynb  # expériences et résultats exécutés
 utils.py                     # fonctions communes
 requirements.txt
-compte_rendu.md
-rendu_questions_reponses.md
-synthese.md
-synthese.pdf
 ```
 
 Le sujet et le cours sont disponibles dans les PDF à la racine.
@@ -45,5 +47,6 @@ Git LFS doit être installé sur la machine (`brew install git-lfs` sur macOS). 
 remplacé par un petit fichier pointeur que pandas ne pourra pas exploiter.
 Les téléchargements LFS dépendent également des quotas du compte GitHub.
 
-Les chemins de données sont relatifs à la racine du projet. Pour lire le rendu Q/R avec ses réponses dépliables,
-utiliser l’aperçu Markdown de VS Code. Garder `figures/` à côté des rendus pour afficher les images.
+Les chemins de données sont relatifs à la racine du projet. Les documents sont regroupés dans [`rendus/`](rendus/).
+Pour lire le [Q/R dépliable](rendus/rendu_questions_reponses.md), utiliser l’aperçu Markdown de VS Code.
+Conserver le sous-dossier `rendus/figures/` avec ces documents pour afficher les images.
