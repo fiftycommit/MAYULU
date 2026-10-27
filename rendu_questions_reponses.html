@@ -1,0 +1,2731 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Détection d’anomalies — Questions / Réponses</title><style>
+:root{color-scheme:light;--ink:#20272e;--muted:#616a72;--line:#dce0e3;--accent:#285d62;--paper:#fff;--canvas:#f5f6f5}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--canvas);color:var(--ink);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:var(--accent);text-underline-offset:3px}a:focus-visible,summary:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:4px}.layout{max-width:1260px;margin:auto;display:grid;grid-template-columns:220px minmax(0,1fr);gap:42px;padding:48px 32px 80px}nav{position:sticky;top:28px;align-self:start;font-size:14px}nav .label{font-weight:650;color:var(--muted);margin-bottom:16px}nav a{display:block;color:var(--muted);text-decoration:none;padding:8px 0;border-bottom:1px solid var(--line)}nav a:hover{color:var(--accent)}main{min-width:0}header{padding-bottom:26px;border-bottom:1px solid var(--line);margin-bottom:36px}header .kicker{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}h1{font:600 clamp(28px,4vw,42px)/1.2 Georgia,serif;letter-spacing:-.02em;margin:14px 0}header p{margin:8px 0;color:var(--muted)}.controls{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}button{border:1px solid #bac6c7;border-radius:5px;background:white;color:var(--accent);padding:8px 14px;font:inherit;font-size:13px;cursor:pointer}button:hover{background:#edf3f2}section{margin:0 0 42px}h2{font:600 25px/1.3 Georgia,serif;margin:0 0 18px}details{background:var(--paper);border:1px solid var(--line);border-radius:6px;margin:10px 0;overflow:hidden}summary{cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:14px;padding:18px 20px;font-weight:600;line-height:1.45}summary::-webkit-details-marker{display:none}summary:before{content:"+";color:var(--accent);font-weight:400;font-size:21px;line-height:1;flex:none}details[open]>summary:before{content:"−"}details[open]>summary{border-bottom:1px solid var(--line)}.answer{padding:6px 22px 20px}.answer p{margin:14px 0}.answer p:last-child{margin-bottom:0}code{font-size:.87em;background:#f0f2f2;padding:2px 4px;border-radius:3px;overflow-wrap:anywhere}pre{overflow:auto;padding:14px;background:#f0f2f2}img{max-width:100%;height:auto;display:block;margin:22px auto}figure{margin:22px 0}figcaption{font-size:13px;color:var(--muted);text-align:center}.table-wrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:4px}table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.5}th,td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;min-width:65px}th{background:#f1f4f3;font-weight:600}tr:last-child td{border-bottom:0}.answer ul{padding-left:22px}footer{color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:20px}
+@media(max-width:800px){.layout{grid-template-columns:1fr;padding:24px 16px;gap:26px}nav{position:static;display:flex;flex-wrap:wrap;gap:8px 16px}nav .label{width:100%;margin:0}nav a{padding:4px 0}summary{padding:16px}.answer{padding:4px 16px 18px}h2{font-size:23px}}
+@media print{body{background:white;font-size:10pt}.layout{display:block;padding:0}nav,.controls{display:none}details{overflow:visible;break-inside:auto}details::details-content{content-visibility:visible!important;display:block!important}details>*{display:block!important}summary{break-after:avoid}h2{break-after:avoid}.table-wrap{overflow:visible}a{color:inherit}}
+</style></head><body><div class="layout"><nav aria-label="Sommaire"><div class="label">Dans ce document</div><a href="#objectif-organisation-et-protocole-commun">0. Objectif,
+organisation et protocole commun</a><a href="#partie-1-données-mouse">Partie 1 — Données Mouse</a><a href="#partie-2-détection-des-fraudes-credit-card">Partie 2 — Détection
+des fraudes Credit Card</a><a href="#partie-3-rechercher-une-nouvelle-méthode-hbos">Partie 3 —
+Rechercher une nouvelle méthode : HBOS</a><a href="#partie-4-transférer-à-la-maintenance">Partie 4 — Transférer à la
+maintenance</a><a href="#partie-5-robustesse-et-explicabilité">Partie 5 — Robustesse et
+explicabilité</a><a href="#bilan-limites-et-éléments-à-rendre">6. Bilan, limites et
+éléments à rendre</a></nav><main id="contenu"><header><div class="kicker">M2 Data Science · Machine Learning</div><h1>Détection d’anomalies</h1><p>M’BEY Max — Le TP en questions / réponses</p><p>Cliquez sur une question pour lire la réponse.</p><div class="controls"><button id="ouvrir" type="button">Tout déplier</button><button id="fermer" type="button">Tout replier</button></div></header><section id="objectif-organisation-et-protocole-commun"><h2 id="objectif-organisation-et-protocole-commun">0. Objectif,
+organisation et protocole commun</h2><details><summary>Quel est l’objectif du TP ?</summary><div class="answer">
+<p>Comparer des méthodes de détection
+d’anomalies, évaluer leur classement et choisir un seuil répondant à une
+contrainte opérationnelle. Le travail porte sur Mouse, la fraude
+bancaire avec Credit Card et la maintenance avec AI4I. Il comprend aussi
+une méthode non étudiée en cours, une expérience de contamination et des
+explications avec SHAP.</p>
+<p>Ce document suit les cinq parties du sujet 2026–2027. Il détaille les
+choix et résultats du notebook exécuté
+<code>TP_detection_anomalies.ipynb</code> ; ce n’est pas la synthèse
+courte, qui reste dans <code>synthese.pdf</code>.</p>
+</div></details><details><summary>Où se trouve le code ?</summary><div class="answer">
+<p>Le notebook contient les expériences, les
+sorties et les figures. <code>utils.py</code> regroupe le chargement des
+données, le découpage, les prétraitements, l’apprentissage, les scores,
+les seuils et les métriques. <code>requirements.txt</code> indique les
+dépendances. Les figures reprises ici sont dans
+<code>figures/</code>.</p>
+</div></details><details><summary>Comment
+rendre les expériences reproductibles ?</summary><div class="answer">
+<p>Les partitions et modèles aléatoires
+utilisent une graine fixée à 42. L’expérience de robustesse utilise
+explicitement les graines 0, 1 et 2. Les partitions sont réutilisées
+entre les méthodes. Les avertissements ne sont pas masqués. Les temps
+sont mesurés séparément pour l’apprentissage et le calcul des scores ;
+ils peuvent varier d’une exécution à l’autre et ne constituent pas un
+benchmark répété.</p>
+<p>Versions affichées dans le notebook : Python 3.14.3, numpy 2.5.4,
+pandas 3.1.0, matplotlib 3.11.2, seaborn 0.13.2, scikit-learn 1.9.1,
+imbalanced-learn 0.14.2 et SHAP 0.54.1.</p>
+</div></details><details><summary>Comment sont séparées
+les données ?</summary><div class="answer">
+<p>Pour Credit Card et AI4I, le découpage est
+stratifié : 60 % apprentissage, 20 % validation et 20 % test. La
+stratification conserve approximativement la proportion de positifs.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Jeu</th>
+<th>Apprentissage</th>
+<th>Validation</th>
+<th>Test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Credit Card après dédoublonnage</td>
+<td>165 397 transactions, 284 fraudes</td>
+<td>55 133 transactions, 95 fraudes</td>
+<td>55 133 transactions, 94 fraudes</td>
+</tr>
+<tr>
+<td>AI4I</td>
+<td>6 000 observations, 203 pannes</td>
+<td>2 000 observations, 68 pannes</td>
+<td>2 000 observations, 68 pannes</td>
+</tr>
+</tbody>
+</table></div>
+<p>L’apprentissage sert à ajuster les transformations et les modèles. La
+validation sert à sélectionner les configurations et les seuils. Le test
+sert à l’évaluation finale, sans modifier les choix en fonction de ses
+résultats. Mouse suit les deux cadres particuliers demandés : outliers
+dans tout l’ensemble, puis nouveautés sur un test réservé.</p>
+</div></details><details><summary>Qu’est-ce qu’une fuite de données et comment est-elle évitée ?</summary><div class="answer">
+<p>Une fuite apparaît lorsqu’une information
+indisponible au moment prévu pour la prédiction influence
+l’apprentissage ou la sélection. Par exemple : standardiser avec les
+statistiques du test, placer des copies d’une transaction dans plusieurs
+partitions, ou utiliser les indicateurs de panne comme entrées pour
+prédire la panne.</p>
+<p>Les transformations sont ajustées sur l’apprentissage seulement, dans
+les pipelines. SMOTE ne rééchantillonne que l’apprentissage. Les
+doublons de Credit Card sont traités avant le découpage. Les indicateurs
+de panne et identifiants d’AI4I sont exclus des prédicteurs. Le fond de
+référence de SHAP vient uniquement de l’apprentissage.</p>
+</div></details><details><summary>Que
+signifient la classe positive et les scores ?</summary><div class="answer">
+<p>La classe 1 désigne ce que l’on cherche :
+anomalie, fraude ou panne. La classe 0 désigne le reste. Tous les scores
+sont orientés pour qu’une grande valeur indique un point plus suspect.
+Les scores sklearn d’IF et de LOF sont donc inversés. Les classifieurs
+utilisent la probabilité prédite de la classe 1, sans supposer que cette
+probabilité est bien calibrée après pondération ou SMOTE. Un score
+d’Isolation Forest n’est pas une probabilité de fraude.</p>
+</div></details><details><summary>Quelle différence y a-t-il entre évaluer un classement et évaluer des
+alertes ?</summary><div class="answer">
+<p>Le classement est évalué avec les scores
+continus : courbes ROC et précision-rappel, AUC-ROC et Average Precision
+(AP). Les alertes sont évaluées après le choix d’un seuil : matrice de
+confusion, précision, rappel, F1 et balanced accuracy. Un bon classement
+ne garantit pas que le seuil par défaut donne de bonnes alertes.</p>
+</div></details><details><summary>Comment lire une
+matrice de confusion ?</summary><div class="answer">
+<p>Les lignes représentent les vraies classes
+et les colonnes les prédictions, dans l’ordre 0 puis 1 :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th></th>
+<th>Prédit normal</th>
+<th>Prédit anomalie</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vrai normal</td>
+<td>VN : vrai négatif</td>
+<td>FP : fausse alerte</td>
+</tr>
+<tr>
+<td>Vraie anomalie</td>
+<td>FN : anomalie manquée</td>
+<td>VP : anomalie détectée</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les mêmes termes s’appliquent aux fraudes et aux pannes. Dans les
+matrices compactes de ce document, <code>[[VN, FP], [FN, VP]]</code>
+conserve cet ordre.</p>
+</div></details><details><summary>Quels
+indicateurs faut-il lire, et que mesure chacun ?</summary><div class="answer">
+<p></p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Indicateur</th>
+<th>Calcul</th>
+<th>Question à laquelle il répond</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Précision</td>
+<td>VP / (VP + FP)</td>
+<td>Parmi les alertes, combien sont correctes ?</td>
+</tr>
+<tr>
+<td>Rappel</td>
+<td>VP / (VP + FN)</td>
+<td>Parmi les anomalies, combien sont retrouvées ?</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>2 × précision × rappel / (précision + rappel)</td>
+<td>Quel compromis entre précision et rappel ?</td>
+</tr>
+<tr>
+<td>Balanced accuracy</td>
+<td>(rappel positif + rappel négatif) / 2</td>
+<td>Quelle performance moyenne sur les deux classes ?</td>
+</tr>
+<tr>
+<td>AP</td>
+<td><code>average_precision_score(y, scores)</code></td>
+<td>Les positifs sont-ils bien placés dans le classement ?</td>
+</tr>
+<tr>
+<td>AUC-ROC</td>
+<td>Aire sous la courbe TPR en fonction du FPR</td>
+<td>Les positifs sont-ils généralement classés devant les négatifs
+?</td>
+</tr>
+</tbody>
+</table></div>
+<p>L’AP utilisée ici n’est pas l’aire PR calculée par intégration
+trapézoïdale. En l’absence de prédiction positive, la précision est
+fixée à 0 pour l’évaluation des décisions.</p>
+</div></details><details><summary>De quel « taux d’erreur »
+parle-t-on ?</summary><div class="answer">
+<p>Il faut préciser le dénominateur. Ces
+quatre taux ne sont pas interchangeables :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Taux</th>
+<th>Calcul</th>
+<th>Interprétation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Taux de fausses alertes (FPR)</td>
+<td>FP / (VN + FP)</td>
+<td>Part des observations normales signalées à tort</td>
+</tr>
+<tr>
+<td>Taux d’anomalies manquées (FNR)</td>
+<td>FN / (VP + FN) = 1 − rappel</td>
+<td>Part des anomalies qui passent inaperçues</td>
+</tr>
+<tr>
+<td>Part d’alertes inutiles</td>
+<td>FP / (VP + FP) = 1 − précision</td>
+<td>Part du travail d’investigation dépensée à tort</td>
+</tr>
+<tr>
+<td>Taux d’erreur global</td>
+<td>(FP + FN) / N</td>
+<td>Part de toutes les observations mal classées</td>
+</tr>
+</tbody>
+</table></div>
+<p>Avec des anomalies rares, un faible taux d’erreur global peut cacher
+un échec total de détection. Prédire « normal » partout sur le fichier
+Credit Card brut ne commettrait que 492 erreurs sur 284 807
+transactions, soit environ 0,173 %, mais manquerait toutes les fraudes.
+On ne retient donc pas un modèle à partir de ce seul taux.</p>
+</div></details><details><summary>Comment les seuils et la méthode gagnante sont-ils choisis ?</summary><div class="answer">
+<p>Sur la validation, je cherche le meilleur
+rappel parmi les seuils donnant au moins une alerte et une précision
+d’au moins 80 % pour les fraudes, ou 90 % pour les pannes. En cas
+d’égalité, la précision puis l’AP départagent les configurations. Si
+l’objectif est inaccessible, il est signalé et je présente le compromis
+au F1 maximal, à la fois pour le seuil et pour la configuration.</p>
+<p>Le seuil et le modèle sont ensuite figés. Dans les évaluations, une
+alerte correspond à <code>score &gt;= seuil</code>. Pour restituer
+exactement la décision par défaut d’un détecteur sklearn, la frontière
+est stricte (<code>decision_function &lt; 0</code>) ; aucun score des
+jeux actuellement comparés ne crée de désaccord à cette frontière. Ces
+contraintes de précision sont des objectifs pédagogiques, pas des normes
+universelles.</p>
+</div></details><details><summary>Un résultat de test inférieur à la contrainte signifie-t-il que le TP
+est faux ?</summary><div class="answer">
+<p>Non. La contrainte est utilisée pour
+sélectionner le seuil sur la validation ; elle n’est pas garantie sur un
+autre échantillon. Le résultat doit être rapporté, même défavorable.
+Retoucher le seuil pour satisfaire la contrainte sur le test
+transformerait ce test en nouveau jeu de validation.</p>
+</div></details></section><section id="partie-1-données-mouse"><h2 id="partie-1-données-mouse">Partie 1 — Données Mouse</h2><details><summary>1.1.a. Quel est le format des données et que montre leur
+représentation ?</summary><div class="answer">
+<p><code>mouse.txt</code> contient 500 points décrits par deux
+variables numériques, x1 et x2, sans valeur manquante. Les dix derniers
+points sont les anomalies de référence. Leurs étiquettes sont
+construites avant tout mélange, mais ne servent pas à entraîner les
+détecteurs. On reconnaît la tête et les deux oreilles de Mickey, avec
+des densités différentes. Les deux variables ont des échelles
+comparables : je ne les standardise pas.</p>
+<figure>
+<img alt="Mouse : points et anomalies de référence" src="figures/p1_mouse.png"/>
+<figcaption aria-hidden="true">Mouse : points et anomalies de
+référence</figcaption>
+</figure>
+</div></details><details><summary>1.1.b. Comment appliquer IF et LOF, visualiser leurs décisions et
+interpréter leurs scores ?</summary><div class="answer">
+<p>les deux détecteurs sont ajustés sans étiquettes sur les
+500 observations, anomalies comprises. Isolation Forest utilise 100
+arbres, <code>max_samples=256</code>, <code>contamination="auto"</code>,
+et la graine 42. Il recherche des points isolables par des coupures
+aléatoires. LOF utilise 20 voisins, <code>contamination="auto"</code>,
+et compare la densité locale d’un point à celle de ses voisins. Ce sont
+deux familles de détecteurs d’anomalies, pas des modèles donnant une
+probabilité de fraude ou d’anomalie.</p>
+<p>Tous les scores sont orientés vers les valeurs suspectes :
+<code>-score_samples</code> pour IF et
+<code>-negative_outlier_factor_</code> pour LOF en détection d’outliers.
+Une alerte correspond à <code>score &gt;= seuil</code>. Les seuils par
+défaut orientés sont 0,5 pour IF et 1,5 pour LOF. La convention native
+de sklearn utilise une inégalité stricte ; aucune égalité ne modifie les
+décisions présentes.</p>
+<p>Les figures réunissent les points détectés, la coloration continue
+par score et l’histogramme :</p>
+<figure>
+<img alt="Isolation Forest : décisions, scores et histogramme" src="figures/p1_if_mouse.png"/>
+<figcaption aria-hidden="true">Isolation Forest : décisions, scores et
+histogramme</figcaption>
+</figure>
+<figure>
+<img alt="LOF : décisions, scores et histogramme" src="figures/p1_lof_mouse.png"/>
+<figcaption aria-hidden="true">LOF : décisions, scores et
+histogramme</figcaption>
+</figure>
+<p>Temps mesurés sur Mouse : IF, apprentissage 0,0617 s et score 0,0053
+s ; LOF, apprentissage 0,0027 s et récupération du score 0,0000 s à la
+précision d’affichage. Ce dernier affichage ne signifie pas un coût
+rigoureusement nul.</p>
+<p>Pour LOF, <code>negative_outlier_factor_</code> décrit les points
+ayant servi à l’ajustement. En mode <code>novelty=True</code>,
+<code>score_samples</code> est destiné aux observations nouvelles : ce
+n’est pas un remplacement interchangeable pour réévaluer
+l’apprentissage. Dans la démonstration du notebook, son emploi incorrect
+sur les points appris donne des scores moyens différents (normaux :
+1,042 contre 1,050 ; anomalies : 2,322 contre 2,407), même si l’AP reste
+ici égale à 1. Ce constat particulier ne rend pas le protocole incorrect
+valide.</p>
+</div></details><details><summary>1.2.a–b. Comment choisir un seuil sans étiquettes et comparer les
+règles ?</summary><div class="answer">
+<p>la règle IQR utilise <code>Q3 + 1,5 × (Q3 − Q1)</code>,
+avec coefficient fixé sans consulter les étiquettes. La règle de
+clustering supplémentaire applique KMeans à deux groupes aux scores
+unidimensionnels et retient comme suspect le groupe de centre le plus
+élevé. Ces deux règles ne garantissent aucune amélioration. Le F1
+anomalie est la mesure principale après seuillage.</p>
+<p>Dans tous les tableaux suivants, une matrice est notée
+<code>[[VN, FP], [FN, VP]]</code> : lignes réelles normal/anomalie,
+colonnes prédites normal/anomalie. BA désigne la balanced accuracy,
+moyenne des rappels des deux classes. Les seuils et métriques sont
+arrondis pour lecture ; les décisions proviennent des valeurs non
+arrondies du notebook.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 12%"/>
+<col style="width: 12%"/>
+<col style="width: 9%"/>
+<col style="width: 12%"/>
+<col style="width: 12%"/>
+<col style="width: 12%"/>
+<col style="width: 12%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Règle</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">Alertes</th>
+<th>Matrice</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">BA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IF</td>
+<td>Défaut</td>
+<td style="text-align: right;">0,500</td>
+<td style="text-align: right;">125</td>
+<td>[[375,115],[0,10]]</td>
+<td style="text-align: right;">0,080</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">0,148</td>
+<td style="text-align: right;">0,8827</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>IQR</td>
+<td style="text-align: right;">0,563</td>
+<td style="text-align: right;">21</td>
+<td>[[479,11],[0,10]]</td>
+<td style="text-align: right;">0,476</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">0,645</td>
+<td style="text-align: right;">0,9888</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>KMeans</td>
+<td style="text-align: right;">0,503</td>
+<td style="text-align: right;">115</td>
+<td>[[385,105],[0,10]]</td>
+<td style="text-align: right;">0,087</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">0,160</td>
+<td style="text-align: right;">0,8929</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>Défaut</td>
+<td style="text-align: right;">1,500</td>
+<td style="text-align: right;">10</td>
+<td>[[490,0],[0,10]]</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">1,0000</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>IQR</td>
+<td style="text-align: right;">1,226</td>
+<td style="text-align: right;">37</td>
+<td>[[463,27],[0,10]]</td>
+<td style="text-align: right;">0,270</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">0,426</td>
+<td style="text-align: right;">0,9724</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>KMeans</td>
+<td style="text-align: right;">1,915</td>
+<td style="text-align: right;">8</td>
+<td>[[490,0],[2,8]]</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">0,800</td>
+<td style="text-align: right;">0,889</td>
+<td style="text-align: right;">0,9000</td>
+</tr>
+</tbody>
+</table></div>
+<figure>
+<img alt="Comparaison visuelle des seuils Mouse" src="figures/p1_seuils.png"/>
+<figcaption aria-hidden="true">Comparaison visuelle des seuils
+Mouse</figcaption>
+</figure>
+<p>Sur cet échantillon, IQR améliore le F1 d’IF, mais dégrade celui de
+LOF. Le défaut LOF retrouve exactement les dix anomalies ; KMeans en
+manque deux. IF et LOF ne sont pas interchangeables : IF exploite
+l’isolement global, LOF une comparaison locale de densité. Au seuil IQR,
+17 points sont signalés par les deux, 4 par IF seul et 20 par LOF seul.
+Ces différences observées ne démontrent pas à elles seules la cause
+géométrique de chaque décision.</p>
+</div></details><details><summary>1.2.c. Quelles sont les AP et AUC-ROC et pourquoi sont-elles
+indépendantes du seuil choisi ?</summary><div class="answer">
+<p>sur les 500 points Mouse, IF obtient AP = 0,9614 et AUC-ROC
+= 0,9990 ; LOF obtient AP = 1,0000 et AUC-ROC = 1,0000. Modifier
+uniquement le seuil ne change pas les scores ni leur classement : cela
+sélectionne un point des courbes ROC et précision-rappel, sans modifier
+les courbes ni leurs résumés. IF place les dix anomalies parmi les
+quatorze premiers rangs ; LOF les place aux dix premiers.</p>
+<p>Ces résultats concernent la détection dans l’ensemble même qui a
+servi à l’ajustement, pas une estimation sur des observations futures.
+Avec seulement dix anomalies, une anomalie manquée fait perdre dix
+points de pourcentage de rappel. Un résultat parfait sur ces dix cas est
+donc fragile.</p>
+</div></details><details><summary>1.3.a–b. Comment passer à la détection de nouveautés et quelles
+informations supplémentaires utilise-t-on ?</summary><div class="answer">
+<p>on réserve 30 % des 490 normaux, soit 147 normaux, et
+toutes les anomalies. LOF (<code>novelty=True</code>, 20 voisins)
+apprend sur les 343 normaux restants et évalue uniquement le test
+distinct de 157 points, dont dix anomalies. Les scores de test sont
+obtenus par <code>-score_samples</code>. Le seuil IQR est calculé sur
+<code>-negative_outlier_factor_</code> de l’apprentissage, sans
+consulter le test. Les temps mesurés sont 0,0018 s pour l’apprentissage
+et 0,0010 s pour scorer le test.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 7%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 7%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Règle</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">AP test</th>
+<th style="text-align: right;">AUC-ROC test</th>
+<th style="text-align: right;">Alertes</th>
+<th>Matrice test</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">BA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Défaut</td>
+<td style="text-align: right;">1,500</td>
+<td style="text-align: right;">0,977</td>
+<td style="text-align: right;">0,998</td>
+<td style="text-align: right;">11</td>
+<td>[[145,2],[1,9]]</td>
+<td style="text-align: right;">0,818</td>
+<td style="text-align: right;">0,900</td>
+<td style="text-align: right;">0,857</td>
+<td style="text-align: right;">0,9432</td>
+</tr>
+<tr>
+<td>IQR apprentissage</td>
+<td style="text-align: right;">1,232</td>
+<td style="text-align: right;">0,977</td>
+<td style="text-align: right;">0,998</td>
+<td style="text-align: right;">23</td>
+<td>[[134,13],[0,10]]</td>
+<td style="text-align: right;">0,435</td>
+<td style="text-align: right;">1,000</td>
+<td style="text-align: right;">0,606</td>
+<td style="text-align: right;">0,9558</td>
+</tr>
+</tbody>
+</table></div>
+<figure>
+<img alt="LOF nouveautés : apprentissage, test et frontière" src="figures/p1_nouveautes.png"/>
+<figcaption aria-hidden="true">LOF nouveautés : apprentissage, test et
+frontière</figcaption>
+</figure>
+<p>Au seuil par défaut, neuf anomalies sont retrouvées, une est manquée
+et deux normaux déclenchent une alerte. Le seuil IQR retrouve toutes les
+anomalies mais déclenche treize fausses alertes. La figure distingue les
+normaux d’apprentissage et les observations réservées ; la frontière
+représente le seuil par défaut.</p>
+<p>La détection d’outliers ajuste une référence éventuellement
+contaminée puis examine cet ensemble. La détection de nouveautés apprend
+une référence normale et examine des observations nouvelles. Ici,
+sélectionner les seuls normaux pour l’apprentissage exige leurs
+étiquettes : cette information supplémentaire transforme le problème en
+apprentissage de référence normale, de type one-class/semi-supervisé. La
+comparaison n’est donc pas faite à information identique.</p>
+</div></details><details><summary>Quels taux
+d’erreur distinguer sur Mouse ?</summary><div class="answer">
+<p>le taux de faux positifs est
+<code>FPR = FP / (VN + FP)</code> ; le taux de faux négatifs est
+<code>FNR = FN / (VP + FN)</code>. La proportion de fausses alertes
+parmi les alertes est <code>FP / (VP + FP) = 1 − précision</code>,
+lorsque des alertes existent. Elle n’a pas le même dénominateur que le
+FPR. Le taux global d’erreur est <code>(FP + FN) / N</code>.</p>
+<p>Calculs effectués à partir des matrices entières ci-dessus ; valeurs
+en pourcentage :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 15%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Partition et règle</th>
+<th style="text-align: right;">FPR</th>
+<th style="text-align: right;">FNR</th>
+<th style="text-align: right;">Fausses parmi alertes</th>
+<th style="text-align: right;">Erreur globale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mouse entier, IF défaut</td>
+<td style="text-align: right;">23,4694</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">92,0000</td>
+<td style="text-align: right;">23,0000</td>
+</tr>
+<tr>
+<td>Mouse entier, IF IQR</td>
+<td style="text-align: right;">2,2449</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">52,3810</td>
+<td style="text-align: right;">2,2000</td>
+</tr>
+<tr>
+<td>Mouse entier, IF KMeans</td>
+<td style="text-align: right;">21,4286</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">91,3043</td>
+<td style="text-align: right;">21,0000</td>
+</tr>
+<tr>
+<td>Mouse entier, LOF défaut</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">0,0000</td>
+</tr>
+<tr>
+<td>Mouse entier, LOF IQR</td>
+<td style="text-align: right;">5,5102</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">72,9730</td>
+<td style="text-align: right;">5,4000</td>
+</tr>
+<tr>
+<td>Mouse entier, LOF KMeans</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">20,0000</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">0,4000</td>
+</tr>
+<tr>
+<td>Test nouveautés, LOF défaut</td>
+<td style="text-align: right;">1,3605</td>
+<td style="text-align: right;">10,0000</td>
+<td style="text-align: right;">18,1818</td>
+<td style="text-align: right;">1,9108</td>
+</tr>
+<tr>
+<td>Test nouveautés, LOF IQR</td>
+<td style="text-align: right;">8,8435</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">56,5217</td>
+<td style="text-align: right;">8,2803</td>
+</tr>
+</tbody>
+</table></div>
+<p>LOF KMeans illustre la limite du taux global : seulement 0,4 %
+d’erreurs sur Mouse, mais 20 % des anomalies manquées. Prédire tous les
+points normaux ne donnerait que 2 % d’erreurs tout en manquant toutes
+les anomalies.</p>
+</div></details></section><section id="partie-2-détection-des-fraudes-credit-card"><h2 id="partie-2-détection-des-fraudes-credit-card">Partie 2 — Détection
+des fraudes Credit Card</h2><details><summary>2.1.a. Quels contrôles effectuer et comment empêcher la fuite par
+doublons ?</summary><div class="answer">
+<p>le fichier brut contient 284 807 transactions et 31
+colonnes, dont 30 <code>float64</code> et une <code>int64</code>. Il ne
+contient pas de valeur manquante et compte 492 fraudes, soit environ
+0,173 %. On observe 1 081 doublons exacts toutes colonnes confondues,
+mais 9 144 doublons sur les variables prédictives après exclusion de
+<code>Time</code>. Aucun groupe de variables prédictives identiques n’a
+de classes contradictoires.</p>
+<p>Le dédoublonnage est donc effectué <strong>avant</strong> la
+partition, sur V1 à V28 et Amount, en conservant une seule copie. Cela
+évite de tester une copie d’une observation apprise. Le jeu restant
+contient 275 663 transactions, 29 variables prédictives et 473 fraudes,
+soit environ 0,172 %. Cette déduplication modifie la population évaluée
+: les résultats ci-dessous ne portent pas sur les 284 807 lignes
+brutes.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th>Partition stratifiée, graine 42</th>
+<th style="text-align: right;">Transactions</th>
+<th style="text-align: right;">Fraudes</th>
+<th style="text-align: right;">Normales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apprentissage, environ 60 %</td>
+<td style="text-align: right;">165 397</td>
+<td style="text-align: right;">284</td>
+<td style="text-align: right;">165 113</td>
+</tr>
+<tr>
+<td>Validation, environ 20 %</td>
+<td style="text-align: right;">55 133</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">55 038</td>
+</tr>
+<tr>
+<td>Test, environ 20 %</td>
+<td style="text-align: right;">55 133</td>
+<td style="text-align: right;">94</td>
+<td style="text-align: right;">55 039</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les mêmes partitions sont réutilisées entre méthodes.
+<code>Time</code> est exclue des prédicteurs, mais conservée pour
+discuter la temporalité. Un partage aléatoire mélange les périodes ; il
+ne mesure pas directement une performance prospective sur des
+transactions strictement postérieures. Un partage temporel serait
+nécessaire pour étudier cette question, sans que l’on puisse chiffrer
+ici son effet.</p>
+</div></details><details><summary>2.1.b. Quelles échelles et quels prétraitements retenir selon les
+familles ?</summary><div class="answer">
+<p>sur l’apprentissage, Amount a une moyenne de 89,95, un
+écart-type de 240,99, une médiane de 23,92 et un maximum de 11 898,09.
+Ses valeurs sont non négatives et très asymétriques ; la transformation
+fixe <code>log1p(Amount)</code> réduit cette asymétrie. Les écarts-types
+de V1 à V28 vont approximativement de 0,33 à 1,96. Ces variables
+transformées et anonymisées ne permettent pas de retrouver directement
+une interprétation métier.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Famille / variante</th>
+<th>Prétraitement</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arbre sans SMOTE</td>
+<td>log1p(Amount)</td>
+<td>Coupures sur une variable, pas de distance entre observations</td>
+</tr>
+<tr>
+<td>Arbre avec SMOTE</td>
+<td>log1p(Amount), StandardScaler</td>
+<td>Les voisinages SMOTE nécessitent des échelles comparables</td>
+</tr>
+<tr>
+<td>Régression logistique, toutes variantes</td>
+<td>log1p(Amount), StandardScaler</td>
+<td>Optimisation et régularisation sensibles à l’échelle</td>
+</tr>
+<tr>
+<td>Isolation Forest</td>
+<td>log1p(Amount)</td>
+<td>Détecteur à coupures, sans calcul de distance entre
+observations</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>log1p(Amount), StandardScaler</td>
+<td>Comparaison locale fondée sur les distances</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les transformations ajustables sont apprises exclusivement sur
+l’apprentissage dans les pipelines. SMOTE intervient après
+standardisation et uniquement pendant l’ajustement. Validation et test
+ne sont ni rééquilibrés ni utilisés pour apprendre ces
+transformations.</p>
+</div></details><details><summary>2.2.a–b. Quelles variantes supervisées et quelles six configurations
+comparer ?</summary><div class="answer">
+<p>chaque famille supervisée utilise exactement six
+configurations, toutes variantes comprises : deux valeurs
+d’hyperparamètre croisées avec trois traitements du déséquilibre.
+L’arbre compare les profondeurs 4 et 8 ; la régression logistique
+compare <code>C=0,01</code> et <code>C=1</code> (régularisation plus ou
+moins forte, <code>max_iter=2000</code>). Les variantes sont : aucun
+traitement, <code>class_weight="balanced"</code>, ou SMOTE
+(<code>sampling_strategy=0.1</code>, <code>k_neighbors=5</code>, graine
+42). Les poids équilibrés sont inversement proportionnels aux effectifs
+de classe. SMOTE interpole des exemples minoritaires au lieu de
+simplement dupliquer les fraudes ou supprimer la majorité des normales.
+Le ratio ciblé de 1 fraude pour 10 normales limite le volume synthétique
+par rapport à un équilibre complet ; il ne garantit pas une
+amélioration.</p>
+<p>Résultats sur la <strong>validation</strong> ; les seuils des lignes
+« non » sont des compromis de F1, pas des seuils satisfaisant la
+contrainte :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table style="width:100%;">
+<colgroup>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 7%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Famille</th>
+<th>Paramètre</th>
+<th>Variante</th>
+<th style="text-align: right;">AP</th>
+<th style="text-align: right;">AUC-ROC</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Alertes</th>
+<th>Objectif ≥ 80 %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arbre</td>
+<td>profondeur 4</td>
+<td>Aucun</td>
+<td style="text-align: right;">0,7206</td>
+<td style="text-align: right;">0,8841</td>
+<td style="text-align: right;">0,600000</td>
+<td style="text-align: right;">0,8590</td>
+<td style="text-align: right;">0,7053</td>
+<td style="text-align: right;">0,7746</td>
+<td style="text-align: right;">78</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td>profondeur 4</td>
+<td>Poids</td>
+<td style="text-align: right;">0,5083</td>
+<td style="text-align: right;">0,9267</td>
+<td style="text-align: right;">0,999167</td>
+<td style="text-align: right;">0,6293</td>
+<td style="text-align: right;">0,7684</td>
+<td style="text-align: right;">0,6919</td>
+<td style="text-align: right;">116</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td>profondeur 4</td>
+<td>SMOTE</td>
+<td style="text-align: right;">0,6072</td>
+<td style="text-align: right;">0,9023</td>
+<td style="text-align: right;">0,987526</td>
+<td style="text-align: right;">0,7579</td>
+<td style="text-align: right;">0,7579</td>
+<td style="text-align: right;">0,7579</td>
+<td style="text-align: right;">95</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td>profondeur 8</td>
+<td>Aucun</td>
+<td style="text-align: right;">0,6387</td>
+<td style="text-align: right;">0,8716</td>
+<td style="text-align: right;">1,000000</td>
+<td style="text-align: right;">0,8452</td>
+<td style="text-align: right;">0,7474</td>
+<td style="text-align: right;">0,7933</td>
+<td style="text-align: right;">84</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td>profondeur 8</td>
+<td>Poids</td>
+<td style="text-align: right;">0,5371</td>
+<td style="text-align: right;">0,9147</td>
+<td style="text-align: right;">0,999494</td>
+<td style="text-align: right;">0,6577</td>
+<td style="text-align: right;">0,7684</td>
+<td style="text-align: right;">0,7087</td>
+<td style="text-align: right;">111</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td>profondeur 8</td>
+<td>SMOTE</td>
+<td style="text-align: right;">0,5732</td>
+<td style="text-align: right;">0,9133</td>
+<td style="text-align: right;">0,994286</td>
+<td style="text-align: right;">0,7579</td>
+<td style="text-align: right;">0,7579</td>
+<td style="text-align: right;">0,7579</td>
+<td style="text-align: right;">95</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Logistique</td>
+<td>C=0,01</td>
+<td>Aucun</td>
+<td style="text-align: right;">0,7261</td>
+<td style="text-align: right;">0,9658</td>
+<td style="text-align: right;">0,213307</td>
+<td style="text-align: right;">0,8049</td>
+<td style="text-align: right;">0,6947</td>
+<td style="text-align: right;">0,7458</td>
+<td style="text-align: right;">82</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Logistique</td>
+<td>C=0,01</td>
+<td>Poids</td>
+<td style="text-align: right;">0,6780</td>
+<td style="text-align: right;">0,9613</td>
+<td style="text-align: right;">0,999920</td>
+<td style="text-align: right;">0,8022</td>
+<td style="text-align: right;">0,7684</td>
+<td style="text-align: right;">0,7849</td>
+<td style="text-align: right;">91</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Logistique</td>
+<td>C=0,01</td>
+<td>SMOTE</td>
+<td style="text-align: right;">0,7210</td>
+<td style="text-align: right;">0,9638</td>
+<td style="text-align: right;">0,994384</td>
+<td style="text-align: right;">0,8023</td>
+<td style="text-align: right;">0,7263</td>
+<td style="text-align: right;">0,7624</td>
+<td style="text-align: right;">86</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Logistique</td>
+<td>C=1</td>
+<td>Aucun</td>
+<td style="text-align: right;">0,7239</td>
+<td style="text-align: right;">0,9636</td>
+<td style="text-align: right;">0,384913</td>
+<td style="text-align: right;">0,8442</td>
+<td style="text-align: right;">0,6842</td>
+<td style="text-align: right;">0,7558</td>
+<td style="text-align: right;">77</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Logistique</td>
+<td>C=1</td>
+<td>Poids</td>
+<td style="text-align: right;">0,6762</td>
+<td style="text-align: right;">0,9619</td>
+<td style="text-align: right;">0,999968</td>
+<td style="text-align: right;">0,8000</td>
+<td style="text-align: right;">0,8000</td>
+<td style="text-align: right;">0,8000</td>
+<td style="text-align: right;">95</td>
+<td>Oui</td>
+</tr>
+<tr>
+<td>Logistique</td>
+<td>C=1</td>
+<td>SMOTE</td>
+<td style="text-align: right;">0,7221</td>
+<td style="text-align: right;">0,9644</td>
+<td style="text-align: right;">0,995750</td>
+<td style="text-align: right;">0,8140</td>
+<td style="text-align: right;">0,7368</td>
+<td style="text-align: right;">0,7735</td>
+<td style="text-align: right;">86</td>
+<td>Oui</td>
+</tr>
+</tbody>
+</table></div>
+<p>La pondération et le rééchantillonnage ne sont donc pas
+automatiquement préférables : leur intérêt dépend du modèle et du
+critère demandé. L’AP maximale n’identifie pas nécessairement le
+meilleur rappel sous contrainte de précision.</p>
+</div></details><details><summary>2.2.c–d. Comment intégrer IF et LOF sans confondre ajustement non
+supervisé et sélection supervisée ?</summary><div class="answer">
+<p>IF apprend sur les 165 397 transactions d’apprentissage,
+normales et frauduleuses, sans leur cible ni rééchantillonnage
+supervisé. Quatre configurations croisent 100/300 arbres et
+<code>max_samples=256/2048</code>. LOF apprend, également sans cible,
+sur un sous-échantillon stratifié fixe de 30 000 transactions
+d’apprentissage, dont 52 fraudes. Il utilise <code>novelty=True</code>
+et quatre nombres de voisins : 10, 20, 50, 100. Validation et test
+restent complets ; le mode nouveauté sert uniquement à scorer ces
+observations non apprises. Chaque famille reste sous la limite de six
+configurations.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 11%"/>
+<col style="width: 11%"/>
+<col style="width: 11%"/>
+<col style="width: 11%"/>
+<col style="width: 11%"/>
+<col style="width: 11%"/>
+<col style="width: 11%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Famille</th>
+<th>Configuration</th>
+<th style="text-align: right;">AP validation</th>
+<th style="text-align: right;">AUC-ROC validation</th>
+<th style="text-align: right;">Seuil compromis</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Alertes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IF</td>
+<td>100 arbres, 256 points/arbre</td>
+<td style="text-align: right;">0,1623</td>
+<td style="text-align: right;">0,9478</td>
+<td style="text-align: right;">0,656559</td>
+<td style="text-align: right;">0,2793</td>
+<td style="text-align: right;">0,3263</td>
+<td style="text-align: right;">0,3010</td>
+<td style="text-align: right;">111</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>100 arbres, 2 048 points/arbre</td>
+<td style="text-align: right;">0,1873</td>
+<td style="text-align: right;">0,9464</td>
+<td style="text-align: right;">0,701385</td>
+<td style="text-align: right;">0,4231</td>
+<td style="text-align: right;">0,2316</td>
+<td style="text-align: right;">0,2993</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>300 arbres, 256 points/arbre</td>
+<td style="text-align: right;">0,1465</td>
+<td style="text-align: right;">0,9478</td>
+<td style="text-align: right;">0,644182</td>
+<td style="text-align: right;">0,2479</td>
+<td style="text-align: right;">0,3158</td>
+<td style="text-align: right;">0,2778</td>
+<td style="text-align: right;">121</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>300 arbres, 2 048 points/arbre</td>
+<td style="text-align: right;">0,2086</td>
+<td style="text-align: right;">0,9493</td>
+<td style="text-align: right;">0,649011</td>
+<td style="text-align: right;">0,2991</td>
+<td style="text-align: right;">0,3368</td>
+<td style="text-align: right;">0,3168</td>
+<td style="text-align: right;">107</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>10 voisins</td>
+<td style="text-align: right;">0,0026</td>
+<td style="text-align: right;">0,5262</td>
+<td style="text-align: right;">2,313252</td>
+<td style="text-align: right;">0,0093</td>
+<td style="text-align: right;">0,0211</td>
+<td style="text-align: right;">0,0129</td>
+<td style="text-align: right;">215</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>20 voisins</td>
+<td style="text-align: right;">0,0071</td>
+<td style="text-align: right;">0,7216</td>
+<td style="text-align: right;">2,641017</td>
+<td style="text-align: right;">0,0385</td>
+<td style="text-align: right;">0,0316</td>
+<td style="text-align: right;">0,0347</td>
+<td style="text-align: right;">78</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>50 voisins</td>
+<td style="text-align: right;">0,1677</td>
+<td style="text-align: right;">0,9426</td>
+<td style="text-align: right;">2,146801</td>
+<td style="text-align: right;">0,2488</td>
+<td style="text-align: right;">0,5684</td>
+<td style="text-align: right;">0,3462</td>
+<td style="text-align: right;">217</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>100 voisins</td>
+<td style="text-align: right;">0,3825</td>
+<td style="text-align: right;">0,9487</td>
+<td style="text-align: right;">2,796372</td>
+<td style="text-align: right;">0,4336</td>
+<td style="text-align: right;">0,6526</td>
+<td style="text-align: right;">0,5210</td>
+<td style="text-align: right;">143</td>
+</tr>
+</tbody>
+</table></div>
+<p>Aucune de ces configurations n’atteint l’objectif de précision ≥ 80 %
+sur la validation. Les détecteurs sont ajustés sans étiquettes, mais le
+sous-échantillonnage stratifié utilise la cible pour conserver la
+composition du jeu, et la sélection des réglages et du seuil utilise les
+étiquettes de validation. Le protocole complet n’est donc pas une
+sélection purement non supervisée. Le test n’intervient pas dans ces
+choix. Les scores IF/LOF ne sont pas des probabilités calibrées : un
+seuil LOF de 2,796372 n’est pas une probabilité.</p>
+</div></details><details><summary>2.3.a. Que montrent les courbes, l’AP et les maxima de F1/BA ?</summary><div class="answer">
+<p>les configurations retenues par famille ont, sur la
+validation, les couples (AP ; AUC-ROC) suivants : logistique pondérée
+C=1 (0,6762 ; 0,9619), arbre profondeur 8 sans correction (0,6387 ;
+0,8716), LOF 100 voisins (0,3825 ; 0,9487), IF 300 arbres et 2 048
+points/arbre (0,2086 ; 0,9493). L’AP est la mesure principale du
+classement. Une AUC-ROC élevée peut coexister avec une mauvaise
+précision des alertes : les normales sont si nombreuses qu’un petit FPR
+produit beaucoup de fausses alertes.</p>
+<figure>
+<img alt="Courbes ROC et précision-rappel sur la validation Credit Card" src="figures/p2_courbes_val.png"/>
+<figcaption aria-hidden="true">Courbes ROC et précision-rappel sur la
+validation Credit Card</figcaption>
+</figure>
+<figure>
+<img alt="F1 et balanced accuracy selon le seuil IF sur la validation" src="figures/p2_f1_ba_if.png"/>
+<figcaption aria-hidden="true">F1 et balanced accuracy selon le seuil IF
+sur la validation</figcaption>
+</figure>
+<p>Pour IF, le maximum F1 vaut 0,316832, avec précision 0,299065, rappel
+0,336842, BA 0,667740 et 107 alertes. Le maximum BA atteint 0,912492
+mais avec précision 0,037563, rappel 0,863158, F1 0,071993 et 2 183
+alertes. Aucun de ces maxima ne respecte 80 % de précision. Pour la
+logistique retenue, le maximum F1 coïncide ici avec le seuil choisi
+0,999968 (précision et rappel 0,8), alors que le maximum BA se situe à
+0,825068 (précision environ 0,191, rappel 0,884, BA 0,939, 439
+alertes).</p>
+<p>Le F1 équilibre précision et rappel, sans imposer un plancher de
+précision. La BA équilibre les rappels des classes, pas la proportion
+d’enquêtes utiles. Leurs maxima ne résolvent donc pas nécessairement
+l’objectif opérationnel.</p>
+</div></details><details><summary>2.3.b. Quelle règle de choix appliquer, quelle méthode sélectionner,
+et que change le seuil par défaut ?</summary><div class="answer">
+<p>pour chaque configuration, on cherche sur la validation le
+rappel maximal parmi les seuils donnant au moins une alerte et une
+précision ≥ 80 %. On départage par précision, puis AP. Les
+configurations atteignant l’objectif sont prioritaires. Si aucune n’y
+parvient dans une famille, on annonce « objectif non atteint » et
+conserve le meilleur compromis de F1, puis rappel, précision et AP, sans
+abaisser la contrainte.</p>
+<p>La méthode sélectionnée avant le test est <strong>la régression
+logistique C=1, pondération équilibrée</strong> : 76 fraudes détectées
+sur 95, 19 fausses alertes, 19 fraudes manquées, soit 95 alertes,
+précision = rappel = F1 = 0,8. L’arbre retenu atteint également la
+contrainte mais avec un rappel inférieur (71/95). IF et LOF restent des
+compromis non conformes à l’objectif.</p>
+<p>Comparaison sur la validation, comprenant les matrices reconstruites
+à partir des effectifs exacts publiés :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table style="width:100%;">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 13%"/>
+<col style="width: 10%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Famille</th>
+<th>Règle</th>
+<th style="text-align: right;">Seuil</th>
+<th>Matrice validation</th>
+<th style="text-align: right;">Alertes</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logistique</td>
+<td>Défaut</td>
+<td style="text-align: right;">0,500000</td>
+<td>[[53676,1362],[10,85]]</td>
+<td style="text-align: right;">1 447</td>
+<td style="text-align: right;">0,0587</td>
+<td style="text-align: right;">0,8947</td>
+<td style="text-align: right;">0,1102</td>
+</tr>
+<tr>
+<td>Logistique</td>
+<td>Retenu</td>
+<td style="text-align: right;">0,999968</td>
+<td>[[55019,19],[19,76]]</td>
+<td style="text-align: right;">95</td>
+<td style="text-align: right;">0,8000</td>
+<td style="text-align: right;">0,8000</td>
+<td style="text-align: right;">0,8000</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td>Défaut</td>
+<td style="text-align: right;">0,500000</td>
+<td>[[55025,13],[24,71]]</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0,8452</td>
+<td style="text-align: right;">0,7474</td>
+<td style="text-align: right;">0,7933</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td>Retenu</td>
+<td style="text-align: right;">1,000000</td>
+<td>[[55025,13],[24,71]]</td>
+<td style="text-align: right;">84</td>
+<td style="text-align: right;">0,8452</td>
+<td style="text-align: right;">0,7474</td>
+<td style="text-align: right;">0,7933</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>Défaut</td>
+<td style="text-align: right;">1,500000</td>
+<td>[[52569,2469],[14,81]]</td>
+<td style="text-align: right;">2 550</td>
+<td style="text-align: right;">0,0318</td>
+<td style="text-align: right;">0,8526</td>
+<td style="text-align: right;">0,0612</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>Compromis, objectif non atteint</td>
+<td style="text-align: right;">2,796372</td>
+<td>[[54957,81],[33,62]]</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: right;">0,4336</td>
+<td style="text-align: right;">0,6526</td>
+<td style="text-align: right;">0,5210</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>Défaut</td>
+<td style="text-align: right;">0,500000</td>
+<td>[[54302,736],[22,73]]</td>
+<td style="text-align: right;">809</td>
+<td style="text-align: right;">0,0902</td>
+<td style="text-align: right;">0,7684</td>
+<td style="text-align: right;">0,1615</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>Compromis, objectif non atteint</td>
+<td style="text-align: right;">0,649011</td>
+<td>[[54963,75],[63,32]]</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">0,2991</td>
+<td style="text-align: right;">0,3368</td>
+<td style="text-align: right;">0,3168</td>
+</tr>
+</tbody>
+</table></div>
+<p>L’arbre donne ici les mêmes décisions aux deux seuils. Pour la
+logistique, relever le seuil réduit fortement les alertes mais manque
+davantage de fraudes. Les seuils sont ensuite figés : l’affichage
+arrondi ne doit pas remplacer leur valeur exacte pour reproduire les
+décisions.</p>
+</div></details><details><summary>2.3.c. Quels sont les résultats finaux sur le test réservé et les
+coûts mesurés ?</summary><div class="answer">
+<p>le test comprend 55 133 transactions, dont 94 fraudes et 55
+039 normales. Les modèles déjà ajustés et les seuils de validation figés
+sont appliqués sans réajustement.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Méthode retenue</th>
+<th>Prétraitement</th>
+<th>Déséquilibre</th>
+<th style="text-align: right;">AP test</th>
+<th style="text-align: right;">AUC-ROC test</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">BA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Logistique C=1, sélectionnée</strong></td>
+<td>log1p Amount + standardisation</td>
+<td>Poids équilibrés</td>
+<td style="text-align: right;">0,6798</td>
+<td style="text-align: right;">0,9835</td>
+<td style="text-align: right;">0,999968</td>
+<td style="text-align: right;">0,7753</td>
+<td style="text-align: right;">0,7340</td>
+<td style="text-align: right;">0,7541</td>
+<td style="text-align: right;">0,8668</td>
+</tr>
+<tr>
+<td>Arbre profondeur 8</td>
+<td>log1p Amount</td>
+<td>Aucun</td>
+<td style="text-align: right;">0,6811</td>
+<td style="text-align: right;">0,8439</td>
+<td style="text-align: right;">1,000000</td>
+<td style="text-align: right;">0,9200</td>
+<td style="text-align: right;">0,7340</td>
+<td style="text-align: right;">0,8166</td>
+<td style="text-align: right;">0,8670</td>
+</tr>
+<tr>
+<td>LOF 100 voisins</td>
+<td>log1p Amount + standardisation</td>
+<td>Aucun, non supervisé</td>
+<td style="text-align: right;">0,3295</td>
+<td style="text-align: right;">0,9396</td>
+<td style="text-align: right;">2,796372</td>
+<td style="text-align: right;">0,4677</td>
+<td style="text-align: right;">0,6170</td>
+<td style="text-align: right;">0,5321</td>
+<td style="text-align: right;">0,8079</td>
+</tr>
+<tr>
+<td>IF 300 arbres, max_samples=2048</td>
+<td>log1p Amount</td>
+<td>Aucun, non supervisé</td>
+<td style="text-align: right;">0,1524</td>
+<td style="text-align: right;">0,9430</td>
+<td style="text-align: right;">0,649011</td>
+<td style="text-align: right;">0,2000</td>
+<td style="text-align: right;">0,1596</td>
+<td style="text-align: right;">0,1775</td>
+<td style="text-align: right;">0,5792</td>
+</tr>
+</tbody>
+</table></div>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table style="width:100%;">
+<colgroup>
+<col style="width: 10%"/>
+<col style="width: 10%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+<col style="width: 13%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Matrice test</th>
+<th style="text-align: right;">Alertes</th>
+<th style="text-align: right;">Fausses alertes</th>
+<th style="text-align: right;">Fraudes manquées</th>
+<th style="text-align: right;">Apprentissage (s)</th>
+<th style="text-align: right;">Score validation (s)</th>
+<th style="text-align: right;">Score test (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logistique sélectionnée</td>
+<td>[[55019,20],[25,69]]</td>
+<td style="text-align: right;">89</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">0,2009</td>
+<td style="text-align: right;">0,0045</td>
+<td style="text-align: right;">0,0053</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td>[[55033,6],[25,69]]</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">3,2121</td>
+<td style="text-align: right;">0,0029</td>
+<td style="text-align: right;">0,0027</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td>[[54973,66],[36,58]]</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0,3920</td>
+<td style="text-align: right;">0,7221</td>
+<td style="text-align: right;">0,7580</td>
+</tr>
+<tr>
+<td>IF</td>
+<td>[[54979,60],[79,15]]</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">0,7097</td>
+<td style="text-align: right;">0,4589</td>
+<td style="text-align: right;">0,4651</td>
+</tr>
+</tbody>
+</table></div>
+<p>Ces temps sont ceux mesurés pendant l’exécution fournie, pas une
+moyenne de benchmarks. LOF n’apprend que sur 30 000 lignes alors que les
+autres utilisent les 165 397 lignes d’apprentissage ; son coût
+d’apprentissage ne se compare donc pas à effectifs égaux. Tous scorent
+les mêmes validations et tests complets.</p>
+</div></details><details><summary>2.3.d. Combien d’enquêtes, de fraudes manquées, et la contrainte
+résiste-t-elle au test ?</summary><div class="answer">
+<p>avec la logistique sélectionnée, 89 alertes doivent être
+examinées, dont 69 fraudes et 20 enquêtes inutiles. Vingt-cinq fraudes
+sur 94 échappent à la détection. Sa précision de test est 69/89 = 77,53
+%, sous les 80 % obtenus sur la validation. L’objectif n’est donc plus
+respecté sur ce test. Le choix sur une validation finie n’offre pas une
+garantie sur une autre partition ; les effectifs sont modestes et les
+observations différentes. On ne change pas le seuil après ce
+constat.</p>
+<p>L’arbre produit 75 alertes dont 69 fraudes et 6 fausses alertes, et
+manque également 25 fraudes. Il est meilleur sur ce test en précision et
+F1, mais cette observation ne permet pas de le déclarer rétroactivement
+sélectionné : le choix initial utilisait le rappel sous contrainte sur
+la validation. LOF demande 124 enquêtes dont 66 inutiles et manque 36
+fraudes ; IF demande 75 enquêtes dont 60 inutiles et manque 79 fraudes.
+Une anomalie statistique n’est pas nécessairement une fraude.</p>
+</div></details><details><summary>Quels sont les taux d’erreur de fraude et pourquoi un faible taux
+global est-il trompeur ?</summary><div class="answer">
+<p>les définitions FPR, FNR et proportion de fausses alertes
+sont les mêmes que pour Mouse, avec 55 039 normales et 94 fraudes dans
+le test. Les calculs ci-dessous utilisent les matrices entières, pas les
+métriques arrondies.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 15%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Méthode, test Credit Card</th>
+<th style="text-align: right;">FPR (%)</th>
+<th style="text-align: right;">FNR (%)</th>
+<th style="text-align: right;">Fausses parmi alertes (%)</th>
+<th style="text-align: right;">Erreur globale (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logistique sélectionnée</td>
+<td style="text-align: right;">0,0363</td>
+<td style="text-align: right;">26,5957</td>
+<td style="text-align: right;">22,4719</td>
+<td style="text-align: right;">0,0816</td>
+</tr>
+<tr>
+<td>Arbre</td>
+<td style="text-align: right;">0,0109</td>
+<td style="text-align: right;">26,5957</td>
+<td style="text-align: right;">8,0000</td>
+<td style="text-align: right;">0,0562</td>
+</tr>
+<tr>
+<td>LOF</td>
+<td style="text-align: right;">0,1199</td>
+<td style="text-align: right;">38,2979</td>
+<td style="text-align: right;">53,2258</td>
+<td style="text-align: right;">0,1850</td>
+</tr>
+<tr>
+<td>IF</td>
+<td style="text-align: right;">0,1090</td>
+<td style="text-align: right;">84,0426</td>
+<td style="text-align: right;">80,0000</td>
+<td style="text-align: right;">0,2521</td>
+</tr>
+</tbody>
+</table></div>
+<p>Par exemple, pour la logistique : <code>FPR = 20/55039</code>,
+<code>FNR = 25/94</code>, proportion de fausses alertes
+<code>= 20/89</code>, erreur globale <code>= (20+25)/55133</code>. Les
+sommes des matrices restituent bien les 55 133 transactions, les 94
+fraudes et les effectifs d’alertes.</p>
+<p>Un modèle qui prédirait toujours « normale » ne ferait que 94/55 133,
+soit environ 0,1705 % d’erreurs, mais manquerait 100 % des fraudes et ne
+produirait aucune alerte utile ; sa précision positive serait indéfinie
+sans convention. L’accuracy ou le taux d’erreur global peuvent donc
+masquer l’échec opérationnel. De même, le FPR d’IF de 0,1090 % paraît
+faible, alors que 80 % de ses alertes sont fausses. Le dénominateur est
+déterminant : toutes les normales pour le FPR, les seules alertes pour
+<code>1 − précision</code>.</p>
+</div></details></section><section id="partie-3-rechercher-une-nouvelle-méthode-hbos"><h2 id="partie-3-rechercher-une-nouvelle-méthode-hbos">Partie 3 —
+Rechercher une nouvelle méthode : HBOS</h2><details><summary>3.a-b. Quelle méthode nouvelle choisir, sur quelle source
+repose-t-elle et comment construit-elle son score ?</summary><div class="answer">
+<p>Je choisis <strong>HBOS (Histogram-Based Outlier
+Score)</strong>. Référence : Goldstein et Dengel, <em>HBOS: A Fast
+Unsupervised Anomaly Detection Algorithm</em>, KI-2012 Poster and Demo
+Track, p. 59–63. La <a href="https://pyod.readthedocs.io/en/latest/pyod.models.html#module-pyod.models.hbos">documentation
+officielle de PyOD</a> présente une implémentation de référence. Le
+notebook utilise l’implémentation locale <code>utils.HBOS</code>, à
+histogrammes statiques ; il ne faut pas assimiler tous ses détails à
+ceux de PyOD.</p>
+<p>Pour chaque variable, un histogramme à cases de même largeur est
+ajusté sur l’apprentissage, puis ses hauteurs sont divisées par la
+hauteur maximale. Une case peu remplie correspond à une valeur rare. Le
+score utilisé est :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>d</mi></munderover><mrow><mi mathvariant="normal">log</mi><mo>⁡</mo></mrow><mfrac><mn>1</mn><mrow><msub><mrow><mi mathvariant="normal">hist</mi><mo>⁡</mo></mrow><mi>j</mi></msub><mo form="prefix" stretchy="false">(</mo><msub><mi>x</mi><mi>j</mi></msub><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>α</mi></mrow></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">S(x)=\sum_{j=1}^{d}\log\frac{1}{\operatorname{hist}_j(x_j)+\alpha}.</annotation></semantics></math></p>
+<p>Le lissage <code>alpha</code> évite le logarithme de zéro. Dans cette
+implémentation, une valeur hors de l’étendue d’apprentissage reçoit une
+hauteur nulle. Une grande valeur de
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+indique une observation suspecte. <code>score_samples</code> renvoie son
+opposé pour respecter la convention sklearn ; la fonction commune
+réoriente ensuite le score vers « grand = suspect ».</p>
+<p>Cette somme repose sur une approximation par distributions marginales
+indépendantes. Elle ressemble à une log-vraisemblance négative sous
+indépendance, sans être une densité jointe calibrée : les hauteurs sont
+normalisées par leur maximum et lissées. Les hypothèses sont que les
+anomalies présentent des valeurs marginalement rares et que les
+histogrammes représentent suffisamment les distributions. Une
+combinaison inhabituelle de valeurs individuellement courantes peut
+échapper à HBOS.</p>
+</div></details><details><summary>3.c. Quel intérêt attendre sur Credit Card et quels hyperparamètres
+étudier ?</summary><div class="answer">
+<p>HBOS évite les distances entre observations et peut être
+ajusté sur les <strong>165 397 transactions d’apprentissage</strong>,
+sans sous-échantillonnage. Ses contributions par variable sont
+directement lisibles puisqu’elles s’additionnent. Les variables V1 à V28
+proviennent d’une ACP : leur décorrélation motive l’essai, mais
+<strong>décorrélation ne signifie pas indépendance</strong>.</p>
+<p>Deux paramètres importants sont <code>n_bins</code>, qui règle la
+finesse des histogrammes, et <code>alpha</code>, qui règle notamment la
+pénalisation des cases vides. Trop peu de cases peut masquer des queues
+de distribution ; trop de cases peut produire des estimations instables.
+Les trois configurations autorisées sont <code>n_bins</code> = 10, 50,
+200, toutes avec <code>alpha=0.1</code>.</p>
+</div></details><details><summary>3.d. Comment intégrer et sélectionner HBOS sans consulter le test
+?</summary><div class="answer">
+<p>HBOS utilise les mêmes partitions Credit Card et les mêmes
+fonctions d’évaluation que les autres détecteurs. <code>Amount</code>
+est transformé par <code>log(1 + Amount)</code> ; il n’y a ni
+standardisation ni rééchantillonnage supervisé. L’ajustement des
+histogrammes n’utilise pas les étiquettes. Les étiquettes de validation
+servent ensuite à choisir les paramètres et le seuil : cette sélection
+est supervisée.</p>
+<p>Voici les <strong>résultats de validation</strong> exécutés. Les
+temps sont en secondes ; les valeurs sont arrondies comme dans le
+notebook.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: right;">n_bins</th>
+<th style="text-align: right;">n apprentissage</th>
+<th style="text-align: right;">AP</th>
+<th style="text-align: right;">AUC-ROC</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Alertes</th>
+<th style="text-align: left;">Objectif précision ≥ 0,80</th>
+<th style="text-align: right;">Temps apprentissage</th>
+<th style="text-align: right;">Temps score validation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">165397</td>
+<td style="text-align: right;">0.1631</td>
+<td style="text-align: right;">0.9501</td>
+<td style="text-align: right;">26.102088</td>
+<td style="text-align: right;">0.2440</td>
+<td style="text-align: right;">0.4316</td>
+<td style="text-align: right;">0.3118</td>
+<td style="text-align: right;">168</td>
+<td style="text-align: left;">non atteint</td>
+<td style="text-align: right;">0.1318</td>
+<td style="text-align: right;">0.0284</td>
+</tr>
+<tr>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">165397</td>
+<td style="text-align: right;">0.1681</td>
+<td style="text-align: right;">0.9483</td>
+<td style="text-align: right;">39.477502</td>
+<td style="text-align: right;">0.2360</td>
+<td style="text-align: right;">0.4000</td>
+<td style="text-align: right;">0.2969</td>
+<td style="text-align: right;">161</td>
+<td style="text-align: left;">non atteint</td>
+<td style="text-align: right;">0.1765</td>
+<td style="text-align: right;">0.0458</td>
+</tr>
+<tr>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">165397</td>
+<td style="text-align: right;">0.2008</td>
+<td style="text-align: right;">0.9416</td>
+<td style="text-align: right;">46.664026</td>
+<td style="text-align: right;">0.3441</td>
+<td style="text-align: right;">0.3368</td>
+<td style="text-align: right;">0.3404</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: left;">non atteint</td>
+<td style="text-align: right;">0.2302</td>
+<td style="text-align: right;">0.0623</td>
+</tr>
+</tbody>
+</table></div>
+<p>Aucune configuration n’atteint la précision de 80 %. Les seuils
+affichés sont donc des <strong>compromis</strong>, pas des seuils
+satisfaisant la contrainte. La configuration <strong>200 cases,
+alpha=0.1</strong> est retenue au meilleur F1 de validation (0.3404),
+avec départage prévu par rappel, précision puis AP. Son modèle et son
+seuil sont figés avant le test.</p>
+</div></details><details><summary>3.e. Comment HBOS se compare-t-il à IF et LOF, en réussite, limites et
+coût ?</summary><div class="answer">
+<p>Les configurations retenues sont LOF avec 100 voisins, IF
+avec 300 arbres et <code>max_samples=2048</code>, et HBOS avec 200
+cases. Sur la <strong>validation</strong>, les trois objectifs sont non
+atteints :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+<col style="width: 9%"/>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Méthode</th>
+<th style="text-align: right;">n apprentissage</th>
+<th style="text-align: right;">AP</th>
+<th style="text-align: right;">AUC-ROC</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Alertes</th>
+<th style="text-align: right;">Temps apprentissage (s)</th>
+<th style="text-align: right;">Temps score validation (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">LOF</td>
+<td style="text-align: right;">30000</td>
+<td style="text-align: right;">0.3825</td>
+<td style="text-align: right;">0.9487</td>
+<td style="text-align: right;">2.796372</td>
+<td style="text-align: right;">0.4336</td>
+<td style="text-align: right;">0.6526</td>
+<td style="text-align: right;">0.5210</td>
+<td style="text-align: right;">143</td>
+<td style="text-align: right;">0.3920</td>
+<td style="text-align: right;">0.7221</td>
+</tr>
+<tr>
+<td style="text-align: left;">HBOS</td>
+<td style="text-align: right;">165397</td>
+<td style="text-align: right;">0.2008</td>
+<td style="text-align: right;">0.9416</td>
+<td style="text-align: right;">46.664026</td>
+<td style="text-align: right;">0.3441</td>
+<td style="text-align: right;">0.3368</td>
+<td style="text-align: right;">0.3404</td>
+<td style="text-align: right;">93</td>
+<td style="text-align: right;">0.2302</td>
+<td style="text-align: right;">0.0623</td>
+</tr>
+<tr>
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: right;">165397</td>
+<td style="text-align: right;">0.2086</td>
+<td style="text-align: right;">0.9493</td>
+<td style="text-align: right;">0.649011</td>
+<td style="text-align: right;">0.2991</td>
+<td style="text-align: right;">0.3368</td>
+<td style="text-align: right;">0.3168</td>
+<td style="text-align: right;">107</td>
+<td style="text-align: right;">0.7097</td>
+<td style="text-align: right;">0.4589</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les courbes de validation sont conservées ici :</p>
+<figure>
+<img alt="Comparaison non supervisée sur la validation Credit Card" src="figures/p3_non_supervises.png"/>
+<figcaption aria-hidden="true">Comparaison non supervisée sur la
+validation Credit Card</figcaption>
+</figure>
+<p>Sur le <strong>test Credit Card</strong>, sans retoucher les seuils
+:</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table style="width:100%;">
+<colgroup>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+<col style="width: 7%"/>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Méthode</th>
+<th style="text-align: left;">Prétraitement</th>
+<th style="text-align: right;">AP</th>
+<th style="text-align: right;">AUC-ROC</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Balanced accuracy</th>
+<th style="text-align: right;">Alertes</th>
+<th style="text-align: right;">Fausses alertes</th>
+<th style="text-align: right;">Fraudes manquées</th>
+<th style="text-align: right;">Temps apprentissage (s)</th>
+<th style="text-align: right;">Temps score test (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">LOF</td>
+<td style="text-align: left;">log_amount + standard</td>
+<td style="text-align: right;">0.3295</td>
+<td style="text-align: right;">0.9396</td>
+<td style="text-align: right;">2.796372</td>
+<td style="text-align: right;">0.4677</td>
+<td style="text-align: right;">0.6170</td>
+<td style="text-align: right;">0.5321</td>
+<td style="text-align: right;">0.8079</td>
+<td style="text-align: right;">124</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">0.3920</td>
+<td style="text-align: right;">0.7308</td>
+</tr>
+<tr>
+<td style="text-align: left;">HBOS</td>
+<td style="text-align: left;">log_amount</td>
+<td style="text-align: right;">0.1640</td>
+<td style="text-align: right;">0.9265</td>
+<td style="text-align: right;">46.664026</td>
+<td style="text-align: right;">0.3065</td>
+<td style="text-align: right;">0.2021</td>
+<td style="text-align: right;">0.2436</td>
+<td style="text-align: right;">0.6007</td>
+<td style="text-align: right;">62</td>
+<td style="text-align: right;">43</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">0.2302</td>
+<td style="text-align: right;">0.0644</td>
+</tr>
+<tr>
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: left;">log_amount</td>
+<td style="text-align: right;">0.1524</td>
+<td style="text-align: right;">0.9430</td>
+<td style="text-align: right;">0.649011</td>
+<td style="text-align: right;">0.2000</td>
+<td style="text-align: right;">0.1596</td>
+<td style="text-align: right;">0.1775</td>
+<td style="text-align: right;">0.5792</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">60</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">0.7097</td>
+<td style="text-align: right;">0.4565</td>
+</tr>
+</tbody>
+</table></div>
+<p>Aucun de ces trois modèles ne reçoit de correction supervisée du
+déséquilibre. Leurs matrices de test, dans l’ordre
+<code>[[TN, FP], [FN, TP]]</code>, sont : LOF
+<code>[[54973, 66], [36, 58]]</code>, HBOS
+<code>[[54996, 43], [75, 19]]</code>, IF
+<code>[[54979, 60], [79, 15]]</code>.</p>
+<p>Une réussite concrète de HBOS est de retrouver <strong>19 fraudes sur
+le test</strong>, avec un score décomposable. Sur la validation, il
+détecte 32 fraudes et en manque 63. Les contributions moyennes suivantes
+décrivent les groupes de validation, sans donner de sens métier aux
+composantes anonymisées :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+<col style="width: 25%"/>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Fraudes détectées</th>
+<th style="text-align: right;">Fraudes manquées</th>
+<th style="text-align: right;">Transactions normales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">V17</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">1.90</td>
+<td style="text-align: right;">0.32</td>
+</tr>
+<tr>
+<td style="text-align: left;">V12</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">1.75</td>
+<td style="text-align: right;">0.40</td>
+</tr>
+<tr>
+<td style="text-align: left;">V10</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">0.52</td>
+</tr>
+<tr>
+<td style="text-align: left;">V16</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">1.64</td>
+<td style="text-align: right;">0.42</td>
+</tr>
+<tr>
+<td style="text-align: left;">V14</td>
+<td style="text-align: right;">2.30</td>
+<td style="text-align: right;">1.99</td>
+<td style="text-align: right;">0.46</td>
+</tr>
+<tr>
+<td style="text-align: left;">V7</td>
+<td style="text-align: right;">2.29</td>
+<td style="text-align: right;">1.37</td>
+<td style="text-align: right;">0.40</td>
+</tr>
+<tr>
+<td style="text-align: left;">V3</td>
+<td style="text-align: right;">2.29</td>
+<td style="text-align: right;">1.53</td>
+<td style="text-align: right;">0.38</td>
+</tr>
+<tr>
+<td style="text-align: left;">V11</td>
+<td style="text-align: right;">2.29</td>
+<td style="text-align: right;">1.50</td>
+<td style="text-align: right;">0.22</td>
+</tr>
+<tr>
+<td style="text-align: left;">V18</td>
+<td style="text-align: right;">2.28</td>
+<td style="text-align: right;">0.92</td>
+<td style="text-align: right;">0.39</td>
+</tr>
+<tr>
+<td style="text-align: left;">V4</td>
+<td style="text-align: right;">2.24</td>
+<td style="text-align: right;">1.47</td>
+<td style="text-align: right;">0.47</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les fraudes manquées restent sous le seuil pour leur
+<strong>somme</strong> de contributions ; cela ne signifie pas qu’elles
+sont banales sur chaque variable. LOF obtient ici la meilleure AP et le
+meilleur rappel des trois, mais n’atteint pas non plus la contrainte.
+HBOS dépasse IF en AP sur ce test, alors que l’ordre était inverse en
+validation : ce constat ne justifie aucun changement de sélection après
+coup. La corrélation de Spearman IF/HBOS sur validation vaut 0.918 ;
+elle décrit des classements proches, pas des mécanismes identiques.</p>
+<p>HBOS est le moins coûteux dans les temps mesurés ci-dessus, notamment
+pour scorer le test (0.0644 s). La comparaison doit garder les tailles
+d’apprentissage visibles : LOF utilise 30 000 observations, contre 165
+397 pour les deux autres. Ces temps dépendent de cette exécution et ne
+constituent pas un rapport de vitesse universel.</p>
+</div></details><details><summary>Quels taux d’erreur obtient-on avec HBOS sur le test Credit Card
+?</summary><div class="answer">
+<p>Les taux suivants sont calculés à partir des matrices de
+test, avec les dénominateurs définis dans le protocole commun.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 15%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Modèle</th>
+<th style="text-align: right;">FPR (%)</th>
+<th style="text-align: right;">FNR (%)</th>
+<th style="text-align: right;">Alertes inutiles (%)</th>
+<th style="text-align: right;">Erreur globale (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>HBOS, 200 cases</td>
+<td style="text-align: right;">0,0781</td>
+<td style="text-align: right;">79,7872</td>
+<td style="text-align: right;">69,3548</td>
+<td style="text-align: right;">0,2140</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un faible FPR ne signifie pas que la plupart des alertes sont
+fiables. Pour juger la couverture, il faut regarder le FNR, et pour le
+coût des investigations, la proportion d’alertes inutiles.</p>
+</div></details></section><section id="partie-4-transférer-à-la-maintenance"><h2 id="partie-4-transférer-à-la-maintenance">Partie 4 — Transférer à la
+maintenance</h2><details><summary>4.a. Quelle cible et quelles entrées retenir pour AI4I ? Comment
+traiter les discordances ?</summary><div class="answer">
+<p>La cible positive est
+<strong><code>Machine failure=1</code></strong>. Les identifiants
+<code>UDI</code> et <code>Product ID</code> sont retirés, ainsi que
+<code>TWF</code>, <code>HDF</code>, <code>PWF</code>, <code>OSF</code>
+et <code>RNF</code>, qui décrivent des modes de panne directement liés à
+la cible. Les inclure comme prédicteurs créerait une fuite
+d’information.</p>
+<p>Les six entrées restantes sont <code>Type</code>,
+<code>Air temperature [K]</code>, <code>Process temperature [K]</code>,
+<code>Rotational speed [rpm]</code>, <code>Torque [Nm]</code> et
+<code>Tool wear [min]</code>.</p>
+<p>L’audit constate <strong>27 discordances</strong> entre
+<code>Machine failure</code> et le OU logique des cinq modes :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Machine failure</th>
+<th style="text-align: right;">OU des modes = 0</th>
+<th style="text-align: right;">OU des modes = 1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">9643</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">330</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les 18 lignes de cible 0 concernées ont <code>RNF=1</code> ; neuf
+lignes de cible 1 ont tous les modes à zéro. On conserve <strong>la
+cible fournie et toutes les lignes</strong> : reconstruire la cible ou
+supprimer ces cas changerait la tâche. Les modes servent uniquement à
+cet audit descriptif, jamais à l’apprentissage des prédicteurs.</p>
+</div></details><details><summary>4.b. Quelle fréquence de pannes, quelles partitions et quel
+prétraitement ?</summary><div class="answer">
+<p>AI4I contient <strong>10 000 observations
+synthétiques</strong>, dont <strong>339 pannes, soit 3.39 %</strong>,
+sans valeur manquante dans les entrées retenues. Les proportions de
+panne par <code>Type</code> sont :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Type</th>
+<th style="text-align: right;">Sans panne</th>
+<th style="text-align: right;">Panne</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">H</td>
+<td style="text-align: right;">0.9791</td>
+<td style="text-align: right;">0.0209</td>
+</tr>
+<tr>
+<td style="text-align: left;">L</td>
+<td style="text-align: right;">0.9608</td>
+<td style="text-align: right;">0.0392</td>
+</tr>
+<tr>
+<td style="text-align: left;">M</td>
+<td style="text-align: right;">0.9723</td>
+<td style="text-align: right;">0.0277</td>
+</tr>
+</tbody>
+</table></div>
+<p>Le découpage stratifié reproductible est commun aux modèles :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Partition</th>
+<th style="text-align: right;">Observations</th>
+<th style="text-align: right;">Pannes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Apprentissage</td>
+<td style="text-align: right;">6000</td>
+<td style="text-align: right;">203</td>
+</tr>
+<tr>
+<td style="text-align: left;">Validation</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">68</td>
+</tr>
+<tr>
+<td style="text-align: left;">Test</td>
+<td style="text-align: right;">2000</td>
+<td style="text-align: right;">68</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>Type</code> est encodé en one-hot avec gestion des catégories
+inconnues. Les cinq variables numériques sont standardisées pour la
+régression logistique et conservées brutes pour IF. L’encodage et les
+paramètres de standardisation sont ajustés <strong>uniquement sur
+l’apprentissage</strong>, dans les pipelines. Le caractère synthétique
+du jeu limite toute généralisation directe à une usine réelle.</p>
+</div></details><details><summary>4.c.
+Quels modèles transférer et que conserve-t-on ?</summary><div class="answer">
+<p>On reprend la <strong>régression logistique
+pondérée</strong> choisie sur la validation Credit Card :
+<code>C=1.0</code>, <code>class_weight='balanced'</code>,
+<code>max_iter=2000</code>. On reprend également IF avec
+<code>n_estimators=300</code>, <code>max_samples=2048</code>,
+<code>random_state=42</code>. Les hyperparamètres sont conservés, mais
+les modèles et transformations sont <strong>réajustés sur AI4I</strong>
+: on ne réutilise pas des coefficients ou arbres appris sur les
+fraudes.</p>
+<p>La logistique utilise la pondération des classes, sans
+rééchantillonnage ; IF est ajusté sans les étiquettes et sans correction
+du déséquilibre. Les seuils numériques de Credit Card ne sont pas
+transférés : ils sont choisis à nouveau sur la validation AI4I.</p>
+</div></details><details><summary>4.d. Quels seuils retient-on sous précision ≥ 90 %, et quels résultats
+obtient-on ?</summary><div class="answer">
+<p>Sur la <strong>validation AI4I</strong>, on maximise le
+rappel parmi les seuils produisant au moins une alerte et atteignant une
+précision de 90 % :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+<col style="width: 8%"/>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Méthode</th>
+<th style="text-align: right;">n apprentissage</th>
+<th style="text-align: right;">AP</th>
+<th style="text-align: right;">AUC-ROC</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Alertes</th>
+<th style="text-align: left;">Objectif</th>
+<th style="text-align: right;">Temps apprentissage (s)</th>
+<th style="text-align: right;">Temps score validation (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Logistique pondérée</td>
+<td style="text-align: right;">6000</td>
+<td style="text-align: right;">0.4072</td>
+<td style="text-align: right;">0.8811</td>
+<td style="text-align: right;">0.979916</td>
+<td style="text-align: right;">0.9167</td>
+<td style="text-align: right;">0.1618</td>
+<td style="text-align: right;">0.2750</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: left;">atteint</td>
+<td style="text-align: right;">0.0072</td>
+<td style="text-align: right;">0.0014</td>
+</tr>
+<tr>
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: right;">6000</td>
+<td style="text-align: right;">0.1514</td>
+<td style="text-align: right;">0.7816</td>
+<td style="text-align: right;">0.681207</td>
+<td style="text-align: right;">1.0000</td>
+<td style="text-align: right;">0.0294</td>
+<td style="text-align: right;">0.0571</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">atteint</td>
+<td style="text-align: right;">0.1874</td>
+<td style="text-align: right;">0.0444</td>
+</tr>
+</tbody>
+</table></div>
+<p>La <strong>logistique est sélectionnée sur validation</strong> : elle
+retrouve 11 pannes avec 12 alertes, contre deux pannes avec deux alertes
+pour IF. Une précision élevée soutenue par si peu de cas reste
+fragile.</p>
+<figure>
+<img alt="Courbes de validation AI4I" src="figures/p4_ai4i.png"/>
+<figcaption aria-hidden="true">Courbes de validation AI4I</figcaption>
+</figure>
+<p>Sur le <strong>test AI4I</strong>, en conservant les seuils :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table style="width:100%;">
+<colgroup>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+<col style="width: 6%"/>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Méthode</th>
+<th style="text-align: left;">Prétraitement</th>
+<th style="text-align: left;">Déséquilibre</th>
+<th style="text-align: right;">AP</th>
+<th style="text-align: right;">AUC-ROC</th>
+<th style="text-align: right;">Seuil</th>
+<th style="text-align: right;">Précision</th>
+<th style="text-align: right;">Rappel</th>
+<th style="text-align: right;">F1</th>
+<th style="text-align: right;">Balanced accuracy</th>
+<th style="text-align: right;">Alertes</th>
+<th style="text-align: right;">Interventions inutiles</th>
+<th style="text-align: right;">Pannes manquées</th>
+<th style="text-align: right;">Temps apprentissage (s)</th>
+<th style="text-align: right;">Temps score test (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Logistique pondérée</td>
+<td style="text-align: left;">one-hot Type + standard</td>
+<td style="text-align: left;">class_weight</td>
+<td style="text-align: right;">0.4087</td>
+<td style="text-align: right;">0.9046</td>
+<td style="text-align: right;">0.979916</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">0.0588</td>
+<td style="text-align: right;">0.1111</td>
+<td style="text-align: right;">0.5294</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">0.0072</td>
+<td style="text-align: right;">0.0025</td>
+</tr>
+<tr>
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: left;">one-hot Type</td>
+<td style="text-align: left;">aucun (non supervisé)</td>
+<td style="text-align: right;">0.0919</td>
+<td style="text-align: right;">0.7465</td>
+<td style="text-align: right;">0.681207</td>
+<td style="text-align: right;">0.5</td>
+<td style="text-align: right;">0.0147</td>
+<td style="text-align: right;">0.0286</td>
+<td style="text-align: right;">0.5071</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">0.1874</td>
+<td style="text-align: right;">0.0436</td>
+</tr>
+</tbody>
+</table></div>
+<p>Matrices de confusion du <strong>test</strong>, lignes = réalité,
+colonnes = prédiction :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Logistique</th>
+<th style="text-align: right;">Sans panne prédite</th>
+<th style="text-align: right;">Panne prédite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Sans panne réelle</td>
+<td style="text-align: right;">1932</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td style="text-align: left;">Panne réelle</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table></div>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Isolation Forest</th>
+<th style="text-align: right;">Sans panne prédite</th>
+<th style="text-align: right;">Panne prédite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Sans panne réelle</td>
+<td style="text-align: right;">1931</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr>
+<td style="text-align: left;">Panne réelle</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>La logistique déclenche quatre interventions toutes justifiées, mais
+<strong>manque 64 pannes sur 68</strong> : la fiabilité des alertes est
+bonne dans cet échantillon, leur couverture est très faible. IF
+déclenche deux interventions, dont une inutile, et manque 67 pannes. Il
+ne maintient donc pas la précision de 90 % sur le test, malgré sa
+précision parfaite sur les deux alertes de validation. On rapporte cet
+échec sans changer son seuil. L’objectif n’est pas inaccessible en
+validation ici ; dans le cas contraire, il faudrait écrire « objectif
+non atteint » et présenter explicitement un compromis.</p>
+</div></details><details><summary>4.e. Pourquoi le gagnant sur les fraudes peut-il changer, et pourquoi
+ne pas comparer directement les AP des deux jeux ?</summary><div class="answer">
+<p>Les variables, les distributions et les relations avec la
+cible changent. Une même famille de modèles et les mêmes hyperparamètres
+ne garantissent donc pas le même classement des méthodes. Les mécanismes
+synthétiques d’AI4I peuvent inclure des seuils et interactions ; une
+frontière linéaire a des limites de représentation, mais les seules
+métriques ne prouvent pas la cause des erreurs observées.</p>
+<p>Un contrôle <strong>indicatif, hors sélection</strong>, teste l’arbre
+de profondeur 8 sur la validation AI4I uniquement. Il obtient AP
+<strong>0.588</strong>, AUC-ROC <strong>0.892</strong> ; son compromis
+au seuil <strong>0.75</strong> donne précision <strong>0.811</strong>,
+rappel <strong>0.632</strong>, <strong>53 alertes</strong>, objectif
+<strong>non atteint</strong>. Il classe mieux selon l’AP de validation
+que la logistique, mais ne satisfait pas la contrainte imposée. Aucun
+résultat de test n’est utilisé pour cet arbre. Cela distingue
+<strong>qualité globale du classement</strong> et <strong>utilité à très
+haute précision</strong> : un meilleur AP n’implique pas automatiquement
+un meilleur rappel sous précision ≥ 90 %.</p>
+<p>La proportion de positifs diffère fortement entre les jeux (environ
+0,17 % de fraudes contre 3,39 % de pannes dans AI4I). Le niveau de
+référence de l’AP dépend de cette prévalence. Les observations, les
+cibles et les contraintes de précision (80 % contre 90 %) diffèrent
+aussi : les AP des deux jeux ne sont pas des mesures directement
+comparables de difficulté. On peut comparer les méthodes <strong>à
+l’intérieur d’un même jeu et d’une même partition</strong>, pas
+attribuer leur écart entre jeux à une cause unique.</p>
+</div></details><details><summary>Quels sont
+les taux d’erreur sur le test AI4I ?</summary><div class="answer">
+<p>Les taux suivants sont calculés à partir des matrices de
+test, avec les dénominateurs définis dans le protocole commun.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 15%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+<col style="width: 21%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Modèle</th>
+<th style="text-align: right;">FPR (%)</th>
+<th style="text-align: right;">FNR (%)</th>
+<th style="text-align: right;">Alertes inutiles (%)</th>
+<th style="text-align: right;">Erreur globale (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logistique</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">94,1176</td>
+<td style="text-align: right;">0,0000</td>
+<td style="text-align: right;">3,2000</td>
+</tr>
+<tr>
+<td>Isolation Forest</td>
+<td style="text-align: right;">0,0518</td>
+<td style="text-align: right;">98,5294</td>
+<td style="text-align: right;">50,0000</td>
+<td style="text-align: right;">3,4000</td>
+</tr>
+</tbody>
+</table></div>
+<p>Un faible FPR ne signifie pas que la plupart des alertes sont
+fiables. Pour juger la couverture, il faut regarder le FNR, et pour le
+coût des investigations, la proportion d’alertes inutiles.</p>
+</div></details></section><section id="partie-5-robustesse-et-explicabilité"><h2 id="partie-5-robustesse-et-explicabilité">Partie 5 — Robustesse et
+explicabilité</h2><details><summary>5.1. Comment contaminer la référence normale sans modifier le test ni
+la taille d’apprentissage ?</summary><div class="answer">
+<p>On reprend les <strong>343 points normaux d’apprentissage
+Mouse</strong> de la partie nouveautés. On conserve exactement le
+<strong>test réel réservé de 157 points : 147 normaux et les dix
+anomalies</strong>, sans aucune injection.</p>
+<p>Des points normaux tirés sans remise sont <strong>remplacés</strong>,
+et non ajoutés. Le nombre est <code>round(taux × 343)</code> :</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<colgroup>
+<col style="width: 20%"/>
+<col style="width: 20%"/>
+<col style="width: 20%"/>
+<col style="width: 20%"/>
+<col style="width: 20%"/>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: right;">Taux nominal</th>
+<th style="text-align: right;">Normaux remplacés / points
+synthétiques</th>
+<th style="text-align: right;">Normaux conservés</th>
+<th style="text-align: right;">Taille finale</th>
+<th style="text-align: right;">Taux effectif de remplacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">0 %</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">343</td>
+<td style="text-align: right;">343</td>
+<td style="text-align: right;">0 %</td>
+</tr>
+<tr>
+<td style="text-align: right;">5 %</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">326</td>
+<td style="text-align: right;">343</td>
+<td style="text-align: right;">17/343 ≈ 4,956 %</td>
+</tr>
+<tr>
+<td style="text-align: right;">10 %</td>
+<td style="text-align: right;">34</td>
+<td style="text-align: right;">309</td>
+<td style="text-align: right;">343</td>
+<td style="text-align: right;">34/343 ≈ 9,913 %</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les taux effectifs sont le calcul des effectifs imposés par
+l’arrondi, pas une mesure supplémentaire exécutée. Les points
+synthétiques suivent une loi uniforme dans la boîte englobante de la
+référence normale, élargie de <strong>20 % de chaque côté</strong>.
+Certains peuvent tomber au milieu d’un nuage normal : le taux de
+remplacement n’est donc pas une garantie de proportion d’anomalies
+réellement atypiques.</p>
+<p>Les hyperparamètres restent fixes : IF avec <strong>100
+arbres</strong>, <code>max_samples='auto'</code>, et LOF avec <strong>20
+voisins</strong>, <code>novelty=True</code>. Chaque expérience est
+répétée avec les graines <strong>0, 1, 2</strong>, qui déterminent les
+remplacements, les points générés et l’aléa d’IF. Aucun paramètre n’est
+choisi d’après ces résultats du test.</p>
+<figure>
+<img alt="Exemple de référence contaminée, taux nominal 10 %, graine 0" src="figures/p5_exemple_contamine.png"/>
+<figcaption aria-hidden="true">Exemple de référence contaminée, taux
+nominal 10 %, graine 0</figcaption>
+</figure>
+</div></details><details><summary>5.1. Quelles moyennes et dispersions observe-t-on, et quelles
+conclusions sont permises ?</summary><div class="answer">
+<p>Les résultats ci-dessous sont calculés sur le <strong>même
+test réel Mouse</strong>. La dispersion est l’écart-type fourni par
+l’agrégation pandas sur les trois graines, pas un intervalle de
+confiance.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table style="width:100%;">
+<colgroup>
+<col style="width: 16%"/>
+<col style="width: 16%"/>
+<col style="width: 16%"/>
+<col style="width: 16%"/>
+<col style="width: 16%"/>
+<col style="width: 16%"/>
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left;">Méthode</th>
+<th style="text-align: right;">Contamination nominale</th>
+<th style="text-align: right;">AP moyenne</th>
+<th style="text-align: right;">AP écart-type</th>
+<th style="text-align: right;">AUC-ROC moyenne</th>
+<th style="text-align: right;">AUC-ROC écart-type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: right;">0 %</td>
+<td style="text-align: right;">0.7790</td>
+<td style="text-align: right;">0.1133</td>
+<td style="text-align: right;">0.9803</td>
+<td style="text-align: right;">0.0096</td>
+</tr>
+<tr>
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: right;">5 %</td>
+<td style="text-align: right;">0.9346</td>
+<td style="text-align: right;">0.0373</td>
+<td style="text-align: right;">0.9948</td>
+<td style="text-align: right;">0.0026</td>
+</tr>
+<tr>
+<td style="text-align: left;">Isolation Forest</td>
+<td style="text-align: right;">10 %</td>
+<td style="text-align: right;">0.9252</td>
+<td style="text-align: right;">0.0400</td>
+<td style="text-align: right;">0.9934</td>
+<td style="text-align: right;">0.0041</td>
+</tr>
+<tr>
+<td style="text-align: left;">LOF</td>
+<td style="text-align: right;">0 %</td>
+<td style="text-align: right;">0.9769</td>
+<td style="text-align: right;">0.0000</td>
+<td style="text-align: right;">0.9980</td>
+<td style="text-align: right;">0.0000</td>
+</tr>
+<tr>
+<td style="text-align: left;">LOF</td>
+<td style="text-align: right;">5 %</td>
+<td style="text-align: right;">0.9810</td>
+<td style="text-align: right;">0.0165</td>
+<td style="text-align: right;">0.9982</td>
+<td style="text-align: right;">0.0016</td>
+</tr>
+<tr>
+<td style="text-align: left;">LOF</td>
+<td style="text-align: right;">10 %</td>
+<td style="text-align: right;">0.9923</td>
+<td style="text-align: right;">0.0133</td>
+<td style="text-align: right;">0.9993</td>
+<td style="text-align: right;">0.0012</td>
+</tr>
+</tbody>
+</table></div>
+<figure>
+<img alt="AP moyenne et dispersion sur trois graines" src="figures/p5_contamination.png"/>
+<figcaption aria-hidden="true">AP moyenne et dispersion sur trois
+graines</figcaption>
+</figure>
+<p>LOF reste très performant dans cette expérience. À 0 %, il est
+déterministe et reçoit la même référence, ce qui explique son écart-type
+nul. IF a une AP moyenne plus élevée avec les remplacements synthétiques
+qu’à 0 %, mais elle ne croît pas entre 5 % et 10 %. Il ne faut donc ni
+conclure que toute contamination dégrade les modèles, ni que contaminer
+améliore systématiquement IF.</p>
+<p><strong>Hypothèses, non mécanismes vérifiés :</strong> l’extension de
+l’étendue par les points uniformes peut modifier les coupures d’IF ; les
+voisinages utiles de LOF peuvent rester relativement stables.
+L’influence exacte des coupures ou des voisins n’a pas été mesurée. Les
+conclusions dépendent du générateur uniforme, de sa boîte élargie, de
+trois graines seulement et des dix anomalies réelles de test. Une
+contamination proche des nuages ou concentrée dans une région pourrait
+produire d’autres résultats.</p>
+</div></details><details><summary>5.2. Quelles six observations Credit Card sont expliquées avec SHAP et
+quel fond utilise-t-on ?</summary><div class="answer">
+<p>On explique l’IF de la partie 2 (<strong>300 arbres,
+<code>max_samples=2048</code></strong>), avec son seuil de validation
+figé à <strong>0.649011</strong>, sur des observations du <strong>test
+Credit Card</strong>. Les catégories disponibles sont 15 fraudes
+détectées, 60 fausses alertes et 79 fraudes manquées. Toutes sont
+présentes : on prend <strong>deux cas de chaque catégorie</strong>, sans
+besoin de remplacement.</p>
+<p>Les deux scores les plus élevés sont choisis parmi les fraudes
+détectées et les fausses alertes ; les deux plus faibles parmi les
+fraudes manquées. Ce sont donc des cas volontairement contrastés,
+<strong>pas un échantillon représentatif</strong>. Les étiquettes de
+test servent à construire les catégories d’explication, sans modifier
+l’ajustement, le seuil ou la sélection du modèle.</p>
+<p>Le fond SHAP contient <strong>50 transactions tirées uniquement de
+l’apprentissage</strong>, avec <code>random_state=42</code>, après le
+même prétraitement <code>log(1 + Amount)</code> que les observations
+expliquées.</p>
+</div></details><details><summary>5.2. Quelle sortie SHAP explique-t-il exactement, quel est le signe
+des contributions et comment le vérifier ?</summary><div class="answer">
+<p>Pour cet Isolation Forest, <code>shap.TreeExplainer</code>
+explique la <strong>longueur moyenne de chemin corrigée</strong>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math>
+: elle inclut la correction liée à la taille des feuilles, et n’est pas
+simplement le nombre brut de coupures. SHAP n’explique ici ni une
+probabilité de fraude, ni directement le score final d’anomalie.</p>
+<p>Avec
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ψ</mi><mo>=</mo><mn>2048</mn></mrow><annotation encoding="application/x-tex">\psi=2048</annotation></semantics></math>
+et la constante de normalisation
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>ψ</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">c(\psi)</annotation></semantics></math>,
+le score orienté est :</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mtext mathvariant="monospace">𝚜𝚌𝚘𝚛𝚎_𝚜𝚊𝚖𝚙𝚕𝚎𝚜</mtext><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><msup><mn>2</mn><mrow><mi>−</mi><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>ψ</mi><mo form="postfix" stretchy="false">)</mo></mrow></msup><mo>,</mo><mspace width="2.0em"></mspace><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mi>−</mi><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>ψ</mi><mo form="postfix" stretchy="false">)</mo><msub><mrow><mi mathvariant="normal">log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mi>s</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">s(x)=-\texttt{score\_samples}(x)=2^{-h(x)/c(\psi)},\qquad h(x)=-c(\psi)\log_2 s(x).</annotation></semantics></math></p>
+<p>Le code utilise
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>ψ</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">log</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>ψ</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mo>+</mo><mi>γ</mi><mo form="postfix" stretchy="false">)</mo><mo>−</mo><mn>2</mn><mo form="prefix" stretchy="false">(</mo><mi>ψ</mi><mo>−</mo><mn>1</mn><mo form="postfix" stretchy="false">)</mo><mi>/</mi><mi>ψ</mi></mrow><annotation encoding="application/x-tex">c(\psi)=2(\log(\psi-1)+\gamma)-2(\psi-1)/\psi</annotation></semantics></math>.
+Un chemin court donne un score élevé. Ainsi, <strong>une contribution
+SHAP négative raccourcit le chemin et pousse vers l’alerte</strong> ;
+une contribution positive allonge le chemin et pousse dans le sens
+opposé.</p>
+<p>La vérification numérique compare
+<code>expected_value + somme(SHAP)</code> à
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>−</mi><mi>c</mi><mo form="prefix" stretchy="false">(</mo><mi>ψ</mi><mo form="postfix" stretchy="false">)</mo><msub><mrow><mi mathvariant="normal">log</mi><mo>⁡</mo></mrow><mn>2</mn></msub><mo form="prefix" stretchy="false">(</mo><mi>−</mi><mtext mathvariant="monospace">𝚜𝚌𝚘𝚛𝚎_𝚜𝚊𝚖𝚙𝚕𝚎𝚜</mtext><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">-c(\psi)\log_2(-\texttt{score\_samples}(x))</annotation></semantics></math>.
+L’écart maximal observé sur les six cas vaut
+<strong>2.5795097080560936e-07</strong>. La valeur de base affichée est
+<strong>21.017</strong>.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Cas de test</th>
+<th style="text-align: right;">h(x)</th>
+<th style="text-align: right;">Score orienté</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Fraude détectée #1</td>
+<td style="text-align: right;">4.798</td>
+<td style="text-align: right;">0.794</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fraude détectée #2</td>
+<td style="text-align: right;">5.976</td>
+<td style="text-align: right;">0.750</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fausse alerte #1</td>
+<td style="text-align: right;">4.988</td>
+<td style="text-align: right;">0.787</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fausse alerte #2</td>
+<td style="text-align: right;">5.156</td>
+<td style="text-align: right;">0.780</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fraude manquée #1</td>
+<td style="text-align: right;">21.772</td>
+<td style="text-align: right;">0.351</td>
+</tr>
+<tr>
+<td style="text-align: left;">Fraude manquée #2</td>
+<td style="text-align: right;">21.745</td>
+<td style="text-align: right;">0.351</td>
+</tr>
+</tbody>
+</table></div>
+<p>Les quatre premiers scores dépassent le seuil figé, contrairement aux
+deux derniers. Les nombres sont arrondis pour la lecture ; la
+vérification numérique utilise les valeurs non arrondies.</p>
+</div></details><details><summary>5.2. Quelles variables contribuent aux alertes et que peut-on affirmer
+à partir de ces six cas ?</summary><div class="answer">
+<p>Les barres rouges correspondent aux contributions négatives
+à
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo form="prefix" stretchy="false">(</mo><mi>x</mi><mo form="postfix" stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">h(x)</annotation></semantics></math>,
+donc au sens de l’alerte :</p>
+<figure>
+<img alt="Contributions SHAP des six transactions de test" src="figures/p5_shap.png"/>
+<figcaption aria-hidden="true">Contributions SHAP des six transactions
+de test</figcaption>
+</figure>
+<p>Le tableau exécuté suivant donne, pour chaque catégorie de
+<strong>deux cas</strong>, la moyenne de <code>max(-SHAP, 0)</code> : il
+mesure uniquement les contributions poussant vers l’alerte, pas la
+contribution signée nette.</p>
+<div aria-label="Tableau de résultats" class="table-wrap" role="region" tabindex="0"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Fraude détectée</th>
+<th style="text-align: right;">Fausse alerte</th>
+<th style="text-align: right;">Fraude manquée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">V1</td>
+<td style="text-align: right;">1.629</td>
+<td style="text-align: right;">1.651</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr>
+<td style="text-align: left;">V3</td>
+<td style="text-align: right;">1.241</td>
+<td style="text-align: right;">0.823</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr>
+<td style="text-align: left;">V8</td>
+<td style="text-align: right;">0.973</td>
+<td style="text-align: right;">0.200</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr>
+<td style="text-align: left;">V5</td>
+<td style="text-align: right;">0.930</td>
+<td style="text-align: right;">0.888</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr>
+<td style="text-align: left;">V7</td>
+<td style="text-align: right;">0.928</td>
+<td style="text-align: right;">0.841</td>
+<td style="text-align: right;">0.037</td>
+</tr>
+<tr>
+<td style="text-align: left;">V18</td>
+<td style="text-align: right;">0.914</td>
+<td style="text-align: right;">0.226</td>
+<td style="text-align: right;">0.029</td>
+</tr>
+<tr>
+<td style="text-align: left;">V12</td>
+<td style="text-align: right;">0.868</td>
+<td style="text-align: right;">0.202</td>
+<td style="text-align: right;">0.000</td>
+</tr>
+<tr>
+<td style="text-align: left;">V17</td>
+<td style="text-align: right;">0.803</td>
+<td style="text-align: right;">0.097</td>
+<td style="text-align: right;">0.011</td>
+</tr>
+</tbody>
+</table></div>
+<p>V1 pousse fortement vers l’alerte pour les fraudes détectées
+<strong>et</strong> les fausses alertes sélectionnées. V3, V5 et V7
+participent aussi à ces profils. Dans ce petit choix, V8, V18, V12 et
+V17 contribuent davantage pour les fraudes détectées que pour les
+fausses alertes. Les contributions ne sont pas toutes négatives : les
+quatre cas alertés comportent respectivement <strong>2, 5, 3 et 3
+contributions positives</strong>. C’est leur somme avec la valeur de
+base qui détermine la sortie expliquée.</p>
+<p>Les deux fraudes manquées sélectionnées ont des chemins corrigés un
+peu supérieurs à la valeur de base et des scores faibles. Cela explique
+leur absence d’alerte pour ce modèle et ce seuil, mais ne caractérise
+pas les <strong>79</strong> fraudes manquées dans leur ensemble. Aucun
+effet chiffré d’un changement de seuil n’est déduit de SHAP.</p>
+<p>SHAP décrit une décomposition du comportement du modèle relativement
+au fond choisi. Il <strong>ne prouve aucune causalité</strong>, ne
+garantit pas que la transaction est frauduleuse et ne restitue pas une
+signification métier aux composantes ACP anonymisées V1 à V28. Des
+profils proches pour une fraude et une fausse alerte rappellent qu’une
+anomalie statistique n’est pas forcément une fraude. Les contributions
+dépendent aussi du fond de 50 observations et des relations entre
+variables ; deux cas par catégorie ne permettent pas de généraliser une
+importance globale.</p>
+</div></details></section><section id="bilan-limites-et-éléments-à-rendre"><h2 id="bilan-limites-et-éléments-à-rendre">6. Bilan, limites et
+éléments à rendre</h2><details><summary>Que retenir de
+la comparaison des modèles ?</summary><div class="answer">
+<p>Sur Mouse, la différence entre un bon
+classement et un bon seuil est très visible. Sur Credit Card, la
+logistique pondérée est sélectionnée sur la validation ; ce choix reste
+conservé même si l’arbre paraît plus intéressant sur le test. Sur AI4I,
+le transfert des mêmes hyperparamètres ne donne pas un bon rappel sous
+la contrainte de précision. Aucune méthode n’est gagnante pour tous les
+jeux et tous les objectifs.</p>
+</div></details><details><summary>Quels sont les
+principaux pièges à éviter ?</summary><div class="answer">
+<p>Confondre valeur extrême et erreur de
+saisie ; retirer des anomalies pour améliorer le score ; utiliser une
+information révélant directement la cible ; standardiser avant le
+découpage ; appliquer SMOTE à la validation ou au test ; calculer ROC et
+AP sur des prédictions binaires au lieu des scores ; choisir le modèle
+avec les résultats du test ; comparer des taux d’erreur qui n’ont pas le
+même dénominateur ; présenter une explication plausible comme un
+mécanisme démontré.</p>
+<p>Les discordances d’étiquettes d’AI4I sont signalées, mais pas
+corrigées arbitrairement. Les faibles résultats restent dans le rendu :
+ils font partie de l’évaluation.</p>
+</div></details><details><summary>Quelles
+conclusions ne peut-on pas tirer de ce TP ?</summary><div class="answer">
+<p>Les expériences n’établissent ni une
+garantie de précision sur des données futures, ni la supériorité
+générale d’un modèle. Les dix anomalies de Mouse et les faibles
+effectifs positifs des validations rendent les métriques fragiles. Les
+données AI4I sont synthétiques. Le découpage aléatoire de Credit Card ne
+mesure pas un déploiement chronologique. Les trois graines de
+contamination ne représentent pas tous les types d’anomalies possibles.
+Les six explications SHAP ne décrivent pas toutes les transactions.</p>
+</div></details><details><summary>Quelles améliorations seraient pertinentes dans une étude réelle
+?</summary><div class="answer">
+<p>Étudier un découpage temporel, la
+stabilité des seuils, des intervalles d’incertitude, le coût des fausses
+alertes et des cas manqués, et la qualité de l’étiquetage. On pourrait
+aussi comparer plusieurs générateurs d’anomalies et explorer des
+variables d’interaction en maintenance. Ce sont des pistes, pas des
+expériences réalisées dans ce TP. Toute nouvelle sélection devrait
+garder une évaluation finale indépendante.</p>
+</div></details><details><summary>Quels fichiers
+constituent le rendu ?</summary><div class="answer">
+<p>Le notebook exécuté
+<code>TP_detection_anomalies.ipynb</code>, les fonctions
+<code>utils.py</code>, les dépendances <code>requirements.txt</code> et
+la synthèse de deux pages <code>synthese.pdf</code>. Ce document Q/R est
+une version détaillée complémentaire, illustrée avec
+<code>figures/</code> ; il ne remplace pas la synthèse de deux pages
+demandée par le sujet. Le compte rendu narratif est conservé
+séparément.</p>
+</div></details><details><summary>Quelles sources ont été
+utilisées ?</summary><div class="answer">
+<p></p>
+<ul>
+<li>Sujet : <em>Atelier : Détection d’anomalies avec Python</em>,
+version 2026–2027, cinq parties.</li>
+<li>Cours de H. Elghazel : distinction outliers/nouveautés (diapo 4),
+LOF (6–14), Isolation Forest (16–24), déséquilibre (25–33), évaluation
+et seuils (34–43).</li>
+<li>Credit Card :
+https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud</li>
+<li>AI4I 2020 et description des variables :
+https://doi.org/10.24432/C5HS5C</li>
+<li>Goldstein et Dengel (2012), <em>Histogram-Based Outlier Score
+(HBOS): A Fast Unsupervised Anomaly Detection Algorithm</em>, KI-2012.
+Documentation et implémentation PyOD :
+https://pyod.readthedocs.io/en/latest/_modules/pyod/models/hbos.html</li>
+</ul>
+</div></details></section></main></div><script>document.getElementById('ouvrir').addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));document.getElementById('fermer').addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));window.addEventListener('beforeprint',()=>{window.etatDetails=[...document.querySelectorAll('details')].map(d=>d.open);document.querySelectorAll('details').forEach(d=>d.open=true)});window.addEventListener('afterprint',()=>document.querySelectorAll('details').forEach((d,i)=>d.open=window.etatDetails[i]));</script></body></html>
