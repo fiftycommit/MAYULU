@@ -21,6 +21,24 @@ requirements.txt
 
 Le sujet et le cours sont disponibles dans les PDF à la racine.
 
+### Repères dans le notebook
+
+Les titres reprennent la hiérarchie du sujet. Chaque sous-question est suivie de ses explications,
+de son code et de ses résultats, selon ce qu’elle demande ; les analyses ne sont plus regroupées loin des figures.
+Le sommaire du notebook donne accès aux cinq parties.
+
+| Partie | Organisation |
+|---|---|
+| 1 — Mouse | Questions 1 à 3, avec leurs sous-questions a, b et c selon le sujet |
+| 2 — Fraudes | Préparation 1.a–b, comparaison 2.a–d, évaluation 3.a–d |
+| 3 — Nouvelle méthode (HBOS) | Sous-questions a à e |
+| 4 — Maintenance (AI4I) | Sous-questions a à e |
+| 5 — Robustesse et SHAP | Question 1 : contamination ; question 2 : explication des alertes |
+
+Le bilan final précise le périmètre : les expériences supplémentaires du bloc situé après
+« Livrables et synthèse » dans le PDF (sous-échantillonnage supervisé, EasyEnsemble, RUSBoost,
+XGBoost, KDDCup99) et le bonus autoencodeur ne sont pas réalisés.
+
 ## Exécuter le TP
 
 Depuis la racine du projet :

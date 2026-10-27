@@ -54,6 +54,8 @@ un KMeans à deux groupes sur les scores. Je les ai comparées au seuil par déf
 
 ![Comparaison des seuils](figures/p1_seuils.png)
 
+![Matrices de confusion et F1 pour chaque règle de seuil](figures/p1_matrices_confusion.png)
+
 J'en retiens qu'aucune règle ne gagne à chaque fois : tout dépend de la forme de l'histogramme des scores. En
 revanche, l'AP et l'AUC-ROC ne changent pas quand on change le seuil (IF : AP 0,96 ; LOF : AP 1,00), parce qu'elles
 ne dépendent que de l'ordre des scores. Avec seulement 10 anomalies, ces résultats restent fragiles : une anomalie
