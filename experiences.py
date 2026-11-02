@@ -82,13 +82,16 @@ def calculer_mouse(graine=GRAINE):
             "temps_nouveautes": {"app": t_app, "score": t_score}, "grille": (xx, yy, zz)}
 
 
-def choisir_configurations(parts, configurations, precision_min):
-    """Ajuster uniquement l'apprentissage et figer les choix sur validation."""
+def choisir_configurations(parts, configurations, precision_min, marge=0.0):
+    """Ajuster uniquement l'apprentissage et figer les choix sur validation.
+
+    Les seuils sont cherchés avec precision_min + marge sur la validation ; l'objectif
+    publié reste precision_min, évalué sur le test."""
     resultats, modeles = utils.comparer_configurations(
-        configurations, parts["app"], parts["val"], precision_min)
+        configurations, parts["app"], parts["val"], precision_min + marge)
     retenues = utils.selectionner(resultats).groupby("famille", sort=False).head(1).set_index("famille")
     return {"parts": parts, "resultats_validation": resultats, "retenues": retenues,
-            "modeles": modeles, "precision_min": precision_min}
+            "modeles": modeles, "precision_min": precision_min, "marge_validation": marge}
 
 
 def calculer_creditcard(graine=GRAINE):
@@ -117,7 +120,7 @@ def calculer_creditcard(graine=GRAINE):
                         "pretraitement": "log_amount", "desequilibre": "aucun (non supervisé)",
                         "modele": Pipeline(utils.pretraitement_creditcard(False) + [("modele", utils.HBOS(
                             n_bins=cases, alpha=0.1))])})
-    experience = choisir_configurations(parts, configs, 0.80)
+    experience = choisir_configurations(parts, configs, 0.80, marge=0.05)
     experience["informations"] = {"observations": len(X), "positifs": int(y.sum()),
                                   "app_lof": len(X_sous), "positifs_app_lof": int(y_sous.sum()),
                                   "time_min": float(temps_transactions.min()),

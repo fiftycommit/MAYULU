@@ -40,10 +40,10 @@ L’extension (RUS, ensembles et KDD) a été réalisée après une première le
 
 | Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| XGBoost | 0,7923 | 0,9759 | 0,695443 | 0,7789 | 0,7872 | 0,7831 | 0,8934 | 95 | 21 | 20 | non atteint |
-| Régression logistique | 0,6798 | 0,9835 | 0,999968 | 0,7753 | 0,7340 | 0,7541 | 0,8668 | 89 | 20 | 25 | non atteint |
-| EasyEnsemble | 0,6785 | 0,9776 | 0,658872 | 0,7848 | 0,6596 | 0,7168 | 0,8296 | 79 | 17 | 32 | non atteint |
-| Arbre de décision | 0,6811 | 0,8439 | 1,000000 | 0,9200 | 0,7340 | 0,8166 | 0,8670 | 75 | 6 | 25 | atteint |
+| XGBoost | 0,7923 | 0,9759 | 0,834116 | 0,8111 | 0,7766 | 0,7935 | 0,8881 | 90 | 17 | 21 | atteint |
+| Arbre de décision | 0,6642 | 0,8563 | 0,600000 | 0,8551 | 0,6277 | 0,7239 | 0,8137 | 69 | 10 | 35 | atteint |
+| Régression logistique | 0,6988 | 0,9733 | 0,423638 | 0,8621 | 0,5319 | 0,6579 | 0,7659 | 58 | 8 | 44 | atteint |
+| EasyEnsemble | 0,6838 | 0,9797 | 0,722424 | 0,8400 | 0,2234 | 0,3529 | 0,6117 | 25 | 4 | 73 | atteint |
 | RUSBoost | 0,4018 | 0,9674 | 0,817290 | 0,4889 | 0,7021 | 0,5764 | 0,8504 | 135 | 69 | 28 | non atteint |
 | LOF | 0,3295 | 0,9396 | 2,796372 | 0,4677 | 0,6170 | 0,5321 | 0,8079 | 124 | 66 | 36 | non atteint |
 | HBOS | 0,1640 | 0,9265 | 46,664026 | 0,3065 | 0,2021 | 0,2436 | 0,6007 | 62 | 43 | 75 | non atteint |
@@ -74,14 +74,14 @@ Le choix sur validation AI4I est « XGBoost | n_estimators=100, max_depth=5 (AI4
 | Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | XGBoost | 0,6985 | 0,9715 | 0,988007 | 0,8039 | 0,6029 | 0,6891 | 0,7989 | 51 | 10 | 27 | non atteint |
-| Régression logistique | 0,4087 | 0,9046 | 0,979916 | 1,0000 | 0,0588 | 0,1111 | 0,5294 | 4 | 0 | 64 | atteint |
 | Isolation Forest | 0,0919 | 0,7465 | 0,681207 | 0,5000 | 0,0147 | 0,0286 | 0,5071 | 2 | 1 | 67 | non atteint |
+| Arbre de décision | 0,3958 | 0,8320 | 0,353846 | 0,5000 | 0,5735 | 0,5342 | 0,7767 | 78 | 39 | 29 | non atteint |
 
 XGBoost : 51 alertes, dont 41 pannes et 10 fausses alertes ; 27 cas manqués. Précision 0,8039, rappel 0,6029, objectif au test non atteint.
 
-Régression logistique : 4 alertes, dont 4 pannes et 0 fausses alertes ; 64 cas manqués. Précision 1,0000, rappel 0,0588, objectif au test atteint.
-
 Isolation Forest : 2 alertes, dont 1 pannes et 1 fausses alertes ; 67 cas manqués. Précision 0,5000, rappel 0,0147, objectif au test non atteint.
+
+Arbre de décision : 78 alertes, dont 39 pannes et 39 fausses alertes ; 29 cas manqués. Précision 0,5000, rappel 0,5735, objectif au test non atteint.
 
 ## Robustesse et SHAP
 

@@ -186,8 +186,8 @@
       "contamination": 0.0,
       "graine": 0,
       "n injectées": 0,
-      "temps app. (s)": 0.048984000023,
-      "temps score (s)": 0.004292666999,
+      "temps app. (s)": 0.047831916978,
+      "temps score (s)": 0.00379620801,
       "ap": 0.851611721612,
       "auc_roc": 0.987755102041
     },
@@ -196,8 +196,8 @@
       "contamination": 0.0,
       "graine": 0,
       "n injectées": 0,
-      "temps app. (s)": 0.001070208004,
-      "temps score (s)": 0.000514915999,
+      "temps app. (s)": 0.001062124997,
+      "temps score (s)": 0.000611791009,
       "ap": 0.976923076923,
       "auc_roc": 0.997959183673
     },
@@ -206,8 +206,8 @@
       "contamination": 0.0,
       "graine": 1,
       "n injectées": 0,
-      "temps app. (s)": 0.047667583014,
-      "temps score (s)": 0.003932916996,
+      "temps app. (s)": 0.046890333993,
+      "temps score (s)": 0.004065207992,
       "ap": 0.648518377048,
       "auc_roc": 0.969387755102
     },
@@ -216,8 +216,8 @@
       "contamination": 0.0,
       "graine": 1,
       "n injectées": 0,
-      "temps app. (s)": 0.00094150001,
-      "temps score (s)": 0.000721459015,
+      "temps app. (s)": 0.001050583,
+      "temps score (s)": 0.000486166013,
       "ap": 0.976923076923,
       "auc_roc": 0.997959183673
     },
@@ -226,8 +226,8 @@
       "contamination": 0.0,
       "graine": 2,
       "n injectées": 0,
-      "temps app. (s)": 0.047779624991,
-      "temps score (s)": 0.003946790996,
+      "temps app. (s)": 0.045478833024,
+      "temps score (s)": 0.003986249998,
       "ap": 0.836935286935,
       "auc_roc": 0.983673469388
     },
@@ -236,8 +236,8 @@
       "contamination": 0.0,
       "graine": 2,
       "n injectées": 0,
-      "temps app. (s)": 0.000931500021,
-      "temps score (s)": 0.000480666,
+      "temps app. (s)": 0.000925541011,
+      "temps score (s)": 0.000463584001,
       "ap": 0.976923076923,
       "auc_roc": 0.997959183673
     },
@@ -246,8 +246,8 @@
       "contamination": 0.05,
       "graine": 0,
       "n injectées": 17,
-      "temps app. (s)": 0.046758084005,
-      "temps score (s)": 0.003761541011,
+      "temps app. (s)": 0.045855958015,
+      "temps score (s)": 0.003898041003,
       "ap": 0.950317460317,
       "auc_roc": 0.995918367347
     },
@@ -256,8 +256,8 @@
       "contamination": 0.05,
       "graine": 0,
       "n injectées": 17,
-      "temps app. (s)": 0.001115000021,
-      "temps score (s)": 0.000493665983,
+      "temps app. (s)": 0.000999832992,
+      "temps score (s)": 0.00052112501,
       "ap": 0.971428571429,
       "auc_roc": 0.997278911565
     },
@@ -266,8 +266,8 @@
       "contamination": 0.05,
       "graine": 1,
       "n injectées": 17,
-      "temps app. (s)": 0.046798541996,
-      "temps score (s)": 0.00379925,
+      "temps app. (s)": 0.046113040997,
+      "temps score (s)": 0.003763666988,
       "ap": 0.891976911977,
       "auc_roc": 0.991836734694
     },
@@ -276,8 +276,8 @@
       "contamination": 0.05,
       "graine": 1,
       "n injectées": 17,
-      "temps app. (s)": 0.000903541979,
-      "temps score (s)": 0.000453375018,
+      "temps app. (s)": 0.000991915993,
+      "temps score (s)": 0.000469457998,
       "ap": 0.971428571429,
       "auc_roc": 0.997278911565
     },
@@ -286,8 +286,8 @@
       "contamination": 0.05,
       "graine": 2,
       "n injectées": 17,
-      "temps app. (s)": 0.046556624991,
-      "temps score (s)": 0.003655875014,
+      "temps app. (s)": 0.045402582997,
+      "temps score (s)": 0.003989833989,
       "ap": 0.961428571429,
       "auc_roc": 0.996598639456
     },
@@ -296,8 +296,8 @@
       "contamination": 0.05,
       "graine": 2,
       "n injectées": 17,
-      "temps app. (s)": 0.001185792004,
-      "temps score (s)": 0.000511458988,
+      "temps app. (s)": 0.000980874989,
+      "temps score (s)": 0.000473874999,
       "ap": 1.0,
       "auc_roc": 1.0
     },
@@ -306,8 +306,8 @@
       "contamination": 0.1,
       "graine": 0,
       "n injectées": 34,
-      "temps app. (s)": 0.047002582985,
-      "temps score (s)": 0.003785125009,
+      "temps app. (s)": 0.046057,
+      "temps score (s)": 0.003714833001,
       "ap": 0.930555555556,
       "auc_roc": 0.99387755102
     },
@@ -316,8 +316,8 @@
       "contamination": 0.1,
       "graine": 0,
       "n injectées": 34,
-      "temps app. (s)": 0.000995917013,
-      "temps score (s)": 0.000514332991,
+      "temps app. (s)": 0.001007750019,
+      "temps score (s)": 0.000485124998,
       "ap": 1.0,
       "auc_roc": 1.0
     },
@@ -326,8 +326,8 @@
       "contamination": 0.1,
       "graine": 1,
       "n injectées": 34,
-      "temps app. (s)": 0.045149124984,
-      "temps score (s)": 0.004157041985,
+      "temps app. (s)": 0.045557959005,
+      "temps score (s)": 0.003954332991,
       "ap": 0.882727272727,
       "auc_roc": 0.989115646259
     },
@@ -336,8 +336,8 @@
       "contamination": 0.1,
       "graine": 1,
       "n injectées": 34,
-      "temps app. (s)": 0.001025125006,
-      "temps score (s)": 0.000681457983,
+      "temps app. (s)": 0.000970708003,
+      "temps score (s)": 0.000490083999,
       "ap": 0.976923076923,
       "auc_roc": 0.997959183673
     },
@@ -346,8 +346,8 @@
       "contamination": 0.1,
       "graine": 2,
       "n injectées": 34,
-      "temps app. (s)": 0.046607541008,
-      "temps score (s)": 0.004335291014,
+      "temps app. (s)": 0.04506574999,
+      "temps score (s)": 0.004146749998,
       "ap": 0.962222222222,
       "auc_roc": 0.997278911565
     },
@@ -356,8 +356,8 @@
       "contamination": 0.1,
       "graine": 2,
       "n injectées": 34,
-      "temps app. (s)": 0.001022125012,
-      "temps score (s)": 0.000475415989,
+      "temps app. (s)": 0.000970541994,
+      "temps score (s)": 0.000495084008,
       "ap": 1.0,
       "auc_roc": 1.0
     }
@@ -386,8 +386,8 @@
         "f1_val": 0.774566473988,
         "alertes_val": 78,
         "atteint": true,
-        "temps_app_s": 1.626246457978,
-        "temps_score_val_s": 0.007369542
+        "temps_app_s": 1.665208541992,
+        "temps_score_val_s": 0.006187374995
       },
       {
         "famille": "Arbre de décision",
@@ -403,8 +403,8 @@
         "f1_val": 0.691943127962,
         "alertes_val": 116,
         "atteint": false,
-        "temps_app_s": 1.608758667018,
-        "temps_score_val_s": 0.004348541988
+        "temps_app_s": 1.667392124975,
+        "temps_score_val_s": 0.005280041019
       },
       {
         "famille": "Arbre de décision",
@@ -419,9 +419,9 @@
         "rappel_val": 0.747368421053,
         "f1_val": 0.793296089385,
         "alertes_val": 84,
-        "atteint": true,
-        "temps_app_s": 3.281668042007,
-        "temps_score_val_s": 0.002972000017
+        "atteint": false,
+        "temps_app_s": 3.307138917007,
+        "temps_score_val_s": 0.003166625014
       },
       {
         "famille": "Arbre de décision",
@@ -437,8 +437,8 @@
         "f1_val": 0.708737864078,
         "alertes_val": 111,
         "atteint": false,
-        "temps_app_s": 2.820482208015,
-        "temps_score_val_s": 0.003005457984
+        "temps_app_s": 2.829421875009,
+        "temps_score_val_s": 0.007125457982
       },
       {
         "famille": "Arbre de décision",
@@ -454,8 +454,8 @@
         "f1_val": 0.757894736842,
         "alertes_val": 95,
         "atteint": false,
-        "temps_app_s": 3.667736791976,
-        "temps_score_val_s": 0.006362707994
+        "temps_app_s": 3.585258042003,
+        "temps_score_val_s": 0.007407500001
       },
       {
         "famille": "Arbre de décision",
@@ -471,8 +471,8 @@
         "f1_val": 0.042058386937,
         "alertes_val": 3947,
         "atteint": false,
-        "temps_app_s": 0.02207841698,
-        "temps_score_val_s": 0.002735250018
+        "temps_app_s": 0.019831332989,
+        "temps_score_val_s": 0.002801625
       },
       {
         "famille": "Régression logistique",
@@ -482,14 +482,14 @@
         "n_app": 165397,
         "ap_val": 0.726136187665,
         "auc_roc_val": 0.965768148705,
-        "seuil": 0.213306971773,
-        "precision_val": 0.80487804878,
-        "rappel_val": 0.694736842105,
-        "f1_val": 0.745762711864,
-        "alertes_val": 82,
+        "seuil": 0.999837293778,
+        "precision_val": 0.857142857143,
+        "rappel_val": 0.252631578947,
+        "f1_val": 0.390243902439,
+        "alertes_val": 28,
         "atteint": true,
-        "temps_app_s": 0.145596624992,
-        "temps_score_val_s": 0.003986374999
+        "temps_app_s": 0.141086083982,
+        "temps_score_val_s": 0.004000459012
       },
       {
         "famille": "Régression logistique",
@@ -504,9 +504,9 @@
         "rappel_val": 0.768421052632,
         "f1_val": 0.784946236559,
         "alertes_val": 91,
-        "atteint": true,
-        "temps_app_s": 0.185970708,
-        "temps_score_val_s": 0.003572375019
+        "atteint": false,
+        "temps_app_s": 0.196469041985,
+        "temps_score_val_s": 0.003507249989
       },
       {
         "famille": "Régression logistique",
@@ -516,14 +516,14 @@
         "n_app": 165397,
         "ap_val": 0.723939931614,
         "auc_roc_val": 0.963587071899,
-        "seuil": 0.384913496259,
-        "precision_val": 0.844155844156,
-        "rappel_val": 0.684210526316,
-        "f1_val": 0.755813953488,
-        "alertes_val": 77,
+        "seuil": 0.42363837902,
+        "precision_val": 0.851351351351,
+        "rappel_val": 0.663157894737,
+        "f1_val": 0.745562130178,
+        "alertes_val": 74,
         "atteint": true,
-        "temps_app_s": 0.146369708993,
-        "temps_score_val_s": 0.004275874991
+        "temps_app_s": 0.15358629101,
+        "temps_score_val_s": 0.003613791981
       },
       {
         "famille": "Régression logistique",
@@ -538,9 +538,9 @@
         "rappel_val": 0.8,
         "f1_val": 0.8,
         "alertes_val": 95,
-        "atteint": true,
-        "temps_app_s": 0.228419958003,
-        "temps_score_val_s": 0.004129042005
+        "atteint": false,
+        "temps_app_s": 0.2149125,
+        "temps_score_val_s": 0.005305916973
       },
       {
         "famille": "Régression logistique",
@@ -550,14 +550,14 @@
         "n_app": 165397,
         "ap_val": 0.722147431408,
         "auc_roc_val": 0.964364716435,
-        "seuil": 0.995749878384,
-        "precision_val": 0.813953488372,
-        "rappel_val": 0.736842105263,
-        "f1_val": 0.773480662983,
-        "alertes_val": 86,
+        "seuil": 0.999999999953,
+        "precision_val": 0.875,
+        "rappel_val": 0.221052631579,
+        "f1_val": 0.352941176471,
+        "alertes_val": 24,
         "atteint": true,
-        "temps_app_s": 0.313594957988,
-        "temps_score_val_s": 0.004407791013
+        "temps_app_s": 0.322923749976,
+        "temps_score_val_s": 0.003757083992
       },
       {
         "famille": "Régression logistique",
@@ -573,8 +573,8 @@
         "f1_val": 0.426229508197,
         "alertes_val": 149,
         "atteint": false,
-        "temps_app_s": 0.030827707989,
-        "temps_score_val_s": 0.003254958021
+        "temps_app_s": 0.032454166008,
+        "temps_score_val_s": 0.003834875009
       },
       {
         "famille": "EasyEnsemble",
@@ -584,14 +584,14 @@
         "n_app": 165397,
         "ap_val": 0.672504979758,
         "auc_roc_val": 0.966898468235,
-        "seuil": 0.658871594508,
-        "precision_val": 0.802197802198,
-        "rappel_val": 0.768421052632,
-        "f1_val": 0.784946236559,
-        "alertes_val": 91,
+        "seuil": 0.741550582356,
+        "precision_val": 1.0,
+        "rappel_val": 0.105263157895,
+        "f1_val": 0.190476190476,
+        "alertes_val": 10,
         "atteint": true,
-        "temps_app_s": 1.92701449999,
-        "temps_score_val_s": 0.378743000008
+        "temps_app_s": 2.046882458002,
+        "temps_score_val_s": 0.369773207989
       },
       {
         "famille": "EasyEnsemble",
@@ -601,14 +601,14 @@
         "n_app": 165397,
         "ap_val": 0.699822402676,
         "auc_roc_val": 0.966155536558,
-        "seuil": 0.676962083083,
-        "precision_val": 0.817073170732,
-        "rappel_val": 0.705263157895,
-        "f1_val": 0.757062146893,
-        "alertes_val": 82,
+        "seuil": 0.722424012399,
+        "precision_val": 0.88,
+        "rappel_val": 0.231578947368,
+        "f1_val": 0.366666666667,
+        "alertes_val": 25,
         "atteint": true,
-        "temps_app_s": 0.590596624999,
-        "temps_score_val_s": 0.537044333993
+        "temps_app_s": 0.593387583009,
+        "temps_score_val_s": 0.520843291015
       },
       {
         "famille": "RUSBoost",
@@ -624,8 +624,8 @@
         "f1_val": 0.590717299578,
         "alertes_val": 142,
         "atteint": false,
-        "temps_app_s": 0.137499541976,
-        "temps_score_val_s": 0.011038249999
+        "temps_app_s": 0.142001750006,
+        "temps_score_val_s": 0.011782499991
       },
       {
         "famille": "RUSBoost",
@@ -641,8 +641,8 @@
         "f1_val": 0.590717299578,
         "alertes_val": 142,
         "atteint": false,
-        "temps_app_s": 0.13390091699,
-        "temps_score_val_s": 0.011062458012
+        "temps_app_s": 0.134790874989,
+        "temps_score_val_s": 0.011308250017
       },
       {
         "famille": "XGBoost",
@@ -652,14 +652,14 @@
         "n_app": 165397,
         "ap_val": 0.7586927257,
         "auc_roc_val": 0.967972749928,
-        "seuil": 0.973944365978,
-        "precision_val": 0.808510638298,
-        "rappel_val": 0.8,
-        "f1_val": 0.804232804233,
-        "alertes_val": 94,
+        "seuil": 0.997334778309,
+        "precision_val": 0.853333333333,
+        "rappel_val": 0.673684210526,
+        "f1_val": 0.752941176471,
+        "alertes_val": 75,
         "atteint": true,
-        "temps_app_s": 0.51996991699,
-        "temps_score_val_s": 0.013957540999
+        "temps_app_s": 0.517941708007,
+        "temps_score_val_s": 0.015548666997
       },
       {
         "famille": "XGBoost",
@@ -669,14 +669,14 @@
         "n_app": 165397,
         "ap_val": 0.837067197985,
         "auc_roc_val": 0.963794775284,
-        "seuil": 0.695443034172,
-        "precision_val": 0.81914893617,
-        "rappel_val": 0.810526315789,
-        "f1_val": 0.814814814815,
-        "alertes_val": 94,
+        "seuil": 0.83411604166,
+        "precision_val": 0.85393258427,
+        "rappel_val": 0.8,
+        "f1_val": 0.826086956522,
+        "alertes_val": 89,
         "atteint": true,
-        "temps_app_s": 0.684816249995,
-        "temps_score_val_s": 0.020946833014
+        "temps_app_s": 0.652212249988,
+        "temps_score_val_s": 0.021922584012
       },
       {
         "famille": "Isolation Forest",
@@ -692,8 +692,8 @@
         "f1_val": 0.300970873786,
         "alertes_val": 111,
         "atteint": false,
-        "temps_app_s": 0.113061999989,
-        "temps_score_val_s": 0.133558625006
+        "temps_app_s": 0.122845999984,
+        "temps_score_val_s": 0.131339375017
       },
       {
         "famille": "Isolation Forest",
@@ -709,8 +709,8 @@
         "f1_val": 0.299319727891,
         "alertes_val": 52,
         "atteint": false,
-        "temps_app_s": 0.253871374996,
-        "temps_score_val_s": 0.155174499989
+        "temps_app_s": 0.249429624993,
+        "temps_score_val_s": 0.157418458984
       },
       {
         "famille": "Isolation Forest",
@@ -726,8 +726,8 @@
         "f1_val": 0.277777777778,
         "alertes_val": 121,
         "atteint": false,
-        "temps_app_s": 0.29982824999,
-        "temps_score_val_s": 0.398082917003
+        "temps_app_s": 0.309105583001,
+        "temps_score_val_s": 0.394289874996
       },
       {
         "famille": "Isolation Forest",
@@ -743,8 +743,8 @@
         "f1_val": 0.316831683168,
         "alertes_val": 107,
         "atteint": false,
-        "temps_app_s": 0.729498208006,
-        "temps_score_val_s": 0.460570084018
+        "temps_app_s": 0.787723000016,
+        "temps_score_val_s": 0.463606374979
       },
       {
         "famille": "LOF",
@@ -760,8 +760,8 @@
         "f1_val": 0.012903225806,
         "alertes_val": 215,
         "atteint": false,
-        "temps_app_s": 0.298307332996,
-        "temps_score_val_s": 0.539318875002
+        "temps_app_s": 0.301657915988,
+        "temps_score_val_s": 0.570697250019
       },
       {
         "famille": "LOF",
@@ -777,8 +777,8 @@
         "f1_val": 0.034682080925,
         "alertes_val": 78,
         "atteint": false,
-        "temps_app_s": 0.304733792,
-        "temps_score_val_s": 0.556034958019
+        "temps_app_s": 0.316848832997,
+        "temps_score_val_s": 0.556336582988
       },
       {
         "famille": "LOF",
@@ -794,8 +794,8 @@
         "f1_val": 0.346153846154,
         "alertes_val": 217,
         "atteint": false,
-        "temps_app_s": 0.338882750017,
-        "temps_score_val_s": 0.717902790988
+        "temps_app_s": 0.346989290992,
+        "temps_score_val_s": 0.615736125008
       },
       {
         "famille": "LOF",
@@ -811,8 +811,8 @@
         "f1_val": 0.521008403361,
         "alertes_val": 143,
         "atteint": false,
-        "temps_app_s": 0.411237541994,
-        "temps_score_val_s": 0.935316290997
+        "temps_app_s": 0.411782667012,
+        "temps_score_val_s": 0.752947750007
       },
       {
         "famille": "HBOS",
@@ -828,8 +828,8 @@
         "f1_val": 0.311787072243,
         "alertes_val": 168,
         "atteint": false,
-        "temps_app_s": 0.143426750001,
-        "temps_score_val_s": 0.029305040982
+        "temps_app_s": 0.139933708997,
+        "temps_score_val_s": 0.028920457989
       },
       {
         "famille": "HBOS",
@@ -845,8 +845,8 @@
         "f1_val": 0.296875,
         "alertes_val": 161,
         "atteint": false,
-        "temps_app_s": 0.185317709023,
-        "temps_score_val_s": 0.04630954098
+        "temps_app_s": 0.181114625011,
+        "temps_score_val_s": 0.044884584
       },
       {
         "famille": "HBOS",
@@ -862,8 +862,8 @@
         "f1_val": 0.340425531915,
         "alertes_val": 93,
         "atteint": false,
-        "temps_app_s": 0.240024875005,
-        "temps_score_val_s": 0.066728542006
+        "temps_app_s": 0.228456707991,
+        "temps_score_val_s": 0.06238704201
       }
     ],
     "test": [
@@ -873,86 +873,86 @@
         "prétraitement": "log_amount",
         "déséquilibre": "scale_pos_weight (apprentissage)",
         "n apprentissage fourni": 165397,
-        "seuil": 0.695443034172,
+        "seuil": 0.83411604166,
         "ap": 0.792275963508,
         "auc_roc": 0.975876100235,
-        "precision": 0.778947368421,
-        "rappel": 0.787234042553,
-        "f1": 0.783068783069,
-        "balanced_accuracy": 0.893426247462,
-        "alertes": 95,
-        "fausses_alertes": 21,
-        "manquees": 20,
+        "precision": 0.811111111111,
+        "rappel": 0.776595744681,
+        "f1": 0.79347826087,
+        "balanced_accuracy": 0.888143436395,
+        "alertes": 90,
+        "fausses_alertes": 17,
+        "manquees": 21,
         "objectif validation": "atteint",
-        "objectif test": "non atteint",
-        "temps app. (s)": 0.684816249995,
-        "temps score test (s)": 0.022499791987,
+        "objectif test": "atteint",
+        "temps app. (s)": 0.652212249988,
+        "temps score test (s)": 0.024395416985,
         "sélectionnée sur validation": true
       },
       {
-        "famille": "Régression logistique",
-        "méthode": "Régression logistique | C=1.0 | class_weight",
-        "prétraitement": "log_amount + standard",
-        "déséquilibre": "class_weight",
+        "famille": "Arbre de décision",
+        "méthode": "Arbre de décision | max_depth=4 | aucun",
+        "prétraitement": "log_amount",
+        "déséquilibre": "aucun",
         "n apprentissage fourni": 165397,
-        "seuil": 0.999968063921,
-        "ap": 0.679804507487,
-        "auc_roc": 0.983479606144,
-        "precision": 0.775280898876,
-        "rappel": 0.734042553191,
-        "f1": 0.754098360656,
-        "balanced_accuracy": 0.866839587248,
-        "alertes": 89,
-        "fausses_alertes": 20,
-        "manquees": 25,
+        "seuil": 0.6,
+        "ap": 0.664225510253,
+        "auc_roc": 0.856295806494,
+        "precision": 0.855072463768,
+        "rappel": 0.627659574468,
+        "f1": 0.723926380368,
+        "balanced_accuracy": 0.81373894256,
+        "alertes": 69,
+        "fausses_alertes": 10,
+        "manquees": 35,
         "objectif validation": "atteint",
-        "objectif test": "non atteint",
-        "temps app. (s)": 0.228419958003,
-        "temps score test (s)": 0.004903708992,
+        "objectif test": "atteint",
+        "temps app. (s)": 1.665208541992,
+        "temps score test (s)": 0.002536917018,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "Régression logistique",
+        "méthode": "Régression logistique | C=1.0 | aucun",
+        "prétraitement": "log_amount + standard",
+        "déséquilibre": "aucun",
+        "n apprentissage fourni": 165397,
+        "seuil": 0.42363837902,
+        "ap": 0.698754456352,
+        "auc_roc": 0.973276396273,
+        "precision": 0.862068965517,
+        "rappel": 0.531914893617,
+        "f1": 0.657894736842,
+        "balanced_accuracy": 0.765884771069,
+        "alertes": 58,
+        "fausses_alertes": 8,
+        "manquees": 44,
+        "objectif validation": "atteint",
+        "objectif test": "atteint",
+        "temps app. (s)": 0.15358629101,
+        "temps score test (s)": 0.004011417011,
         "sélectionnée sur validation": false
       },
       {
         "famille": "EasyEnsemble",
-        "méthode": "EasyEnsemble | n_estimators=5",
+        "méthode": "EasyEnsemble | n_estimators=10",
         "prétraitement": "log_amount",
         "déséquilibre": "sous-échantillonnage interne",
         "n apprentissage fourni": 165397,
-        "seuil": 0.658871594508,
-        "ap": 0.678506235524,
-        "auc_roc": 0.977607174487,
-        "precision": 0.784810126582,
-        "rappel": 0.659574468085,
-        "f1": 0.71676300578,
-        "balanced_accuracy": 0.829632798097,
-        "alertes": 79,
-        "fausses_alertes": 17,
-        "manquees": 32,
-        "objectif validation": "atteint",
-        "objectif test": "non atteint",
-        "temps app. (s)": 1.92701449999,
-        "temps score test (s)": 0.370746667002,
-        "sélectionnée sur validation": false
-      },
-      {
-        "famille": "Arbre de décision",
-        "méthode": "Arbre de décision | max_depth=8 | aucun",
-        "prétraitement": "log_amount",
-        "déséquilibre": "aucun",
-        "n apprentissage fourni": 165397,
-        "seuil": 1.0,
-        "ap": 0.681109210901,
-        "auc_roc": 0.843893092442,
-        "precision": 0.92,
-        "rappel": 0.734042553191,
-        "f1": 0.816568047337,
-        "balanced_accuracy": 0.866966769791,
-        "alertes": 75,
-        "fausses_alertes": 6,
-        "manquees": 25,
+        "seuil": 0.722424012399,
+        "ap": 0.683847483652,
+        "auc_roc": 0.979661810407,
+        "precision": 0.84,
+        "rappel": 0.223404255319,
+        "f1": 0.352941176471,
+        "balanced_accuracy": 0.61166578979,
+        "alertes": 25,
+        "fausses_alertes": 4,
+        "manquees": 73,
         "objectif validation": "atteint",
         "objectif test": "atteint",
-        "temps app. (s)": 3.281668042007,
-        "temps score test (s)": 0.005788625014,
+        "temps app. (s)": 0.593387583009,
+        "temps score test (s)": 0.501472834003,
         "sélectionnée sur validation": false
       },
       {
@@ -973,8 +973,8 @@
         "manquees": 28,
         "objectif validation": "non atteint",
         "objectif test": "non atteint",
-        "temps app. (s)": 0.137499541976,
-        "temps score test (s)": 0.011031333008,
+        "temps app. (s)": 0.142001750006,
+        "temps score test (s)": 0.013195792009,
         "sélectionnée sur validation": false
       },
       {
@@ -995,8 +995,8 @@
         "manquees": 36,
         "objectif validation": "non atteint",
         "objectif test": "non atteint",
-        "temps app. (s)": 0.411237541994,
-        "temps score test (s)": 0.73662266598,
+        "temps app. (s)": 0.411782667012,
+        "temps score test (s)": 0.785670625017,
         "sélectionnée sur validation": false
       },
       {
@@ -1017,8 +1017,8 @@
         "manquees": 75,
         "objectif validation": "non atteint",
         "objectif test": "non atteint",
-        "temps app. (s)": 0.240024875005,
-        "temps score test (s)": 0.06654858301,
+        "temps app. (s)": 0.228456707991,
+        "temps score test (s)": 0.067006208992,
         "sélectionnée sur validation": false
       },
       {
@@ -1039,8 +1039,8 @@
         "manquees": 79,
         "objectif validation": "non atteint",
         "objectif test": "non atteint",
-        "temps app. (s)": 0.729498208006,
-        "temps score test (s)": 0.496203000017,
+        "temps app. (s)": 0.787723000016,
+        "temps score test (s)": 0.483210416976,
         "sélectionnée sur validation": false
       }
     ],
@@ -1055,42 +1055,42 @@
     "matrices": {
       "XGBoost": [
         [
-          55018,
-          21
-        ],
-        [
-          20,
-          74
-        ]
-      ],
-      "Régression logistique": [
-        [
-          55019,
-          20
-        ],
-        [
-          25,
-          69
-        ]
-      ],
-      "EasyEnsemble": [
-        [
           55022,
           17
         ],
         [
-          32,
-          62
+          21,
+          73
         ]
       ],
       "Arbre de décision": [
         [
-          55033,
-          6
+          55029,
+          10
         ],
         [
-          25,
-          69
+          35,
+          59
+        ]
+      ],
+      "Régression logistique": [
+        [
+          55031,
+          8
+        ],
+        [
+          44,
+          50
+        ]
+      ],
+      "EasyEnsemble": [
+        [
+          55035,
+          4
+        ],
+        [
+          73,
+          21
         ]
       ],
       "RUSBoost": [
@@ -1150,86 +1150,86 @@
       {
         "famille": "XGBoost",
         "règle": "retenu",
-        "seuil": 0.695443034172,
-        "precision": 0.81914893617,
-        "rappel": 0.810526315789,
-        "f1": 0.814814814815,
-        "balanced_accuracy": 0.905108719143,
-        "alertes": 94,
-        "fausses_alertes": 17,
-        "manquees": 18
-      },
-      {
-        "famille": "Régression logistique",
-        "règle": "défaut",
-        "seuil": 0.5,
-        "precision": 0.058742225294,
-        "rappel": 0.894736842105,
-        "f1": 0.110246433204,
-        "balanced_accuracy": 0.934995151675,
-        "alertes": 1447,
-        "fausses_alertes": 1362,
-        "manquees": 10
-      },
-      {
-        "famille": "Régression logistique",
-        "règle": "retenu",
-        "seuil": 0.999968063921,
-        "precision": 0.8,
+        "seuil": 0.83411604166,
+        "precision": 0.85393258427,
         "rappel": 0.8,
-        "f1": 0.8,
-        "balanced_accuracy": 0.899827391984,
-        "alertes": 95,
-        "fausses_alertes": 19,
+        "f1": 0.826086956522,
+        "balanced_accuracy": 0.899881899778,
+        "alertes": 89,
+        "fausses_alertes": 13,
         "manquees": 19
       },
       {
-        "famille": "EasyEnsemble",
-        "règle": "défaut",
-        "seuil": 0.5,
-        "precision": 0.059074733096,
-        "rappel": 0.873684210526,
-        "f1": 0.110666666667,
-        "balanced_accuracy": 0.924832221183,
-        "alertes": 1405,
-        "fausses_alertes": 1322,
-        "manquees": 12
-      },
-      {
-        "famille": "EasyEnsemble",
-        "règle": "retenu",
-        "seuil": 0.658871594508,
-        "precision": 0.802197802198,
-        "rappel": 0.768421052632,
-        "f1": 0.784946236559,
-        "balanced_accuracy": 0.884047002932,
-        "alertes": 91,
-        "fausses_alertes": 18,
-        "manquees": 22
-      },
-      {
         "famille": "Arbre de décision",
         "règle": "défaut",
         "seuil": 0.5,
-        "precision": 0.845238095238,
-        "rappel": 0.747368421053,
-        "f1": 0.793296089385,
-        "balanced_accuracy": 0.873566110305,
-        "alertes": 84,
-        "fausses_alertes": 13,
-        "manquees": 24
+        "precision": 0.858974358974,
+        "rappel": 0.705263157895,
+        "f1": 0.774566473988,
+        "balanced_accuracy": 0.852531647991,
+        "alertes": 78,
+        "fausses_alertes": 11,
+        "manquees": 28
       },
       {
         "famille": "Arbre de décision",
         "règle": "retenu",
-        "seuil": 1.0,
-        "precision": 0.845238095238,
-        "rappel": 0.747368421053,
-        "f1": 0.793296089385,
-        "balanced_accuracy": 0.873566110305,
-        "alertes": 84,
-        "fausses_alertes": 13,
-        "manquees": 24
+        "seuil": 0.6,
+        "precision": 0.858974358974,
+        "rappel": 0.705263157895,
+        "f1": 0.774566473988,
+        "balanced_accuracy": 0.852531647991,
+        "alertes": 78,
+        "fausses_alertes": 11,
+        "manquees": 28
+      },
+      {
+        "famille": "Régression logistique",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.840579710145,
+        "rappel": 0.610526315789,
+        "f1": 0.707317073171,
+        "balanced_accuracy": 0.805163226938,
+        "alertes": 69,
+        "fausses_alertes": 11,
+        "manquees": 37
+      },
+      {
+        "famille": "Régression logistique",
+        "règle": "retenu",
+        "seuil": 0.42363837902,
+        "precision": 0.851351351351,
+        "rappel": 0.663157894737,
+        "f1": 0.745562130178,
+        "balanced_accuracy": 0.831479016412,
+        "alertes": 74,
+        "fausses_alertes": 11,
+        "manquees": 32
+      },
+      {
+        "famille": "EasyEnsemble",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.055844155844,
+        "rappel": 0.905263157895,
+        "f1": 0.105198776758,
+        "balanced_accuracy": 0.939422523386,
+        "alertes": 1540,
+        "fausses_alertes": 1454,
+        "manquees": 9
+      },
+      {
+        "famille": "EasyEnsemble",
+        "règle": "retenu",
+        "seuil": 0.722424012399,
+        "precision": 0.88,
+        "rappel": 0.231578947368,
+        "f1": 0.366666666667,
+        "balanced_accuracy": 0.615762219787,
+        "alertes": 25,
+        "fausses_alertes": 3,
+        "manquees": 73
       },
       {
         "famille": "RUSBoost",
@@ -1350,64 +1350,64 @@
         "alertes": 306.0
       },
       {
-        "famille": "Régression logistique",
-        "critère": "f1",
-        "seuil": 0.999968063921,
-        "precision": 0.8,
-        "rappel": 0.8,
-        "f1": 0.8,
-        "balanced_accuracy": 0.899827391984,
-        "alertes": 95.0
-      },
-      {
-        "famille": "Régression logistique",
-        "critère": "balanced_accuracy",
-        "seuil": 0.825068229275,
-        "precision": 0.191343963554,
-        "rappel": 0.884210526316,
-        "f1": 0.314606741573,
-        "balanced_accuracy": 0.938880218643,
-        "alertes": 439.0
-      },
-      {
-        "famille": "EasyEnsemble",
-        "critère": "f1",
-        "seuil": 0.658871594508,
-        "precision": 0.802197802198,
-        "rappel": 0.768421052632,
-        "f1": 0.784946236559,
-        "balanced_accuracy": 0.884047002932,
-        "alertes": 91.0
-      },
-      {
-        "famille": "EasyEnsemble",
-        "critère": "balanced_accuracy",
-        "seuil": 0.553694557898,
-        "precision": 0.197619047619,
-        "rappel": 0.873684210526,
-        "f1": 0.322330097087,
-        "balanced_accuracy": 0.933780584132,
-        "alertes": 420.0
-      },
-      {
         "famille": "Arbre de décision",
         "critère": "f1",
-        "seuil": 1.0,
-        "precision": 0.845238095238,
-        "rappel": 0.747368421053,
-        "f1": 0.793296089385,
-        "balanced_accuracy": 0.873566110305,
-        "alertes": 84.0
+        "seuil": 0.333333333333,
+        "precision": 0.787234042553,
+        "rappel": 0.778947368421,
+        "f1": 0.783068783069,
+        "balanced_accuracy": 0.889291991562,
+        "alertes": 94.0
       },
       {
         "famille": "Arbre de décision",
         "critère": "balanced_accuracy",
-        "seuil": 0.022813688213,
-        "precision": 0.489795918367,
+        "seuil": 0.333333333333,
+        "precision": 0.787234042553,
+        "rappel": 0.778947368421,
+        "f1": 0.783068783069,
+        "balanced_accuracy": 0.889291991562,
+        "alertes": 94.0
+      },
+      {
+        "famille": "Régression logistique",
+        "critère": "f1",
+        "seuil": 0.384913496259,
+        "precision": 0.844155844156,
+        "rappel": 0.684210526316,
+        "f1": 0.755813953488,
+        "balanced_accuracy": 0.841996247569,
+        "alertes": 77.0
+      },
+      {
+        "famille": "Régression logistique",
+        "critère": "balanced_accuracy",
+        "seuil": 0.001547098982,
+        "precision": 0.042156862745,
+        "rappel": 0.905263157895,
+        "f1": 0.08056206089,
+        "balanced_accuracy": 0.934880207168,
+        "alertes": 2040.0
+      },
+      {
+        "famille": "EasyEnsemble",
+        "critère": "f1",
+        "seuil": 0.663291888925,
+        "precision": 0.782608695652,
         "rappel": 0.757894736842,
-        "f1": 0.595041322314,
-        "balanced_accuracy": 0.878266020988,
-        "alertes": 147.0
+        "f1": 0.770053475936,
+        "balanced_accuracy": 0.878765675772,
+        "alertes": 92.0
+      },
+      {
+        "famille": "EasyEnsemble",
+        "critère": "balanced_accuracy",
+        "seuil": 0.492631469536,
+        "precision": 0.047802197802,
+        "rappel": 0.915789473684,
+        "f1": 0.090861618799,
+        "balanced_accuracy": 0.942151068831,
+        "alertes": 1820.0
       },
       {
         "famille": "RUSBoost",
@@ -1683,8 +1683,8 @@
         "f1_val": 0.714285714286,
         "alertes_val": 44,
         "atteint": true,
-        "temps_app_s": 0.050411874981,
-        "temps_score_val_s": 0.002567584015
+        "temps_app_s": 0.051929375011,
+        "temps_score_val_s": 0.002539582987
       },
       {
         "famille": "Isolation Forest",
@@ -1700,25 +1700,25 @@
         "f1_val": 0.057142857143,
         "alertes_val": 2,
         "atteint": true,
-        "temps_app_s": 0.220591834019,
-        "temps_score_val_s": 0.044665292022
+        "temps_app_s": 0.217970040976,
+        "temps_score_val_s": 0.042594125
       },
       {
-        "famille": "Régression logistique",
-        "nom": "Régression logistique | C=1.0 | class_weight (AI4I)",
-        "pretraitement": "one-hot Type + standard",
-        "desequilibre": "class_weight",
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=4 | aucun (AI4I)",
+        "pretraitement": "one-hot Type",
+        "desequilibre": "aucun",
         "n_app": 6000,
-        "ap_val": 0.407167899542,
-        "auc_roc_val": 0.881051333577,
-        "seuil": 0.97991620401,
-        "precision_val": 0.916666666667,
-        "rappel_val": 0.161764705882,
-        "f1_val": 0.275,
-        "alertes_val": 12,
-        "atteint": true,
-        "temps_app_s": 0.007969583996,
-        "temps_score_val_s": 0.001499374979
+        "ap_val": 0.369263165086,
+        "auc_roc_val": 0.849957374254,
+        "seuil": 0.353846153846,
+        "precision_val": 0.47619047619,
+        "rappel_val": 0.588235294118,
+        "f1_val": 0.526315789474,
+        "alertes_val": 84,
+        "atteint": false,
+        "temps_app_s": 0.007250082999,
+        "temps_score_val_s": 0.001192791999
       }
     ],
     "test": [
@@ -1740,31 +1740,9 @@
         "manquees": 27,
         "objectif validation": "atteint",
         "objectif test": "non atteint",
-        "temps app. (s)": 0.050411874981,
-        "temps score test (s)": 0.002565750008,
+        "temps app. (s)": 0.051929375011,
+        "temps score test (s)": 0.002480999974,
         "sélectionnée sur validation": true
-      },
-      {
-        "famille": "Régression logistique",
-        "méthode": "Régression logistique | C=1.0 | class_weight (AI4I)",
-        "prétraitement": "one-hot Type + standard",
-        "déséquilibre": "class_weight",
-        "n apprentissage fourni": 6000,
-        "seuil": 0.97991620401,
-        "ap": 0.408676563948,
-        "auc_roc": 0.904594446474,
-        "precision": 1.0,
-        "rappel": 0.058823529412,
-        "f1": 0.111111111111,
-        "balanced_accuracy": 0.529411764706,
-        "alertes": 4,
-        "fausses_alertes": 0,
-        "manquees": 64,
-        "objectif validation": "atteint",
-        "objectif test": "atteint",
-        "temps app. (s)": 0.007969583996,
-        "temps score test (s)": 0.001467374997,
-        "sélectionnée sur validation": false
       },
       {
         "famille": "Isolation Forest",
@@ -1784,8 +1762,30 @@
         "manquees": 67,
         "objectif validation": "atteint",
         "objectif test": "non atteint",
-        "temps app. (s)": 0.220591834019,
-        "temps score test (s)": 0.048053209,
+        "temps app. (s)": 0.217970040976,
+        "temps score test (s)": 0.044483124977,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "Arbre de décision",
+        "méthode": "Arbre de décision | max_depth=4 | aucun (AI4I)",
+        "prétraitement": "one-hot Type",
+        "déséquilibre": "aucun",
+        "n apprentissage fourni": 6000,
+        "seuil": 0.353846153846,
+        "ap": 0.395795033235,
+        "auc_roc": 0.831967025941,
+        "precision": 0.5,
+        "rappel": 0.573529411765,
+        "f1": 0.534246575342,
+        "balanced_accuracy": 0.77667153818,
+        "alertes": 78,
+        "fausses_alertes": 39,
+        "manquees": 29,
+        "objectif validation": "non atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.007250082999,
+        "temps score test (s)": 0.001388874982,
         "sélectionnée sur validation": false
       }
     ],
@@ -1805,16 +1805,6 @@
           41
         ]
       ],
-      "Régression logistique": [
-        [
-          1932,
-          0
-        ],
-        [
-          64,
-          4
-        ]
-      ],
       "Isolation Forest": [
         [
           1931,
@@ -1823,6 +1813,16 @@
         [
           67,
           1
+        ]
+      ],
+      "Arbre de décision": [
+        [
+          1893,
+          39
+        ],
+        [
+          29,
+          39
         ]
       ]
     },
@@ -1852,30 +1852,6 @@
         "manquees": 28
       },
       {
-        "famille": "Régression logistique",
-        "règle": "défaut",
-        "seuil": 0.5,
-        "precision": 0.150837988827,
-        "rappel": 0.794117647059,
-        "f1": 0.253521126761,
-        "balanced_accuracy": 0.818383875289,
-        "alertes": 358,
-        "fausses_alertes": 304,
-        "manquees": 14
-      },
-      {
-        "famille": "Régression logistique",
-        "règle": "retenu",
-        "seuil": 0.97991620401,
-        "precision": 0.916666666667,
-        "rappel": 0.161764705882,
-        "f1": 0.275,
-        "balanced_accuracy": 0.580623553769,
-        "alertes": 12,
-        "fausses_alertes": 1,
-        "manquees": 57
-      },
-      {
         "famille": "Isolation Forest",
         "règle": "défaut",
         "seuil": 0.5,
@@ -1898,6 +1874,30 @@
         "alertes": 2,
         "fausses_alertes": 0,
         "manquees": 66
+      },
+      {
+        "famille": "Arbre de décision",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.607142857143,
+        "rappel": 0.25,
+        "f1": 0.354166666667,
+        "balanced_accuracy": 0.62215320911,
+        "alertes": 28,
+        "fausses_alertes": 11,
+        "manquees": 51
+      },
+      {
+        "famille": "Arbre de décision",
+        "règle": "retenu",
+        "seuil": 0.353846153846,
+        "precision": 0.47619047619,
+        "rappel": 0.588235294118,
+        "f1": 0.526315789474,
+        "balanced_accuracy": 0.782730483498,
+        "alertes": 84,
+        "fausses_alertes": 44,
+        "manquees": 28
       }
     ],
     "maxima_validation": [
@@ -1922,26 +1922,6 @@
         "alertes": 276.0
       },
       {
-        "famille": "Régression logistique",
-        "critère": "f1",
-        "seuil": 0.842447865778,
-        "precision": 0.365591397849,
-        "rappel": 0.5,
-        "f1": 0.422360248447,
-        "balanced_accuracy": 0.734730848861,
-        "alertes": 93.0
-      },
-      {
-        "famille": "Régression logistique",
-        "critère": "balanced_accuracy",
-        "seuil": 0.471992752159,
-        "precision": 0.142857142857,
-        "rappel": 0.838235294118,
-        "f1": 0.244111349036,
-        "balanced_accuracy": 0.830608330289,
-        "alertes": 399.0
-      },
-      {
         "famille": "Isolation Forest",
         "critère": "f1",
         "seuil": 0.5664388246,
@@ -1960,6 +1940,26 @@
         "f1": 0.129436325678,
         "balanced_accuracy": 0.741596638655,
         "alertes": 890.0
+      },
+      {
+        "famille": "Arbre de décision",
+        "critère": "f1",
+        "seuil": 0.353846153846,
+        "precision": 0.47619047619,
+        "rappel": 0.588235294118,
+        "f1": 0.526315789474,
+        "balanced_accuracy": 0.782730483498,
+        "alertes": 84.0
+      },
+      {
+        "famille": "Arbre de décision",
+        "critère": "balanced_accuracy",
+        "seuil": 0.043189368771,
+        "precision": 0.18118466899,
+        "rappel": 0.764705882353,
+        "f1": 0.292957746479,
+        "balanced_accuracy": 0.821535135793,
+        "alertes": 287.0
       }
     ]
   },
@@ -1979,8 +1979,8 @@
         "f1_val": 0.976641414141,
         "alertes_val": 4743,
         "atteint": true,
-        "temps_app_s": 0.066255582991,
-        "temps_score_val_s": 0.007391833002
+        "temps_app_s": 0.062084957986,
+        "temps_score_val_s": 0.00659200002
       },
       {
         "famille": "Arbre de décision",
@@ -1996,8 +1996,8 @@
         "f1_val": 0.976641414141,
         "alertes_val": 4743,
         "atteint": true,
-        "temps_app_s": 0.065421416017,
-        "temps_score_val_s": 0.007023082988
+        "temps_app_s": 0.061270708014,
+        "temps_score_val_s": 0.006560959009
       },
       {
         "famille": "Arbre de décision",
@@ -2013,8 +2013,8 @@
         "f1_val": 0.972054457979,
         "alertes_val": 5008,
         "atteint": true,
-        "temps_app_s": 0.095810750005,
-        "temps_score_val_s": 0.006802165997
+        "temps_app_s": 0.085872875003,
+        "temps_score_val_s": 0.005843958003
       },
       {
         "famille": "Arbre de décision",
@@ -2030,8 +2030,8 @@
         "f1_val": 0.971849728734,
         "alertes_val": 5008,
         "atteint": true,
-        "temps_app_s": 0.093910125026,
-        "temps_score_val_s": 0.006654041994
+        "temps_app_s": 0.087665165978,
+        "temps_score_val_s": 0.005905458995
       },
       {
         "famille": "Arbre de décision",
@@ -2047,8 +2047,8 @@
         "f1_val": 0.920770049337,
         "alertes_val": 5576,
         "atteint": true,
-        "temps_app_s": 0.107181792002,
-        "temps_score_val_s": 0.006976667006
+        "temps_app_s": 0.100636583986,
+        "temps_score_val_s": 0.006161041994
       },
       {
         "famille": "Arbre de décision",
@@ -2064,8 +2064,8 @@
         "f1_val": 0.918073916819,
         "alertes_val": 5602,
         "atteint": true,
-        "temps_app_s": 0.073092791019,
-        "temps_score_val_s": 0.006382791995
+        "temps_app_s": 0.069596791,
+        "temps_score_val_s": 0.005760333006
       },
       {
         "famille": "Régression logistique",
@@ -2081,8 +2081,8 @@
         "f1_val": 0.89575871819,
         "alertes_val": 5849,
         "atteint": true,
-        "temps_app_s": 0.067679667001,
-        "temps_score_val_s": 0.006777792005
+        "temps_app_s": 0.066611417016,
+        "temps_score_val_s": 0.00668708398
       },
       {
         "famille": "Régression logistique",
@@ -2098,8 +2098,8 @@
         "f1_val": 0.897789533346,
         "alertes_val": 5825,
         "atteint": true,
-        "temps_app_s": 0.058559583995,
-        "temps_score_val_s": 0.006513208995
+        "temps_app_s": 0.058483917004,
+        "temps_score_val_s": 0.006709875015
       },
       {
         "famille": "Régression logistique",
@@ -2115,8 +2115,8 @@
         "f1_val": 0.913890755496,
         "alertes_val": 5656,
         "atteint": true,
-        "temps_app_s": 0.206826459005,
-        "temps_score_val_s": 0.006621582987
+        "temps_app_s": 0.209783124999,
+        "temps_score_val_s": 0.006793583976
       },
       {
         "famille": "Régression logistique",
@@ -2132,8 +2132,8 @@
         "f1_val": 0.894420439602,
         "alertes_val": 5885,
         "atteint": true,
-        "temps_app_s": 0.15504487502,
-        "temps_score_val_s": 0.006769415981
+        "temps_app_s": 0.159026875015,
+        "temps_score_val_s": 0.007089874998
       },
       {
         "famille": "Régression logistique",
@@ -2149,8 +2149,8 @@
         "f1_val": 0.90134444234,
         "alertes_val": 5801,
         "atteint": true,
-        "temps_app_s": 0.249380542024,
-        "temps_score_val_s": 0.00706891701
+        "temps_app_s": 0.247931499995,
+        "temps_score_val_s": 0.007699000009
       },
       {
         "famille": "Régression logistique",
@@ -2166,8 +2166,8 @@
         "f1_val": 0.905976398934,
         "alertes_val": 5747,
         "atteint": true,
-        "temps_app_s": 0.121992917004,
-        "temps_score_val_s": 0.006590917008
+        "temps_app_s": 0.121430416999,
+        "temps_score_val_s": 0.00677079201
       },
       {
         "famille": "EasyEnsemble",
@@ -2183,8 +2183,8 @@
         "f1_val": 0.902559241706,
         "alertes_val": 5789,
         "atteint": true,
-        "temps_app_s": 2.451784125005,
-        "temps_score_val_s": 0.279120416992
+        "temps_app_s": 2.411700541998,
+        "temps_score_val_s": 0.238502833003
       },
       {
         "famille": "EasyEnsemble",
@@ -2200,8 +2200,8 @@
         "f1_val": 0.900085074204,
         "alertes_val": 5818,
         "atteint": true,
-        "temps_app_s": 4.616589999991,
-        "temps_score_val_s": 0.383576082997
+        "temps_app_s": 3.900592457998,
+        "temps_score_val_s": 0.334220833
       },
       {
         "famille": "RUSBoost",
@@ -2217,8 +2217,8 @@
         "f1_val": 0.910847522479,
         "alertes_val": 5693,
         "atteint": true,
-        "temps_app_s": 0.51522029101,
-        "temps_score_val_s": 0.016625083983
+        "temps_app_s": 0.498221499991,
+        "temps_score_val_s": 0.016361916001
       },
       {
         "famille": "RUSBoost",
@@ -2234,8 +2234,8 @@
         "f1_val": 0.910847522479,
         "alertes_val": 5693,
         "atteint": true,
-        "temps_app_s": 0.517792875005,
-        "temps_score_val_s": 0.016825958999
+        "temps_app_s": 0.581150667014,
+        "temps_score_val_s": 0.016576958005
       },
       {
         "famille": "XGBoost",
@@ -2251,8 +2251,8 @@
         "f1_val": 0.985306291391,
         "alertes_val": 4903,
         "atteint": true,
-        "temps_app_s": 0.258197542018,
-        "temps_score_val_s": 0.010002958996
+        "temps_app_s": 0.26411275001,
+        "temps_score_val_s": 0.011117125017
       },
       {
         "famille": "XGBoost",
@@ -2268,8 +2268,8 @@
         "f1_val": 0.983068346066,
         "alertes_val": 4925,
         "atteint": true,
-        "temps_app_s": 0.312394957989,
-        "temps_score_val_s": 0.011026333988
+        "temps_app_s": 0.301157874987,
+        "temps_score_val_s": 0.010757250013
       },
       {
         "famille": "Isolation Forest",
@@ -2285,8 +2285,8 @@
         "f1_val": 0.038146021329,
         "alertes_val": 115,
         "atteint": true,
-        "temps_app_s": 0.103747916,
-        "temps_score_val_s": 0.036117208016
+        "temps_app_s": 0.094388875004,
+        "temps_score_val_s": 0.03730454098
       },
       {
         "famille": "Isolation Forest",
@@ -2302,8 +2302,8 @@
         "f1_val": 0.09229550406,
         "alertes_val": 288,
         "atteint": true,
-        "temps_app_s": 0.115448208002,
-        "temps_score_val_s": 0.042348000017
+        "temps_app_s": 0.12077537502,
+        "temps_score_val_s": 0.03631979198
       },
       {
         "famille": "Isolation Forest",
@@ -2319,8 +2319,8 @@
         "f1_val": 0.061438965238,
         "alertes_val": 187,
         "atteint": true,
-        "temps_app_s": 0.257706792007,
-        "temps_score_val_s": 0.09450908401
+        "temps_app_s": 0.250453124987,
+        "temps_score_val_s": 0.094062791992
       },
       {
         "famille": "Isolation Forest",
@@ -2336,8 +2336,8 @@
         "f1_val": 0.116111435808,
         "alertes_val": 372,
         "atteint": true,
-        "temps_app_s": 0.32399116701,
-        "temps_score_val_s": 0.099633958016
+        "temps_app_s": 0.305547666998,
+        "temps_score_val_s": 0.097790166998
       },
       {
         "famille": "LOF",
@@ -2353,8 +2353,8 @@
         "f1_val": 0.568274051086,
         "alertes_val": 11995,
         "atteint": false,
-        "temps_app_s": 0.526883083017,
-        "temps_score_val_s": 0.232766832982
+        "temps_app_s": 0.583747000026,
+        "temps_score_val_s": 0.228515082999
       },
       {
         "famille": "LOF",
@@ -2370,8 +2370,8 @@
         "f1_val": 0.56918371019,
         "alertes_val": 11912,
         "atteint": false,
-        "temps_app_s": 0.570489541977,
-        "temps_score_val_s": 0.248623041
+        "temps_app_s": 0.575417541986,
+        "temps_score_val_s": 0.222868250014
       },
       {
         "famille": "LOF",
@@ -2387,8 +2387,8 @@
         "f1_val": 0.192570689337,
         "alertes_val": 650,
         "atteint": true,
-        "temps_app_s": 0.583502499998,
-        "temps_score_val_s": 0.249061292008
+        "temps_app_s": 0.550236875017,
+        "temps_score_val_s": 0.247182457999
       },
       {
         "famille": "LOF",
@@ -2404,8 +2404,8 @@
         "f1_val": 0.187964338782,
         "alertes_val": 623,
         "atteint": true,
-        "temps_app_s": 0.709827166982,
-        "temps_score_val_s": 0.283937291999
+        "temps_app_s": 0.674663084006,
+        "temps_score_val_s": 0.269273291982
       }
     ],
     "test": [
@@ -2427,8 +2427,8 @@
         "manquees": 3,
         "objectif validation": "atteint",
         "objectif test": "atteint",
-        "temps app. (s)": 0.258197542018,
-        "temps score test (s)": 0.009189792007,
+        "temps app. (s)": 0.26411275001,
+        "temps score test (s)": 0.008432708011,
         "sélectionnée sur validation": true
       },
       {
@@ -2449,8 +2449,8 @@
         "manquees": 0,
         "objectif validation": "atteint",
         "objectif test": "atteint",
-        "temps app. (s)": 0.51522029101,
-        "temps score test (s)": 0.016483374988,
+        "temps app. (s)": 0.498221499991,
+        "temps score test (s)": 0.015801750007,
         "sélectionnée sur validation": false
       },
       {
@@ -2471,8 +2471,8 @@
         "manquees": 1,
         "objectif validation": "atteint",
         "objectif test": "atteint",
-        "temps app. (s)": 2.451784125005,
-        "temps score test (s)": 0.246871457988,
+        "temps app. (s)": 2.411700541998,
+        "temps score test (s)": 0.237656499987,
         "sélectionnée sur validation": false
       },
       {
@@ -2493,8 +2493,8 @@
         "manquees": 4,
         "objectif validation": "atteint",
         "objectif test": "atteint",
-        "temps app. (s)": 0.15504487502,
-        "temps score test (s)": 0.008901708003,
+        "temps app. (s)": 0.159026875015,
+        "temps score test (s)": 0.007226333022,
         "sélectionnée sur validation": false
       },
       {
@@ -2515,8 +2515,8 @@
         "manquees": 3,
         "objectif validation": "atteint",
         "objectif test": "atteint",
-        "temps app. (s)": 0.107181792002,
-        "temps score test (s)": 0.007658750023,
+        "temps app. (s)": 0.100636583986,
+        "temps score test (s)": 0.006554791995,
         "sélectionnée sur validation": false
       },
       {
@@ -2537,8 +2537,8 @@
         "manquees": 4247,
         "objectif validation": "atteint",
         "objectif test": "non atteint",
-        "temps app. (s)": 0.583502499998,
-        "temps score test (s)": 0.24103116701,
+        "temps app. (s)": 0.550236875017,
+        "temps score test (s)": 0.249469416012,
         "sélectionnée sur validation": false
       },
       {
@@ -2559,8 +2559,8 @@
         "manquees": 4471,
         "objectif validation": "atteint",
         "objectif test": "non atteint",
-        "temps app. (s)": 0.32399116701,
-        "temps score test (s)": 0.105465250002,
+        "temps app. (s)": 0.305547666998,
+        "temps score test (s)": 0.102234833001,
         "sélectionnée sur validation": false
       }
     ],
