@@ -200,12 +200,13 @@ def seuil_defaut(modele):
     Rôles : Donner le seuil par défaut du modèle, exprimé sur le score orienté.
     Saisies :
         - modele : modèle entraîné
-    Résultat : seuil (0.5 pour un classifieur, -offset_ pour IF / LOF)
+    Résultat : seuil inclusif ; 0.5 pour un classifieur, juste au-dessus de -offset_ pour IF / LOF.
     """
     final = dernier_modele(modele)
     if hasattr(final, "offset_"):
-        # decision_function = score_samples - offset_ < 0  <=>  -score_samples > -offset_
-        return -final.offset_
+        # sklearn signale strictement au-delà de -offset_. Notre évaluation est
+        # inclusive : le flottant suivant garde un point exactement à la frontière normal.
+        return np.nextafter(float(-final.offset_), np.inf)
     return 0.5
 
 
@@ -470,9 +471,9 @@ def tracer_metriques_seuil(y, scores, titre="", seuils_marques=None):
 class HBOS(BaseEstimator):
     """
     Rôles : Détecteur HBOS (Goldstein et Dengel, 2012). Chaque variable est résumée
-            par un histogramme ; le score d'une observation est la somme, sur les
-            variables, de -log(hauteur normalisée de sa case). Hypothèse : variables
-            indépendantes (le score est un log de produit de densités marginales).
+            par un histogramme ; le score d'une observation additionne les
+            -log(hauteur normalisée + alpha). L'indépendance motive l'addition,
+            mais les hauteurs normalisées et lissées ne sont pas des densités calibrées.
     Saisies :
         - n_bins : nombre de cases par histogramme (largeur fixe)
         - alpha : lissage ajouté aux hauteurs, évite log(0) pour les cases vides
@@ -516,7 +517,7 @@ class HBOS(BaseEstimator):
             case = np.searchsorted(bords, X[:, j], side="right") - 1
             # Le bord droit appartient à la dernière case, comme dans np.histogram
             case[X[:, j] == bords[-1]] = self.n_bins - 1
-            # Valeur hors de la plage d'apprentissage : densité nulle
+            # Valeur hors de la plage d'apprentissage : hauteur nulle
             hors_plage = (case < 0) | (case >= self.n_bins)
             h = np.where(hors_plage, 0.0, hauteurs[np.clip(case, 0, self.n_bins - 1)])
             contrib[:, j] = -np.log(h + self.alpha)

@@ -1,70 +1,81 @@
 # TP — Détection d’anomalies
 
-## Organisation
+Le notebook présente les résultats finaux. Les expériences, l’entraînement et le choix des réglages sont dans les modules Python ; les comparaisons de validation et les analyses détaillées sont dans le [Q/R](rendus/rendu_questions_reponses.md).
+
+## Fichiers nécessaires
 
 ```text
 data/
   mouse.txt
+  creditcard.csv                 # suivi avec Git LFS
   ai4i2020.csv
-  creditcard.csv              # suivi avec Git LFS
+  kddcup99_10_percent.csv.gz       # corpus officiel à 10 %, utilisable hors connexion
 rendus/
-  compte_rendu.md
+  resultats.json                 # source commune des nombres publiés
+  figures/                       # images du notebook et courbes de validation
   rendu_questions_reponses.md
   rendu_questions_reponses.html
+  compte_rendu.md
   synthese.md
   synthese.pdf
-  figures/                   # images utilisées par les documents
-TP_detection_anomalies.ipynb  # expériences et résultats exécutés
-utils.py                     # fonctions communes
+TP_detection_anomalies.ipynb      # imports, appels nommés, résultats exécutés
+experiences.py                   # orchestration et expériences des cinq parties
+experiences_kdd.py               # préparation et comparaison KDDCup99
+modeles_complementaires.py       # grilles classiques et ensembles supervisés
+utils.py                         # chargement, prétraitements, scores, seuils, métriques
+generer_notebook.py               # construction et exécution du notebook
+generer_rendus.py                 # documents depuis JSON et notebook, sans entraînement
 requirements.txt
 ```
 
-Le sujet et le cours sont disponibles dans les PDF à la racine.
+Les deux générateurs sont à la racine, comme les autres scripts. Le sujet et le cours sont également fournis en PDF à la racine.
 
-### Repères dans le notebook
+Les modules d’expériences importent les fonctions communes de `utils.py` et les configurations de `modeles_complementaires.py`. Le notebook appelle `calculer_resultats()`, puis `afficher_resultats(resultats, nom)` pour `protocole`, `mouse`, `nouveautes`, `creditcard`, `hbos`, `ai4i`, `robustesse`, `shap` et `kdd`. L’appel final à `exporter_resultats()` écrit le JSON et les courbes de validation. Les sorties sont de vrais tableaux et des figures, dont des matrices de confusion légendées par modèle, pas une capture du texte de la console.
 
-Les titres reprennent la hiérarchie du sujet. Chaque sous-question est suivie de ses explications,
-de son code et de ses résultats, selon ce qu’elle demande ; les analyses ne sont plus regroupées loin des figures.
-Le sommaire du notebook donne accès aux cinq parties.
+Le travail couvre Mouse, les fraudes Credit Card, HBOS, la maintenance AI4I, la robustesse et SHAP, puis le bloc complémentaire non bonus : RandomUnderSampler, EasyEnsemble, RUSBoost, XGBoost et KDDCup99. Seul le bonus autoencodeur n’est pas réalisé.
 
-| Partie | Organisation |
-|---|---|
-| 1 — Mouse | Questions 1 à 3, avec leurs sous-questions a, b et c selon le sujet |
-| 2 — Fraudes | Préparation 1.a–b, comparaison 2.a–d, évaluation 3.a–d |
-| 3 — Nouvelle méthode (HBOS) | Sous-questions a à e |
-| 4 — Maintenance (AI4I) | Sous-questions a à e |
-| 5 — Robustesse et SHAP | Question 1 : contamination ; question 2 : explication des alertes |
+## Recalculer les expériences
 
-Le bilan final précise le périmètre : les expériences supplémentaires du bloc situé après
-« Livrables et synthèse » dans le PDF (sous-échantillonnage supervisé, EasyEnsemble, RUSBoost,
-XGBoost, KDDCup99) et le bonus autoencodeur ne sont pas réalisés.
-
-## Exécuter le TP
-
-Depuis la racine du projet :
+Depuis la racine :
 
 ```bash
 python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-jupyter lab
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python generer_notebook.py
+.venv/bin/python generer_rendus.py
 ```
 
-Ouvrir `TP_detection_anomalies.ipynb`, sélectionner l’environnement `.venv`, puis redémarrer le noyau et tout exécuter.
+Les dépendances fixées comprennent numpy, pandas, matplotlib, seaborn, scikit-learn, imbalanced-learn, SHAP, Jupyter et XGBoost. `nbformat` et `nbclient` servent au notebook ; `mistune`, installé avec nbconvert dans l’environnement Jupyter, sert au HTML. Aucun téléchargement de données n’est nécessaire si les fichiers de `data/` sont présents.
 
-Les trois jeux de données sont inclus dans le projet. `creditcard.csv` dépasse la limite de taille de GitHub
-pour les fichiers classiques et est suivi avec **Git LFS**. Pour récupérer une copie complète après publication :
+`generer_notebook.py` effectue les apprentissages et ne remplace le notebook qu’après une exécution réussie. On peut aussi l’ouvrir dans VS Code ou Jupyter, sélectionner `.venv`, redémarrer le noyau et tout exécuter dans l’ordre. Le premier appel calcule les expériences ; les suivants affichent les résultats par rubrique.
+
+`generer_rendus.py` ne recalcule aucun modèle. Il lit `rendus/resultats.json`, extrait les PNG des cellules identifiées par leur appel nommé dans le notebook exécuté, puis reconstruit Q/R Markdown et HTML, compte rendu et synthèse Markdown. Il conserve les questions conceptuelles du Q/R existant et remplace ses réponses chiffrées ; ce fichier fait donc partie des entrées à conserver. Les figures de validation sont produites lors de l’export des expériences. Utiliser un JSON et un notebook issus de la même exécution.
+
+Pour mettre à jour seulement les documents après une exécution déjà terminée :
+
+```bash
+.venv/bin/python generer_rendus.py
+```
+
+Le script écrit aussi `/tmp/tp1-synthese.html`, avec une mise en page A4 destinée au PDF. Ouvrir ce fichier dans Chromium et l’imprimer vers `rendus/synthese.pdf`, sans en-têtes ni pieds de page du navigateur. Contrôler que le PDF tient sur deux pages : l’impression est séparée de la génération des documents.
+
+## Données locales et protocole
+
+Sources : Mouse est fourni avec le TP ; [Credit Card](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud), [AI4I 2020](https://doi.org/10.24432/C5HS5C) et [KDDCup99 officiel](https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html). Le fichier KDD local conserve le corpus officiel à 10 %, réexporté en CSV gzip ASCII depuis `sklearn.datasets.fetch_kddcup99(percent10=True)` ; sa provenance, son empreinte et les règles de dédoublonnage sont documentées dans `experiences_kdd.py` et dans le Q/R.
+
+Credit Card dépasse la limite de taille des fichiers classiques GitHub et utilise Git LFS. Pour récupérer le dépôt complet :
 
 ```bash
 git lfs install
 git clone https://github.com/fiftycommit/MAYULU.git
 ```
 
-Si le dépôt a déjà été cloné, lancer `git lfs pull` depuis sa racine.
-Git LFS doit être installé sur la machine (`brew install git-lfs` sur macOS). Sans lui, le CSV peut être
-remplacé par un petit fichier pointeur que pandas ne pourra pas exploiter.
-Les téléchargements LFS dépendent également des quotas du compte GitHub.
+Si le dépôt est déjà cloné, lancer `git lfs pull` depuis sa racine. Git LFS doit être installé au préalable (`brew install git-lfs` sur macOS). Sans téléchargement LFS, `creditcard.csv` peut n’être qu’un fichier pointeur, inutilisable par pandas. Les quotas GitHub LFS s’appliquent.
 
-Les chemins de données sont relatifs à la racine du projet. Les documents sont regroupés dans [`rendus/`](rendus/).
-Pour lire le [Q/R dépliable](rendus/rendu_questions_reponses.md), utiliser l’aperçu Markdown de VS Code.
-Conserver le sous-dossier `rendus/figures/` avec ces documents pour afficher les images.
+Les chemins sont relatifs au projet. Credit Card et KDD sont dédoublonnés avant le partage stratifié 60/20/20, graine 42. LOF utilise 30 000 lignes d’apprentissage sur Credit Card ; sur KDD, après un tirage de 60 000 vecteurs dédoublonnés, les sept familles partagent le même apprentissage effectif de 30 000 lignes. Validation et test ne sont jamais rééquilibrés. Credit Card utilise SMOTE et RUS ; KDD utilise ROS (copies de lignes, catégories préservées) et RUS.
+
+La sélection maximise le rappel sous précision minimale sur validation, sinon rapporte le meilleur compromis F1. La logistique était le choix historique Credit Card ; XGBoost est le choix de la comparaison étendue. Le meilleur supervisé global et IF sont réajustés sur AI4I avec leurs hyperparamètres conservés ; la logistique est gardée comme référence. Le choix AI4I et les résultats publiés sont lus dans le JSON, sans gagnant figé dans le générateur.
+
+L’extension a été faite après une première lecture du test Credit Card. Ses réglages sont fixés a priori et ses seuils viennent de la validation, mais elle reste exploratoire : le test n’est plus un holdout entièrement vierge. Les échecs de précision et les faibles rappels restent visibles.
+
+Pour lire le Q/R dépliable, utiliser l’aperçu Markdown de VS Code ou le fichier HTML. Conserver `rendus/figures/` avec les documents.
