@@ -1,0 +1,3030 @@
+{
+  "partitions": [
+    {
+      "jeu": "creditcard",
+      "partition": "app",
+      "observations": 165397,
+      "positifs": 284,
+      "proportion positive": 0.001717080721
+    },
+    {
+      "jeu": "creditcard",
+      "partition": "val",
+      "observations": 55133,
+      "positifs": 95,
+      "proportion positive": 0.001723105944
+    },
+    {
+      "jeu": "creditcard",
+      "partition": "test",
+      "observations": 55133,
+      "positifs": 94,
+      "proportion positive": 0.001704967987
+    },
+    {
+      "jeu": "ai4i",
+      "partition": "app",
+      "observations": 6000,
+      "positifs": 203,
+      "proportion positive": 0.033833333333
+    },
+    {
+      "jeu": "ai4i",
+      "partition": "val",
+      "observations": 2000,
+      "positifs": 68,
+      "proportion positive": 0.034
+    },
+    {
+      "jeu": "ai4i",
+      "partition": "test",
+      "observations": 2000,
+      "positifs": 68,
+      "proportion positive": 0.034
+    },
+    {
+      "jeu": "kdd",
+      "partition": "app",
+      "observations": 36000,
+      "positifs": 14281,
+      "proportion positive": 0.396694444444
+    },
+    {
+      "jeu": "kdd",
+      "partition": "val",
+      "observations": 12000,
+      "positifs": 4761,
+      "proportion positive": 0.39675
+    },
+    {
+      "jeu": "kdd",
+      "partition": "test",
+      "observations": 12000,
+      "positifs": 4760,
+      "proportion positive": 0.396666666667
+    }
+  ],
+  "mouse": {
+    "seuils": [
+      {
+        "méthode": "Isolation Forest",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.08,
+        "rappel": 1.0,
+        "f1": 0.148148148148,
+        "balanced_accuracy": 0.882653061224,
+        "alertes": 125,
+        "fausses_alertes": 115,
+        "manquees": 0
+      },
+      {
+        "méthode": "Isolation Forest",
+        "règle": "IQR",
+        "seuil": 0.562562834077,
+        "precision": 0.47619047619,
+        "rappel": 1.0,
+        "f1": 0.645161290323,
+        "balanced_accuracy": 0.988775510204,
+        "alertes": 21,
+        "fausses_alertes": 11,
+        "manquees": 0
+      },
+      {
+        "méthode": "Isolation Forest",
+        "règle": "KMeans",
+        "seuil": 0.503078869255,
+        "precision": 0.086956521739,
+        "rappel": 1.0,
+        "f1": 0.16,
+        "balanced_accuracy": 0.892857142857,
+        "alertes": 115,
+        "fausses_alertes": 105,
+        "manquees": 0
+      },
+      {
+        "méthode": "LOF",
+        "règle": "défaut",
+        "seuil": 1.5,
+        "precision": 1.0,
+        "rappel": 1.0,
+        "f1": 1.0,
+        "balanced_accuracy": 1.0,
+        "alertes": 10,
+        "fausses_alertes": 0,
+        "manquees": 0
+      },
+      {
+        "méthode": "LOF",
+        "règle": "IQR",
+        "seuil": 1.225624500565,
+        "precision": 0.27027027027,
+        "rappel": 1.0,
+        "f1": 0.425531914894,
+        "balanced_accuracy": 0.972448979592,
+        "alertes": 37,
+        "fausses_alertes": 27,
+        "manquees": 0
+      },
+      {
+        "méthode": "LOF",
+        "règle": "KMeans",
+        "seuil": 1.914616527033,
+        "precision": 1.0,
+        "rappel": 0.8,
+        "f1": 0.888888888889,
+        "balanced_accuracy": 0.9,
+        "alertes": 8,
+        "fausses_alertes": 0,
+        "manquees": 2
+      }
+    ],
+    "classement": [
+      {
+        "méthode": "Isolation Forest",
+        "ap": 0.961428571429,
+        "auc_roc": 0.998979591837
+      },
+      {
+        "méthode": "LOF",
+        "ap": 1.0,
+        "auc_roc": 1.0
+      }
+    ],
+    "nouveautes": [
+      {
+        "règle": "défaut",
+        "seuil": 1.5,
+        "precision": 0.818181818182,
+        "rappel": 0.9,
+        "f1": 0.857142857143,
+        "balanced_accuracy": 0.943197278912,
+        "alertes": 11,
+        "fausses_alertes": 2,
+        "manquees": 1,
+        "ap": 0.976923076923,
+        "auc_roc": 0.997959183673
+      },
+      {
+        "règle": "IQR (apprentissage)",
+        "seuil": 1.232430594936,
+        "precision": 0.434782608696,
+        "rappel": 1.0,
+        "f1": 0.606060606061,
+        "balanced_accuracy": 0.955782312925,
+        "alertes": 23,
+        "fausses_alertes": 13,
+        "manquees": 0,
+        "ap": 0.976923076923,
+        "auc_roc": 0.997959183673
+      }
+    ]
+  },
+  "robustesse": [
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.0,
+      "graine": 0,
+      "n injectées": 0,
+      "temps app. (s)": 0.048984000023,
+      "temps score (s)": 0.004292666999,
+      "ap": 0.851611721612,
+      "auc_roc": 0.987755102041
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.0,
+      "graine": 0,
+      "n injectées": 0,
+      "temps app. (s)": 0.001070208004,
+      "temps score (s)": 0.000514915999,
+      "ap": 0.976923076923,
+      "auc_roc": 0.997959183673
+    },
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.0,
+      "graine": 1,
+      "n injectées": 0,
+      "temps app. (s)": 0.047667583014,
+      "temps score (s)": 0.003932916996,
+      "ap": 0.648518377048,
+      "auc_roc": 0.969387755102
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.0,
+      "graine": 1,
+      "n injectées": 0,
+      "temps app. (s)": 0.00094150001,
+      "temps score (s)": 0.000721459015,
+      "ap": 0.976923076923,
+      "auc_roc": 0.997959183673
+    },
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.0,
+      "graine": 2,
+      "n injectées": 0,
+      "temps app. (s)": 0.047779624991,
+      "temps score (s)": 0.003946790996,
+      "ap": 0.836935286935,
+      "auc_roc": 0.983673469388
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.0,
+      "graine": 2,
+      "n injectées": 0,
+      "temps app. (s)": 0.000931500021,
+      "temps score (s)": 0.000480666,
+      "ap": 0.976923076923,
+      "auc_roc": 0.997959183673
+    },
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.05,
+      "graine": 0,
+      "n injectées": 17,
+      "temps app. (s)": 0.046758084005,
+      "temps score (s)": 0.003761541011,
+      "ap": 0.950317460317,
+      "auc_roc": 0.995918367347
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.05,
+      "graine": 0,
+      "n injectées": 17,
+      "temps app. (s)": 0.001115000021,
+      "temps score (s)": 0.000493665983,
+      "ap": 0.971428571429,
+      "auc_roc": 0.997278911565
+    },
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.05,
+      "graine": 1,
+      "n injectées": 17,
+      "temps app. (s)": 0.046798541996,
+      "temps score (s)": 0.00379925,
+      "ap": 0.891976911977,
+      "auc_roc": 0.991836734694
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.05,
+      "graine": 1,
+      "n injectées": 17,
+      "temps app. (s)": 0.000903541979,
+      "temps score (s)": 0.000453375018,
+      "ap": 0.971428571429,
+      "auc_roc": 0.997278911565
+    },
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.05,
+      "graine": 2,
+      "n injectées": 17,
+      "temps app. (s)": 0.046556624991,
+      "temps score (s)": 0.003655875014,
+      "ap": 0.961428571429,
+      "auc_roc": 0.996598639456
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.05,
+      "graine": 2,
+      "n injectées": 17,
+      "temps app. (s)": 0.001185792004,
+      "temps score (s)": 0.000511458988,
+      "ap": 1.0,
+      "auc_roc": 1.0
+    },
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.1,
+      "graine": 0,
+      "n injectées": 34,
+      "temps app. (s)": 0.047002582985,
+      "temps score (s)": 0.003785125009,
+      "ap": 0.930555555556,
+      "auc_roc": 0.99387755102
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.1,
+      "graine": 0,
+      "n injectées": 34,
+      "temps app. (s)": 0.000995917013,
+      "temps score (s)": 0.000514332991,
+      "ap": 1.0,
+      "auc_roc": 1.0
+    },
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.1,
+      "graine": 1,
+      "n injectées": 34,
+      "temps app. (s)": 0.045149124984,
+      "temps score (s)": 0.004157041985,
+      "ap": 0.882727272727,
+      "auc_roc": 0.989115646259
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.1,
+      "graine": 1,
+      "n injectées": 34,
+      "temps app. (s)": 0.001025125006,
+      "temps score (s)": 0.000681457983,
+      "ap": 0.976923076923,
+      "auc_roc": 0.997959183673
+    },
+    {
+      "méthode": "Isolation Forest",
+      "contamination": 0.1,
+      "graine": 2,
+      "n injectées": 34,
+      "temps app. (s)": 0.046607541008,
+      "temps score (s)": 0.004335291014,
+      "ap": 0.962222222222,
+      "auc_roc": 0.997278911565
+    },
+    {
+      "méthode": "LOF",
+      "contamination": 0.1,
+      "graine": 2,
+      "n injectées": 34,
+      "temps app. (s)": 0.001022125012,
+      "temps score (s)": 0.000475415989,
+      "ap": 1.0,
+      "auc_roc": 1.0
+    }
+  ],
+  "shap": {
+    "ecart": 2.5795097080560936e-07,
+    "categories": {
+      "fraude détectée": 15,
+      "fausse alerte": 60,
+      "fraude manquée": 79
+    }
+  },
+  "creditcard": {
+    "validation": [
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=4 | aucun",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun",
+        "n_app": 165397,
+        "ap_val": 0.720603213907,
+        "auc_roc_val": 0.884109256571,
+        "seuil": 0.6,
+        "precision_val": 0.858974358974,
+        "rappel_val": 0.705263157895,
+        "f1_val": 0.774566473988,
+        "alertes_val": 78,
+        "atteint": true,
+        "temps_app_s": 1.626246457978,
+        "temps_score_val_s": 0.007369542
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=4 | class_weight",
+        "pretraitement": "log_amount",
+        "desequilibre": "class_weight",
+        "n_app": 165397,
+        "ap_val": 0.508262238878,
+        "auc_roc_val": 0.926712261959,
+        "seuil": 0.999166738947,
+        "precision_val": 0.629310344828,
+        "rappel_val": 0.768421052632,
+        "f1_val": 0.691943127962,
+        "alertes_val": 116,
+        "atteint": false,
+        "temps_app_s": 1.608758667018,
+        "temps_score_val_s": 0.004348541988
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=8 | aucun",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun",
+        "n_app": 165397,
+        "ap_val": 0.638722114526,
+        "auc_roc_val": 0.871558406536,
+        "seuil": 1.0,
+        "precision_val": 0.845238095238,
+        "rappel_val": 0.747368421053,
+        "f1_val": 0.793296089385,
+        "alertes_val": 84,
+        "atteint": true,
+        "temps_app_s": 3.281668042007,
+        "temps_score_val_s": 0.002972000017
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=8 | class_weight",
+        "pretraitement": "log_amount",
+        "desequilibre": "class_weight",
+        "n_app": 165397,
+        "ap_val": 0.537060386786,
+        "auc_roc_val": 0.91471108,
+        "seuil": 0.999493925839,
+        "precision_val": 0.657657657658,
+        "rappel_val": 0.768421052632,
+        "f1_val": 0.708737864078,
+        "alertes_val": 111,
+        "atteint": false,
+        "temps_app_s": 2.820482208015,
+        "temps_score_val_s": 0.003005457984
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=8 | SMOTE",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "SMOTE",
+        "n_app": 165397,
+        "ap_val": 0.573241915359,
+        "auc_roc_val": 0.913278290024,
+        "seuil": 0.994285714286,
+        "precision_val": 0.757894736842,
+        "rappel_val": 0.757894736842,
+        "f1_val": 0.757894736842,
+        "alertes_val": 95,
+        "atteint": false,
+        "temps_app_s": 3.667736791976,
+        "temps_score_val_s": 0.006362707994
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=8 | RandomUnderSampler",
+        "pretraitement": "log_amount",
+        "desequilibre": "RandomUnderSampler",
+        "n_app": 165397,
+        "ap_val": 0.01947173984,
+        "auc_roc_val": 0.908330512316,
+        "seuil": 1.0,
+        "precision_val": 0.021535343299,
+        "rappel_val": 0.894736842105,
+        "f1_val": 0.042058386937,
+        "alertes_val": 3947,
+        "atteint": false,
+        "temps_app_s": 0.02207841698,
+        "temps_score_val_s": 0.002735250018
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=0.01 | aucun",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "aucun",
+        "n_app": 165397,
+        "ap_val": 0.726136187665,
+        "auc_roc_val": 0.965768148705,
+        "seuil": 0.213306971773,
+        "precision_val": 0.80487804878,
+        "rappel_val": 0.694736842105,
+        "f1_val": 0.745762711864,
+        "alertes_val": 82,
+        "atteint": true,
+        "temps_app_s": 0.145596624992,
+        "temps_score_val_s": 0.003986374999
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=0.01 | class_weight",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "class_weight",
+        "n_app": 165397,
+        "ap_val": 0.677950737843,
+        "auc_roc_val": 0.961323277123,
+        "seuil": 0.999920142018,
+        "precision_val": 0.802197802198,
+        "rappel_val": 0.768421052632,
+        "f1_val": 0.784946236559,
+        "alertes_val": 91,
+        "atteint": true,
+        "temps_app_s": 0.185970708,
+        "temps_score_val_s": 0.003572375019
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | aucun",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "aucun",
+        "n_app": 165397,
+        "ap_val": 0.723939931614,
+        "auc_roc_val": 0.963587071899,
+        "seuil": 0.384913496259,
+        "precision_val": 0.844155844156,
+        "rappel_val": 0.684210526316,
+        "f1_val": 0.755813953488,
+        "alertes_val": 77,
+        "atteint": true,
+        "temps_app_s": 0.146369708993,
+        "temps_score_val_s": 0.004275874991
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | class_weight",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "class_weight",
+        "n_app": 165397,
+        "ap_val": 0.676190586796,
+        "auc_roc_val": 0.961895991478,
+        "seuil": 0.999968063921,
+        "precision_val": 0.8,
+        "rappel_val": 0.8,
+        "f1_val": 0.8,
+        "alertes_val": 95,
+        "atteint": true,
+        "temps_app_s": 0.228419958003,
+        "temps_score_val_s": 0.004129042005
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | SMOTE",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "SMOTE",
+        "n_app": 165397,
+        "ap_val": 0.722147431408,
+        "auc_roc_val": 0.964364716435,
+        "seuil": 0.995749878384,
+        "precision_val": 0.813953488372,
+        "rappel_val": 0.736842105263,
+        "f1_val": 0.773480662983,
+        "alertes_val": 86,
+        "atteint": true,
+        "temps_app_s": 0.313594957988,
+        "temps_score_val_s": 0.004407791013
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | RandomUnderSampler",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "RandomUnderSampler",
+        "n_app": 165397,
+        "ap_val": 0.289700609026,
+        "auc_roc_val": 0.952731988043,
+        "seuil": 0.999992676322,
+        "precision_val": 0.348993288591,
+        "rappel_val": 0.547368421053,
+        "f1_val": 0.426229508197,
+        "alertes_val": 149,
+        "atteint": false,
+        "temps_app_s": 0.030827707989,
+        "temps_score_val_s": 0.003254958021
+      },
+      {
+        "famille": "EasyEnsemble",
+        "nom": "EasyEnsemble | n_estimators=5",
+        "pretraitement": "log_amount",
+        "desequilibre": "sous-échantillonnage interne",
+        "n_app": 165397,
+        "ap_val": 0.672504979758,
+        "auc_roc_val": 0.966898468235,
+        "seuil": 0.658871594508,
+        "precision_val": 0.802197802198,
+        "rappel_val": 0.768421052632,
+        "f1_val": 0.784946236559,
+        "alertes_val": 91,
+        "atteint": true,
+        "temps_app_s": 1.92701449999,
+        "temps_score_val_s": 0.378743000008
+      },
+      {
+        "famille": "EasyEnsemble",
+        "nom": "EasyEnsemble | n_estimators=10",
+        "pretraitement": "log_amount",
+        "desequilibre": "sous-échantillonnage interne",
+        "n_app": 165397,
+        "ap_val": 0.699822402676,
+        "auc_roc_val": 0.966155536558,
+        "seuil": 0.676962083083,
+        "precision_val": 0.817073170732,
+        "rappel_val": 0.705263157895,
+        "f1_val": 0.757062146893,
+        "alertes_val": 82,
+        "atteint": true,
+        "temps_app_s": 0.590596624999,
+        "temps_score_val_s": 0.537044333993
+      },
+      {
+        "famille": "RUSBoost",
+        "nom": "RUSBoost | n_estimators=50, max_depth=2",
+        "pretraitement": "log_amount",
+        "desequilibre": "sous-échantillonnage interne",
+        "n_app": 165397,
+        "ap_val": 0.404775849302,
+        "auc_roc_val": 0.960318994915,
+        "seuil": 0.817290156041,
+        "precision_val": 0.492957746479,
+        "rappel_val": 0.736842105263,
+        "f1_val": 0.590717299578,
+        "alertes_val": 142,
+        "atteint": false,
+        "temps_app_s": 0.137499541976,
+        "temps_score_val_s": 0.011038249999
+      },
+      {
+        "famille": "RUSBoost",
+        "nom": "RUSBoost | n_estimators=100, max_depth=2",
+        "pretraitement": "log_amount",
+        "desequilibre": "sous-échantillonnage interne",
+        "n_app": 165397,
+        "ap_val": 0.404775849302,
+        "auc_roc_val": 0.960318994915,
+        "seuil": 0.817290156041,
+        "precision_val": 0.492957746479,
+        "rappel_val": 0.736842105263,
+        "f1_val": 0.590717299578,
+        "alertes_val": 142,
+        "atteint": false,
+        "temps_app_s": 0.13390091699,
+        "temps_score_val_s": 0.011062458012
+      },
+      {
+        "famille": "XGBoost",
+        "nom": "XGBoost | n_estimators=100, max_depth=3",
+        "pretraitement": "log_amount",
+        "desequilibre": "scale_pos_weight (apprentissage)",
+        "n_app": 165397,
+        "ap_val": 0.7586927257,
+        "auc_roc_val": 0.967972749928,
+        "seuil": 0.973944365978,
+        "precision_val": 0.808510638298,
+        "rappel_val": 0.8,
+        "f1_val": 0.804232804233,
+        "alertes_val": 94,
+        "atteint": true,
+        "temps_app_s": 0.51996991699,
+        "temps_score_val_s": 0.013957540999
+      },
+      {
+        "famille": "XGBoost",
+        "nom": "XGBoost | n_estimators=100, max_depth=5",
+        "pretraitement": "log_amount",
+        "desequilibre": "scale_pos_weight (apprentissage)",
+        "n_app": 165397,
+        "ap_val": 0.837067197985,
+        "auc_roc_val": 0.963794775284,
+        "seuil": 0.695443034172,
+        "precision_val": 0.81914893617,
+        "rappel_val": 0.810526315789,
+        "f1_val": 0.814814814815,
+        "alertes_val": 94,
+        "atteint": true,
+        "temps_app_s": 0.684816249995,
+        "temps_score_val_s": 0.020946833014
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=100, max_samples=256",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 165397,
+        "ap_val": 0.16230957605,
+        "auc_roc_val": 0.947787461677,
+        "seuil": 0.656558697761,
+        "precision_val": 0.279279279279,
+        "rappel_val": 0.326315789474,
+        "f1_val": 0.300970873786,
+        "alertes_val": 111,
+        "atteint": false,
+        "temps_app_s": 0.113061999989,
+        "temps_score_val_s": 0.133558625006
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=100, max_samples=2048",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 165397,
+        "ap_val": 0.187257351532,
+        "auc_roc_val": 0.946356584255,
+        "seuil": 0.701385046753,
+        "precision_val": 0.423076923077,
+        "rappel_val": 0.231578947368,
+        "f1_val": 0.299319727891,
+        "alertes_val": 52,
+        "atteint": false,
+        "temps_app_s": 0.253871374996,
+        "temps_score_val_s": 0.155174499989
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=300, max_samples=256",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 165397,
+        "ap_val": 0.146541476458,
+        "auc_roc_val": 0.947777898906,
+        "seuil": 0.644181720753,
+        "precision_val": 0.247933884298,
+        "rappel_val": 0.315789473684,
+        "f1_val": 0.277777777778,
+        "alertes_val": 121,
+        "atteint": false,
+        "temps_app_s": 0.29982824999,
+        "temps_score_val_s": 0.398082917003
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=300, max_samples=2048",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 165397,
+        "ap_val": 0.208621043939,
+        "auc_roc_val": 0.949322477676,
+        "seuil": 0.64901084546,
+        "precision_val": 0.299065420561,
+        "rappel_val": 0.336842105263,
+        "f1_val": 0.316831683168,
+        "alertes_val": 107,
+        "atteint": false,
+        "temps_app_s": 0.729498208006,
+        "temps_score_val_s": 0.460570084018
+      },
+      {
+        "famille": "LOF",
+        "nom": "LOF | n_neighbors=10",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 30000,
+        "ap_val": 0.002561951735,
+        "auc_roc_val": 0.526151501068,
+        "seuil": 2.313251665921,
+        "precision_val": 0.009302325581,
+        "rappel_val": 0.021052631579,
+        "f1_val": 0.012903225806,
+        "alertes_val": 215,
+        "atteint": false,
+        "temps_app_s": 0.298307332996,
+        "temps_score_val_s": 0.539318875002
+      },
+      {
+        "famille": "LOF",
+        "nom": "LOF | n_neighbors=20",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 30000,
+        "ap_val": 0.007074562465,
+        "auc_roc_val": 0.721582600347,
+        "seuil": 2.641017234953,
+        "precision_val": 0.038461538462,
+        "rappel_val": 0.031578947368,
+        "f1_val": 0.034682080925,
+        "alertes_val": 78,
+        "atteint": false,
+        "temps_app_s": 0.304733792,
+        "temps_score_val_s": 0.556034958019
+      },
+      {
+        "famille": "LOF",
+        "nom": "LOF | n_neighbors=50",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 30000,
+        "ap_val": 0.167676200387,
+        "auc_roc_val": 0.94255031452,
+        "seuil": 2.146800980034,
+        "precision_val": 0.248847926267,
+        "rappel_val": 0.568421052632,
+        "f1_val": 0.346153846154,
+        "alertes_val": 217,
+        "atteint": false,
+        "temps_app_s": 0.338882750017,
+        "temps_score_val_s": 0.717902790988
+      },
+      {
+        "famille": "LOF",
+        "nom": "LOF | n_neighbors=100",
+        "pretraitement": "log_amount + standard",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 30000,
+        "ap_val": 0.382457447247,
+        "auc_roc_val": 0.94867718189,
+        "seuil": 2.796371679746,
+        "precision_val": 0.433566433566,
+        "rappel_val": 0.652631578947,
+        "f1_val": 0.521008403361,
+        "alertes_val": 143,
+        "atteint": false,
+        "temps_app_s": 0.411237541994,
+        "temps_score_val_s": 0.935316290997
+      },
+      {
+        "famille": "HBOS",
+        "nom": "HBOS | n_bins=10, alpha=0.1",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 165397,
+        "ap_val": 0.163081736604,
+        "auc_roc_val": 0.950112458187,
+        "seuil": 26.102087946315,
+        "precision_val": 0.244047619048,
+        "rappel_val": 0.431578947368,
+        "f1_val": 0.311787072243,
+        "alertes_val": 168,
+        "atteint": false,
+        "temps_app_s": 0.143426750001,
+        "temps_score_val_s": 0.029305040982
+      },
+      {
+        "famille": "HBOS",
+        "nom": "HBOS | n_bins=50, alpha=0.1",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 165397,
+        "ap_val": 0.168069454973,
+        "auc_roc_val": 0.948304329449,
+        "seuil": 39.477502145192,
+        "precision_val": 0.23602484472,
+        "rappel_val": 0.4,
+        "f1_val": 0.296875,
+        "alertes_val": 161,
+        "atteint": false,
+        "temps_app_s": 0.185317709023,
+        "temps_score_val_s": 0.04630954098
+      },
+      {
+        "famille": "HBOS",
+        "nom": "HBOS | n_bins=200, alpha=0.1",
+        "pretraitement": "log_amount",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 165397,
+        "ap_val": 0.200754811629,
+        "auc_roc_val": 0.941577206944,
+        "seuil": 46.664025520879,
+        "precision_val": 0.344086021505,
+        "rappel_val": 0.336842105263,
+        "f1_val": 0.340425531915,
+        "alertes_val": 93,
+        "atteint": false,
+        "temps_app_s": 0.240024875005,
+        "temps_score_val_s": 0.066728542006
+      }
+    ],
+    "test": [
+      {
+        "famille": "XGBoost",
+        "méthode": "XGBoost | n_estimators=100, max_depth=5",
+        "prétraitement": "log_amount",
+        "déséquilibre": "scale_pos_weight (apprentissage)",
+        "n apprentissage fourni": 165397,
+        "seuil": 0.695443034172,
+        "ap": 0.792275963508,
+        "auc_roc": 0.975876100235,
+        "precision": 0.778947368421,
+        "rappel": 0.787234042553,
+        "f1": 0.783068783069,
+        "balanced_accuracy": 0.893426247462,
+        "alertes": 95,
+        "fausses_alertes": 21,
+        "manquees": 20,
+        "objectif validation": "atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.684816249995,
+        "temps score test (s)": 0.022499791987,
+        "sélectionnée sur validation": true
+      },
+      {
+        "famille": "Régression logistique",
+        "méthode": "Régression logistique | C=1.0 | class_weight",
+        "prétraitement": "log_amount + standard",
+        "déséquilibre": "class_weight",
+        "n apprentissage fourni": 165397,
+        "seuil": 0.999968063921,
+        "ap": 0.679804507487,
+        "auc_roc": 0.983479606144,
+        "precision": 0.775280898876,
+        "rappel": 0.734042553191,
+        "f1": 0.754098360656,
+        "balanced_accuracy": 0.866839587248,
+        "alertes": 89,
+        "fausses_alertes": 20,
+        "manquees": 25,
+        "objectif validation": "atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.228419958003,
+        "temps score test (s)": 0.004903708992,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "EasyEnsemble",
+        "méthode": "EasyEnsemble | n_estimators=5",
+        "prétraitement": "log_amount",
+        "déséquilibre": "sous-échantillonnage interne",
+        "n apprentissage fourni": 165397,
+        "seuil": 0.658871594508,
+        "ap": 0.678506235524,
+        "auc_roc": 0.977607174487,
+        "precision": 0.784810126582,
+        "rappel": 0.659574468085,
+        "f1": 0.71676300578,
+        "balanced_accuracy": 0.829632798097,
+        "alertes": 79,
+        "fausses_alertes": 17,
+        "manquees": 32,
+        "objectif validation": "atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 1.92701449999,
+        "temps score test (s)": 0.370746667002,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "Arbre de décision",
+        "méthode": "Arbre de décision | max_depth=8 | aucun",
+        "prétraitement": "log_amount",
+        "déséquilibre": "aucun",
+        "n apprentissage fourni": 165397,
+        "seuil": 1.0,
+        "ap": 0.681109210901,
+        "auc_roc": 0.843893092442,
+        "precision": 0.92,
+        "rappel": 0.734042553191,
+        "f1": 0.816568047337,
+        "balanced_accuracy": 0.866966769791,
+        "alertes": 75,
+        "fausses_alertes": 6,
+        "manquees": 25,
+        "objectif validation": "atteint",
+        "objectif test": "atteint",
+        "temps app. (s)": 3.281668042007,
+        "temps score test (s)": 0.005788625014,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "RUSBoost",
+        "méthode": "RUSBoost | n_estimators=50, max_depth=2",
+        "prétraitement": "log_amount",
+        "déséquilibre": "sous-échantillonnage interne",
+        "n apprentissage fourni": 165397,
+        "seuil": 0.817290156041,
+        "ap": 0.401823134711,
+        "auc_roc": 0.967365597238,
+        "precision": 0.488888888889,
+        "rappel": 0.702127659574,
+        "f1": 0.576419213974,
+        "balanced_accuracy": 0.850437001538,
+        "alertes": 135,
+        "fausses_alertes": 69,
+        "manquees": 28,
+        "objectif validation": "non atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.137499541976,
+        "temps score test (s)": 0.011031333008,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "LOF",
+        "méthode": "LOF | n_neighbors=100",
+        "prétraitement": "log_amount + standard",
+        "déséquilibre": "aucun (non supervisé)",
+        "n apprentissage fourni": 30000,
+        "seuil": 2.796371679746,
+        "ap": 0.329547622728,
+        "auc_roc": 0.939572829015,
+        "precision": 0.467741935484,
+        "rappel": 0.617021276596,
+        "f1": 0.532110091743,
+        "balanced_accuracy": 0.807911063451,
+        "alertes": 124,
+        "fausses_alertes": 66,
+        "manquees": 36,
+        "objectif validation": "non atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.411237541994,
+        "temps score test (s)": 0.73662266598,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "HBOS",
+        "méthode": "HBOS | n_bins=200, alpha=0.1",
+        "prétraitement": "log_amount",
+        "déséquilibre": "aucun (non supervisé)",
+        "n apprentissage fourni": 165397,
+        "seuil": 46.664025520879,
+        "ap": 0.163968555568,
+        "auc_roc": 0.926452345397,
+        "precision": 0.306451612903,
+        "rappel": 0.202127659574,
+        "f1": 0.24358974359,
+        "balanced_accuracy": 0.60067319769,
+        "alertes": 62,
+        "fausses_alertes": 43,
+        "manquees": 75,
+        "objectif validation": "non atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.240024875005,
+        "temps score test (s)": 0.06654858301,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "Isolation Forest",
+        "méthode": "Isolation Forest | n_estimators=300, max_samples=2048",
+        "prétraitement": "log_amount",
+        "déséquilibre": "aucun (non supervisé)",
+        "n apprentissage fourni": 165397,
+        "seuil": 0.64901084546,
+        "ap": 0.15237645895,
+        "auc_roc": 0.942986655884,
+        "precision": 0.2,
+        "rappel": 0.159574468085,
+        "f1": 0.177514792899,
+        "balanced_accuracy": 0.579242166,
+        "alertes": 75,
+        "fausses_alertes": 60,
+        "manquees": 79,
+        "objectif validation": "non atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.729498208006,
+        "temps score test (s)": 0.496203000017,
+        "sélectionnée sur validation": false
+      }
+    ],
+    "informations": {
+      "observations": 275663,
+      "positifs": 473,
+      "app_lof": 30000,
+      "positifs_app_lof": 52,
+      "time_min": 0.0,
+      "time_max": 172792.0
+    },
+    "matrices": {
+      "XGBoost": [
+        [
+          55018,
+          21
+        ],
+        [
+          20,
+          74
+        ]
+      ],
+      "Régression logistique": [
+        [
+          55019,
+          20
+        ],
+        [
+          25,
+          69
+        ]
+      ],
+      "EasyEnsemble": [
+        [
+          55022,
+          17
+        ],
+        [
+          32,
+          62
+        ]
+      ],
+      "Arbre de décision": [
+        [
+          55033,
+          6
+        ],
+        [
+          25,
+          69
+        ]
+      ],
+      "RUSBoost": [
+        [
+          54970,
+          69
+        ],
+        [
+          28,
+          66
+        ]
+      ],
+      "LOF": [
+        [
+          54973,
+          66
+        ],
+        [
+          36,
+          58
+        ]
+      ],
+      "HBOS": [
+        [
+          54996,
+          43
+        ],
+        [
+          75,
+          19
+        ]
+      ],
+      "Isolation Forest": [
+        [
+          54979,
+          60
+        ],
+        [
+          79,
+          15
+        ]
+      ]
+    },
+    "comparaison_seuils_validation": [
+      {
+        "famille": "XGBoost",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.709090909091,
+        "rappel": 0.821052631579,
+        "f1": 0.760975609756,
+        "balanced_accuracy": 0.910235607552,
+        "alertes": 110,
+        "fausses_alertes": 32,
+        "manquees": 17
+      },
+      {
+        "famille": "XGBoost",
+        "règle": "retenu",
+        "seuil": 0.695443034172,
+        "precision": 0.81914893617,
+        "rappel": 0.810526315789,
+        "f1": 0.814814814815,
+        "balanced_accuracy": 0.905108719143,
+        "alertes": 94,
+        "fausses_alertes": 17,
+        "manquees": 18
+      },
+      {
+        "famille": "Régression logistique",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.058742225294,
+        "rappel": 0.894736842105,
+        "f1": 0.110246433204,
+        "balanced_accuracy": 0.934995151675,
+        "alertes": 1447,
+        "fausses_alertes": 1362,
+        "manquees": 10
+      },
+      {
+        "famille": "Régression logistique",
+        "règle": "retenu",
+        "seuil": 0.999968063921,
+        "precision": 0.8,
+        "rappel": 0.8,
+        "f1": 0.8,
+        "balanced_accuracy": 0.899827391984,
+        "alertes": 95,
+        "fausses_alertes": 19,
+        "manquees": 19
+      },
+      {
+        "famille": "EasyEnsemble",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.059074733096,
+        "rappel": 0.873684210526,
+        "f1": 0.110666666667,
+        "balanced_accuracy": 0.924832221183,
+        "alertes": 1405,
+        "fausses_alertes": 1322,
+        "manquees": 12
+      },
+      {
+        "famille": "EasyEnsemble",
+        "règle": "retenu",
+        "seuil": 0.658871594508,
+        "precision": 0.802197802198,
+        "rappel": 0.768421052632,
+        "f1": 0.784946236559,
+        "balanced_accuracy": 0.884047002932,
+        "alertes": 91,
+        "fausses_alertes": 18,
+        "manquees": 22
+      },
+      {
+        "famille": "Arbre de décision",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.845238095238,
+        "rappel": 0.747368421053,
+        "f1": 0.793296089385,
+        "balanced_accuracy": 0.873566110305,
+        "alertes": 84,
+        "fausses_alertes": 13,
+        "manquees": 24
+      },
+      {
+        "famille": "Arbre de décision",
+        "règle": "retenu",
+        "seuil": 1.0,
+        "precision": 0.845238095238,
+        "rappel": 0.747368421053,
+        "f1": 0.793296089385,
+        "balanced_accuracy": 0.873566110305,
+        "alertes": 84,
+        "fausses_alertes": 13,
+        "manquees": 24
+      },
+      {
+        "famille": "RUSBoost",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.046087888532,
+        "rappel": 0.905263157895,
+        "f1": 0.087710351861,
+        "balanced_accuracy": 0.936460933212,
+        "alertes": 1866,
+        "fausses_alertes": 1780,
+        "manquees": 9
+      },
+      {
+        "famille": "RUSBoost",
+        "règle": "retenu",
+        "seuil": 0.817290156041,
+        "precision": 0.492957746479,
+        "rappel": 0.736842105263,
+        "f1": 0.590717299578,
+        "balanced_accuracy": 0.867766959096,
+        "alertes": 142,
+        "fausses_alertes": 72,
+        "manquees": 25
+      },
+      {
+        "famille": "LOF",
+        "règle": "défaut",
+        "seuil": 1.5,
+        "precision": 0.031764705882,
+        "rappel": 0.852631578947,
+        "f1": 0.061247637051,
+        "balanced_accuracy": 0.90388583199,
+        "alertes": 2550,
+        "fausses_alertes": 2469,
+        "manquees": 14
+      },
+      {
+        "famille": "LOF",
+        "règle": "retenu",
+        "seuil": 2.796371679746,
+        "precision": 0.433566433566,
+        "rappel": 0.652631578947,
+        "f1": 0.521008403361,
+        "balanced_accuracy": 0.825579934246,
+        "alertes": 143,
+        "fausses_alertes": 81,
+        "manquees": 33
+      },
+      {
+        "famille": "HBOS",
+        "règle": "défaut",
+        "seuil": 22.257302465341,
+        "precision": 0.014930742939,
+        "rappel": 0.873684210526,
+        "f1": 0.029359745313,
+        "balanced_accuracy": 0.887094658045,
+        "alertes": 5559,
+        "fausses_alertes": 5476,
+        "manquees": 12
+      },
+      {
+        "famille": "HBOS",
+        "règle": "retenu",
+        "seuil": 46.664025520879,
+        "precision": 0.344086021505,
+        "rappel": 0.336842105263,
+        "f1": 0.340425531915,
+        "balanced_accuracy": 0.667866890053,
+        "alertes": 93,
+        "fausses_alertes": 61,
+        "manquees": 63
+      },
+      {
+        "famille": "Isolation Forest",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.090234857849,
+        "rappel": 0.768421052632,
+        "f1": 0.161504424779,
+        "balanced_accuracy": 0.877524236843,
+        "alertes": 809,
+        "fausses_alertes": 736,
+        "manquees": 22
+      },
+      {
+        "famille": "Isolation Forest",
+        "règle": "retenu",
+        "seuil": 0.64901084546,
+        "precision": 0.299065420561,
+        "rappel": 0.336842105263,
+        "f1": 0.316831683168,
+        "balanced_accuracy": 0.667739705199,
+        "alertes": 107,
+        "fausses_alertes": 75,
+        "manquees": 63
+      }
+    ],
+    "maxima_validation": [
+      {
+        "famille": "XGBoost",
+        "critère": "f1",
+        "seuil": 0.955970525742,
+        "precision": 0.913580246914,
+        "rappel": 0.778947368421,
+        "f1": 0.840909090909,
+        "balanced_accuracy": 0.889410091783,
+        "alertes": 81.0
+      },
+      {
+        "famille": "XGBoost",
+        "critère": "balanced_accuracy",
+        "seuil": 0.115237347782,
+        "precision": 0.277777777778,
+        "rappel": 0.894736842105,
+        "f1": 0.423940149626,
+        "balanced_accuracy": 0.945360717284,
+        "alertes": 306.0
+      },
+      {
+        "famille": "Régression logistique",
+        "critère": "f1",
+        "seuil": 0.999968063921,
+        "precision": 0.8,
+        "rappel": 0.8,
+        "f1": 0.8,
+        "balanced_accuracy": 0.899827391984,
+        "alertes": 95.0
+      },
+      {
+        "famille": "Régression logistique",
+        "critère": "balanced_accuracy",
+        "seuil": 0.825068229275,
+        "precision": 0.191343963554,
+        "rappel": 0.884210526316,
+        "f1": 0.314606741573,
+        "balanced_accuracy": 0.938880218643,
+        "alertes": 439.0
+      },
+      {
+        "famille": "EasyEnsemble",
+        "critère": "f1",
+        "seuil": 0.658871594508,
+        "precision": 0.802197802198,
+        "rappel": 0.768421052632,
+        "f1": 0.784946236559,
+        "balanced_accuracy": 0.884047002932,
+        "alertes": 91.0
+      },
+      {
+        "famille": "EasyEnsemble",
+        "critère": "balanced_accuracy",
+        "seuil": 0.553694557898,
+        "precision": 0.197619047619,
+        "rappel": 0.873684210526,
+        "f1": 0.322330097087,
+        "balanced_accuracy": 0.933780584132,
+        "alertes": 420.0
+      },
+      {
+        "famille": "Arbre de décision",
+        "critère": "f1",
+        "seuil": 1.0,
+        "precision": 0.845238095238,
+        "rappel": 0.747368421053,
+        "f1": 0.793296089385,
+        "balanced_accuracy": 0.873566110305,
+        "alertes": 84.0
+      },
+      {
+        "famille": "Arbre de décision",
+        "critère": "balanced_accuracy",
+        "seuil": 0.022813688213,
+        "precision": 0.489795918367,
+        "rappel": 0.757894736842,
+        "f1": 0.595041322314,
+        "balanced_accuracy": 0.878266020988,
+        "alertes": 147.0
+      },
+      {
+        "famille": "RUSBoost",
+        "critère": "f1",
+        "seuil": 0.817290156041,
+        "precision": 0.492957746479,
+        "rappel": 0.736842105263,
+        "f1": 0.590717299578,
+        "balanced_accuracy": 0.867766959096,
+        "alertes": 142.0
+      },
+      {
+        "famille": "RUSBoost",
+        "critère": "balanced_accuracy",
+        "seuil": 0.549361830684,
+        "precision": 0.059351276743,
+        "rappel": 0.905263157895,
+        "f1": 0.111398963731,
+        "balanced_accuracy": 0.940249224937,
+        "alertes": 1449.0
+      },
+      {
+        "famille": "LOF",
+        "critère": "f1",
+        "seuil": 2.796371679746,
+        "precision": 0.433566433566,
+        "rappel": 0.652631578947,
+        "f1": 0.521008403361,
+        "balanced_accuracy": 0.825579934246,
+        "alertes": 143.0
+      },
+      {
+        "famille": "LOF",
+        "critère": "balanced_accuracy",
+        "seuil": 1.462993054694,
+        "precision": 0.026636713736,
+        "rappel": 0.873684210526,
+        "f1": 0.051697290564,
+        "balanced_accuracy": 0.909288415085,
+        "alertes": 3116.0
+      },
+      {
+        "famille": "HBOS",
+        "critère": "f1",
+        "seuil": 46.664025520879,
+        "precision": 0.344086021505,
+        "rappel": 0.336842105263,
+        "f1": 0.340425531915,
+        "balanced_accuracy": 0.667866890053,
+        "alertes": 93.0
+      },
+      {
+        "famille": "HBOS",
+        "critère": "balanced_accuracy",
+        "seuil": 26.595974807757,
+        "precision": 0.030850263356,
+        "rappel": 0.863157894737,
+        "f1": 0.05957137668,
+        "balanced_accuracy": 0.908176934214,
+        "alertes": 2658.0
+      },
+      {
+        "famille": "Isolation Forest",
+        "critère": "f1",
+        "seuil": 0.64901084546,
+        "precision": 0.299065420561,
+        "rappel": 0.336842105263,
+        "f1": 0.316831683168,
+        "balanced_accuracy": 0.667739705199,
+        "alertes": 107.0
+      },
+      {
+        "famille": "Isolation Forest",
+        "critère": "balanced_accuracy",
+        "seuil": 0.434895732821,
+        "precision": 0.037562986716,
+        "rappel": 0.863157894737,
+        "f1": 0.071992976295,
+        "balanced_accuracy": 0.912492134621,
+        "alertes": 2183.0
+      }
+    ],
+    "effectifs": [
+      {
+        "configuration": "Arbre de décision | max_depth=4 | aucun",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Arbre de décision | max_depth=4 | class_weight",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Arbre de décision | max_depth=8 | aucun",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Arbre de décision | max_depth=8 | class_weight",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Arbre de décision | max_depth=8 | SMOTE",
+        "avant": 165397,
+        "après rééchantillonnage externe": 181624,
+        "positifs après": 16511
+      },
+      {
+        "configuration": "Arbre de décision | max_depth=8 | RandomUnderSampler",
+        "avant": 165397,
+        "après rééchantillonnage externe": 568,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Régression logistique | C=0.01 | aucun",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Régression logistique | C=0.01 | class_weight",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Régression logistique | C=1.0 | aucun",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Régression logistique | C=1.0 | class_weight",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Régression logistique | C=1.0 | SMOTE",
+        "avant": 165397,
+        "après rééchantillonnage externe": 181624,
+        "positifs après": 16511
+      },
+      {
+        "configuration": "Régression logistique | C=1.0 | RandomUnderSampler",
+        "avant": 165397,
+        "après rééchantillonnage externe": 568,
+        "positifs après": 284
+      },
+      {
+        "configuration": "EasyEnsemble | n_estimators=5",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "EasyEnsemble | n_estimators=10",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "RUSBoost | n_estimators=50, max_depth=2",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "RUSBoost | n_estimators=100, max_depth=2",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "XGBoost | n_estimators=100, max_depth=3",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "XGBoost | n_estimators=100, max_depth=5",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Isolation Forest | n_estimators=100, max_samples=256",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Isolation Forest | n_estimators=100, max_samples=2048",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Isolation Forest | n_estimators=300, max_samples=256",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "Isolation Forest | n_estimators=300, max_samples=2048",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "LOF | n_neighbors=10",
+        "avant": 30000,
+        "après rééchantillonnage externe": 30000,
+        "positifs après": 52
+      },
+      {
+        "configuration": "LOF | n_neighbors=20",
+        "avant": 30000,
+        "après rééchantillonnage externe": 30000,
+        "positifs après": 52
+      },
+      {
+        "configuration": "LOF | n_neighbors=50",
+        "avant": 30000,
+        "après rééchantillonnage externe": 30000,
+        "positifs après": 52
+      },
+      {
+        "configuration": "LOF | n_neighbors=100",
+        "avant": 30000,
+        "après rééchantillonnage externe": 30000,
+        "positifs après": 52
+      },
+      {
+        "configuration": "HBOS | n_bins=10, alpha=0.1",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "HBOS | n_bins=50, alpha=0.1",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      },
+      {
+        "configuration": "HBOS | n_bins=200, alpha=0.1",
+        "avant": 165397,
+        "après rééchantillonnage externe": 165397,
+        "positifs après": 284
+      }
+    ]
+  },
+  "ai4i": {
+    "validation": [
+      {
+        "famille": "XGBoost",
+        "nom": "XGBoost | n_estimators=100, max_depth=5 (AI4I)",
+        "pretraitement": "one-hot Type",
+        "desequilibre": "scale_pos_weight (apprentissage)",
+        "n_app": 6000,
+        "ap_val": 0.719863606354,
+        "auc_roc_val": 0.954215381805,
+        "seuil": 0.988007187843,
+        "precision_val": 0.909090909091,
+        "rappel_val": 0.588235294118,
+        "f1_val": 0.714285714286,
+        "alertes_val": 44,
+        "atteint": true,
+        "temps_app_s": 0.050411874981,
+        "temps_score_val_s": 0.002567584015
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=300, max_samples=2048 (AI4I)",
+        "pretraitement": "one-hot Type",
+        "desequilibre": "aucun (non supervisé)",
+        "n_app": 6000,
+        "ap_val": 0.151429965969,
+        "auc_roc_val": 0.781565887224,
+        "seuil": 0.68120677473,
+        "precision_val": 1.0,
+        "rappel_val": 0.029411764706,
+        "f1_val": 0.057142857143,
+        "alertes_val": 2,
+        "atteint": true,
+        "temps_app_s": 0.220591834019,
+        "temps_score_val_s": 0.044665292022
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | class_weight (AI4I)",
+        "pretraitement": "one-hot Type + standard",
+        "desequilibre": "class_weight",
+        "n_app": 6000,
+        "ap_val": 0.407167899542,
+        "auc_roc_val": 0.881051333577,
+        "seuil": 0.97991620401,
+        "precision_val": 0.916666666667,
+        "rappel_val": 0.161764705882,
+        "f1_val": 0.275,
+        "alertes_val": 12,
+        "atteint": true,
+        "temps_app_s": 0.007969583996,
+        "temps_score_val_s": 0.001499374979
+      }
+    ],
+    "test": [
+      {
+        "famille": "XGBoost",
+        "méthode": "XGBoost | n_estimators=100, max_depth=5 (AI4I)",
+        "prétraitement": "one-hot Type",
+        "déséquilibre": "scale_pos_weight (apprentissage)",
+        "n apprentissage fourni": 6000,
+        "seuil": 0.988007187843,
+        "ap": 0.698520651172,
+        "auc_roc": 0.971524479357,
+        "precision": 0.803921568627,
+        "rappel": 0.602941176471,
+        "f1": 0.689075630252,
+        "balanced_accuracy": 0.798882596517,
+        "alertes": 51,
+        "fausses_alertes": 10,
+        "manquees": 27,
+        "objectif validation": "atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.050411874981,
+        "temps score test (s)": 0.002565750008,
+        "sélectionnée sur validation": true
+      },
+      {
+        "famille": "Régression logistique",
+        "méthode": "Régression logistique | C=1.0 | class_weight (AI4I)",
+        "prétraitement": "one-hot Type + standard",
+        "déséquilibre": "class_weight",
+        "n apprentissage fourni": 6000,
+        "seuil": 0.97991620401,
+        "ap": 0.408676563948,
+        "auc_roc": 0.904594446474,
+        "precision": 1.0,
+        "rappel": 0.058823529412,
+        "f1": 0.111111111111,
+        "balanced_accuracy": 0.529411764706,
+        "alertes": 4,
+        "fausses_alertes": 0,
+        "manquees": 64,
+        "objectif validation": "atteint",
+        "objectif test": "atteint",
+        "temps app. (s)": 0.007969583996,
+        "temps score test (s)": 0.001467374997,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "Isolation Forest",
+        "méthode": "Isolation Forest | n_estimators=300, max_samples=2048 (AI4I)",
+        "prétraitement": "one-hot Type",
+        "déséquilibre": "aucun (non supervisé)",
+        "n apprentissage fourni": 6000,
+        "seuil": 0.68120677473,
+        "ap": 0.091948731589,
+        "auc_roc": 0.746452928998,
+        "precision": 0.5,
+        "rappel": 0.014705882353,
+        "f1": 0.028571428571,
+        "balanced_accuracy": 0.507094142005,
+        "alertes": 2,
+        "fausses_alertes": 1,
+        "manquees": 67,
+        "objectif validation": "atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.220591834019,
+        "temps score test (s)": 0.048053209,
+        "sélectionnée sur validation": false
+      }
+    ],
+    "informations": {
+      "observations": 10000,
+      "positifs": 339,
+      "discordances": 27
+    },
+    "matrices": {
+      "XGBoost": [
+        [
+          1922,
+          10
+        ],
+        [
+          27,
+          41
+        ]
+      ],
+      "Régression logistique": [
+        [
+          1932,
+          0
+        ],
+        [
+          64,
+          4
+        ]
+      ],
+      "Isolation Forest": [
+        [
+          1931,
+          1
+        ],
+        [
+          67,
+          1
+        ]
+      ]
+    },
+    "comparaison_seuils_validation": [
+      {
+        "famille": "XGBoost",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.352941176471,
+        "rappel": 0.794117647059,
+        "f1": 0.488687782805,
+        "balanced_accuracy": 0.871437705517,
+        "alertes": 153,
+        "fausses_alertes": 99,
+        "manquees": 14
+      },
+      {
+        "famille": "XGBoost",
+        "règle": "retenu",
+        "seuil": 0.988007187843,
+        "precision": 0.909090909091,
+        "rappel": 0.588235294118,
+        "f1": 0.714285714286,
+        "balanced_accuracy": 0.793082450371,
+        "alertes": 44,
+        "fausses_alertes": 4,
+        "manquees": 28
+      },
+      {
+        "famille": "Régression logistique",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.150837988827,
+        "rappel": 0.794117647059,
+        "f1": 0.253521126761,
+        "balanced_accuracy": 0.818383875289,
+        "alertes": 358,
+        "fausses_alertes": 304,
+        "manquees": 14
+      },
+      {
+        "famille": "Régression logistique",
+        "règle": "retenu",
+        "seuil": 0.97991620401,
+        "precision": 0.916666666667,
+        "rappel": 0.161764705882,
+        "f1": 0.275,
+        "balanced_accuracy": 0.580623553769,
+        "alertes": 12,
+        "fausses_alertes": 1,
+        "manquees": 57
+      },
+      {
+        "famille": "Isolation Forest",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.085510688836,
+        "rappel": 0.529411764706,
+        "f1": 0.147239263804,
+        "balanced_accuracy": 0.665068201194,
+        "alertes": 421,
+        "fausses_alertes": 385,
+        "manquees": 32
+      },
+      {
+        "famille": "Isolation Forest",
+        "règle": "retenu",
+        "seuil": 0.68120677473,
+        "precision": 1.0,
+        "rappel": 0.029411764706,
+        "f1": 0.057142857143,
+        "balanced_accuracy": 0.514705882353,
+        "alertes": 2,
+        "fausses_alertes": 0,
+        "manquees": 66
+      }
+    ],
+    "maxima_validation": [
+      {
+        "famille": "XGBoost",
+        "critère": "f1",
+        "seuil": 0.988007187843,
+        "precision": 0.909090909091,
+        "rappel": 0.588235294118,
+        "f1": 0.714285714286,
+        "balanced_accuracy": 0.793082450371,
+        "alertes": 44.0
+      },
+      {
+        "famille": "XGBoost",
+        "critère": "balanced_accuracy",
+        "seuil": 0.106309175491,
+        "precision": 0.224637681159,
+        "rappel": 0.911764705882,
+        "f1": 0.360465116279,
+        "balanced_accuracy": 0.900499330167,
+        "alertes": 276.0
+      },
+      {
+        "famille": "Régression logistique",
+        "critère": "f1",
+        "seuil": 0.842447865778,
+        "precision": 0.365591397849,
+        "rappel": 0.5,
+        "f1": 0.422360248447,
+        "balanced_accuracy": 0.734730848861,
+        "alertes": 93.0
+      },
+      {
+        "famille": "Régression logistique",
+        "critère": "balanced_accuracy",
+        "seuil": 0.471992752159,
+        "precision": 0.142857142857,
+        "rappel": 0.838235294118,
+        "f1": 0.244111349036,
+        "balanced_accuracy": 0.830608330289,
+        "alertes": 399.0
+      },
+      {
+        "famille": "Isolation Forest",
+        "critère": "f1",
+        "seuil": 0.5664388246,
+        "precision": 0.152173913043,
+        "rappel": 0.205882352941,
+        "f1": 0.175,
+        "balanced_accuracy": 0.582754841067,
+        "alertes": 92.0
+      },
+      {
+        "famille": "Isolation Forest",
+        "critère": "balanced_accuracy",
+        "seuil": 0.459504786351,
+        "precision": 0.069662921348,
+        "rappel": 0.911764705882,
+        "f1": 0.129436325678,
+        "balanced_accuracy": 0.741596638655,
+        "alertes": 890.0
+      }
+    ]
+  },
+  "kdd": {
+    "validation": [
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=4 | aucun",
+        "pretraitement": "colonnes",
+        "desequilibre": "aucun",
+        "n_app": 30000,
+        "ap_val": 0.984501705552,
+        "auc_roc_val": 0.987204974664,
+        "seuil": 0.214285714286,
+        "precision_val": 0.978494623656,
+        "rappel_val": 0.97479521109,
+        "f1_val": 0.976641414141,
+        "alertes_val": 4743,
+        "atteint": true,
+        "temps_app_s": 0.066255582991,
+        "temps_score_val_s": 0.007391833002
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=4 | class_weight",
+        "pretraitement": "colonnes",
+        "desequilibre": "class_weight",
+        "n_app": 30000,
+        "ap_val": 0.984501705552,
+        "auc_roc_val": 0.987204974664,
+        "seuil": 0.293167681742,
+        "precision_val": 0.978494623656,
+        "rappel_val": 0.97479521109,
+        "f1_val": 0.976641414141,
+        "alertes_val": 4743,
+        "atteint": true,
+        "temps_app_s": 0.065421416017,
+        "temps_score_val_s": 0.007023082988
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=8 | aucun",
+        "pretraitement": "colonnes",
+        "desequilibre": "aucun",
+        "n_app": 30000,
+        "ap_val": 0.997872960129,
+        "auc_roc_val": 0.998352221112,
+        "seuil": 0.014516129032,
+        "precision_val": 0.948083067093,
+        "rappel_val": 0.997269481201,
+        "f1_val": 0.972054457979,
+        "alertes_val": 5008,
+        "atteint": true,
+        "temps_app_s": 0.095810750005,
+        "temps_score_val_s": 0.006802165997
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=8 | class_weight",
+        "pretraitement": "colonnes",
+        "desequilibre": "class_weight",
+        "n_app": 30000,
+        "ap_val": 0.99753366692,
+        "auc_roc_val": 0.99807463418,
+        "seuil": 0.02191043745,
+        "precision_val": 0.947883386581,
+        "rappel_val": 0.997059441294,
+        "f1_val": 0.971849728734,
+        "alertes_val": 5008,
+        "atteint": true,
+        "temps_app_s": 0.093910125026,
+        "temps_score_val_s": 0.006654041994
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=8 | RandomOverSampler",
+        "pretraitement": "colonnes",
+        "desequilibre": "RandomOverSampler",
+        "n_app": 30000,
+        "ap_val": 0.997874196109,
+        "auc_roc_val": 0.999031231185,
+        "seuil": 0.010579345088,
+        "precision_val": 0.853479196557,
+        "rappel_val": 0.999579920185,
+        "f1_val": 0.920770049337,
+        "alertes_val": 5576,
+        "atteint": true,
+        "temps_app_s": 0.107181792002,
+        "temps_score_val_s": 0.006976667006
+      },
+      {
+        "famille": "Arbre de décision",
+        "nom": "Arbre de décision | max_depth=8 | RandomUnderSampler",
+        "pretraitement": "colonnes",
+        "desequilibre": "RandomUnderSampler",
+        "n_app": 30000,
+        "ap_val": 0.996301493402,
+        "auc_roc_val": 0.998440049652,
+        "seuil": 0.010172143975,
+        "precision_val": 0.849161013924,
+        "rappel_val": 0.99915984037,
+        "f1_val": 0.918073916819,
+        "alertes_val": 5602,
+        "atteint": true,
+        "temps_app_s": 0.073092791019,
+        "temps_score_val_s": 0.006382791995
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=0.01 | aucun",
+        "pretraitement": "colonnes_standard",
+        "desequilibre": "aucun",
+        "n_app": 30000,
+        "ap_val": 0.995729810678,
+        "auc_roc_val": 0.998818507385,
+        "seuil": 0.033000765325,
+        "precision_val": 0.812446572064,
+        "rappel_val": 0.998109640832,
+        "f1_val": 0.89575871819,
+        "alertes_val": 5849,
+        "atteint": true,
+        "temps_app_s": 0.067679667001,
+        "temps_score_val_s": 0.006777792005
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=0.01 | class_weight",
+        "pretraitement": "colonnes_standard",
+        "desequilibre": "class_weight",
+        "n_app": 30000,
+        "ap_val": 0.995667542381,
+        "auc_roc_val": 0.998823149793,
+        "seuil": 0.044697084466,
+        "precision_val": 0.815793991416,
+        "rappel_val": 0.998109640832,
+        "f1_val": 0.897789533346,
+        "alertes_val": 5825,
+        "atteint": true,
+        "temps_app_s": 0.058559583995,
+        "temps_score_val_s": 0.006513208995
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | aucun",
+        "pretraitement": "colonnes_standard",
+        "desequilibre": "aucun",
+        "n_app": 30000,
+        "ap_val": 0.998288762107,
+        "auc_roc_val": 0.999542171612,
+        "seuil": 0.003292883625,
+        "precision_val": 0.841584158416,
+        "rappel_val": 0.999789960092,
+        "f1_val": 0.913890755496,
+        "alertes_val": 5656,
+        "atteint": true,
+        "temps_app_s": 0.206826459005,
+        "temps_score_val_s": 0.006621582987
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | class_weight",
+        "pretraitement": "colonnes_standard",
+        "desequilibre": "class_weight",
+        "n_app": 30000,
+        "ap_val": 0.998274721274,
+        "auc_roc_val": 0.999576699515,
+        "seuil": 0.002934813065,
+        "precision_val": 0.809005947324,
+        "rappel_val": 1.0,
+        "f1_val": 0.894420439602,
+        "alertes_val": 5885,
+        "atteint": true,
+        "temps_app_s": 0.15504487502,
+        "temps_score_val_s": 0.006769415981
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | RandomOverSampler",
+        "pretraitement": "colonnes_standard",
+        "desequilibre": "RandomOverSampler",
+        "n_app": 30000,
+        "ap_val": 0.998284189895,
+        "auc_roc_val": 0.999576090199,
+        "seuil": 0.00297861419,
+        "precision_val": 0.820548181348,
+        "rappel_val": 0.999789960092,
+        "f1_val": 0.90134444234,
+        "alertes_val": 5801,
+        "atteint": true,
+        "temps_app_s": 0.249380542024,
+        "temps_score_val_s": 0.00706891701
+      },
+      {
+        "famille": "Régression logistique",
+        "nom": "Régression logistique | C=1.0 | RandomUnderSampler",
+        "pretraitement": "colonnes_standard",
+        "desequilibre": "RandomUnderSampler",
+        "n_app": 30000,
+        "ap_val": 0.998270044687,
+        "auc_roc_val": 0.999565499708,
+        "seuil": 0.00413703876,
+        "precision_val": 0.828258221681,
+        "rappel_val": 0.999789960092,
+        "f1_val": 0.905976398934,
+        "alertes_val": 5747,
+        "atteint": true,
+        "temps_app_s": 0.121992917004,
+        "temps_score_val_s": 0.006590917008
+      },
+      {
+        "famille": "EasyEnsemble",
+        "nom": "EasyEnsemble | n_estimators=5",
+        "pretraitement": "colonnes",
+        "desequilibre": "sous-échantillonnage interne",
+        "n_app": 30000,
+        "ap_val": 0.999434200869,
+        "auc_roc_val": 0.999615565167,
+        "seuil": 0.405317114363,
+        "precision_val": 0.822421834514,
+        "rappel_val": 1.0,
+        "f1_val": 0.902559241706,
+        "alertes_val": 5789,
+        "atteint": true,
+        "temps_app_s": 2.451784125005,
+        "temps_score_val_s": 0.279120416992
+      },
+      {
+        "famille": "EasyEnsemble",
+        "nom": "EasyEnsemble | n_estimators=10",
+        "pretraitement": "colonnes",
+        "desequilibre": "sous-échantillonnage interne",
+        "n_app": 30000,
+        "ap_val": 0.999432818612,
+        "auc_roc_val": 0.99961420146,
+        "seuil": 0.407594238702,
+        "precision_val": 0.818322447576,
+        "rappel_val": 1.0,
+        "f1_val": 0.900085074204,
+        "alertes_val": 5818,
+        "atteint": true,
+        "temps_app_s": 4.616589999991,
+        "temps_score_val_s": 0.383576082997
+      },
+      {
+        "famille": "RUSBoost",
+        "nom": "RUSBoost | n_estimators=50, max_depth=2",
+        "pretraitement": "colonnes",
+        "desequilibre": "sous-échantillonnage interne",
+        "n_app": 30000,
+        "ap_val": 0.999823380585,
+        "auc_roc_val": 0.999879602073,
+        "seuil": 0.304810111195,
+        "precision_val": 0.836290180924,
+        "rappel_val": 1.0,
+        "f1_val": 0.910847522479,
+        "alertes_val": 5693,
+        "atteint": true,
+        "temps_app_s": 0.51522029101,
+        "temps_score_val_s": 0.016625083983
+      },
+      {
+        "famille": "RUSBoost",
+        "nom": "RUSBoost | n_estimators=100, max_depth=2",
+        "pretraitement": "colonnes",
+        "desequilibre": "sous-échantillonnage interne",
+        "n_app": 30000,
+        "ap_val": 0.999823380585,
+        "auc_roc_val": 0.999879602073,
+        "seuil": 0.304810111195,
+        "precision_val": 0.836290180924,
+        "rappel_val": 1.0,
+        "f1_val": 0.910847522479,
+        "alertes_val": 5693,
+        "atteint": true,
+        "temps_app_s": 0.517792875005,
+        "temps_score_val_s": 0.016825958999
+      },
+      {
+        "famille": "XGBoost",
+        "nom": "XGBoost | n_estimators=100, max_depth=3",
+        "pretraitement": "colonnes",
+        "desequilibre": "scale_pos_weight (apprentissage)",
+        "n_app": 30000,
+        "ap_val": 0.999965980753,
+        "auc_roc_val": 0.999977295728,
+        "seuil": 0.044918864965,
+        "precision_val": 0.971038139914,
+        "rappel_val": 1.0,
+        "f1_val": 0.985306291391,
+        "alertes_val": 4903,
+        "atteint": true,
+        "temps_app_s": 0.258197542018,
+        "temps_score_val_s": 0.010002958996
+      },
+      {
+        "famille": "XGBoost",
+        "nom": "XGBoost | n_estimators=100, max_depth=5",
+        "pretraitement": "colonnes",
+        "desequilibre": "scale_pos_weight (apprentissage)",
+        "n_app": 30000,
+        "ap_val": 0.999984712229,
+        "auc_roc_val": 0.999989728674,
+        "seuil": 0.011448272504,
+        "precision_val": 0.966700507614,
+        "rappel_val": 1.0,
+        "f1_val": 0.983068346066,
+        "alertes_val": 4925,
+        "atteint": true,
+        "temps_app_s": 0.312394957989,
+        "temps_score_val_s": 0.011026333988
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=100, max_samples=256",
+        "pretraitement": "one-hot + numériques non standardisées",
+        "desequilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n_app": 30000,
+        "ap_val": 0.506190787031,
+        "auc_roc_val": 0.692619289335,
+        "seuil": 0.547488957082,
+        "precision_val": 0.808695652174,
+        "rappel_val": 0.019533711405,
+        "f1_val": 0.038146021329,
+        "alertes_val": 115,
+        "atteint": true,
+        "temps_app_s": 0.103747916,
+        "temps_score_val_s": 0.036117208016
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=100, max_samples=2048",
+        "pretraitement": "one-hot + numériques non standardisées",
+        "desequilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n_app": 30000,
+        "ap_val": 0.484651647699,
+        "auc_roc_val": 0.64344653582,
+        "seuil": 0.443062354507,
+        "precision_val": 0.809027777778,
+        "rappel_val": 0.048939298467,
+        "f1_val": 0.09229550406,
+        "alertes_val": 288,
+        "atteint": true,
+        "temps_app_s": 0.115448208002,
+        "temps_score_val_s": 0.042348000017
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=300, max_samples=256",
+        "pretraitement": "one-hot + numériques non standardisées",
+        "desequilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n_app": 30000,
+        "ap_val": 0.532892443074,
+        "auc_roc_val": 0.717100704169,
+        "seuil": 0.530158629974,
+        "precision_val": 0.812834224599,
+        "rappel_val": 0.031926065953,
+        "f1_val": 0.061438965238,
+        "alertes_val": 187,
+        "atteint": true,
+        "temps_app_s": 0.257706792007,
+        "temps_score_val_s": 0.09450908401
+      },
+      {
+        "famille": "Isolation Forest",
+        "nom": "Isolation Forest | n_estimators=300, max_samples=2048",
+        "pretraitement": "one-hot + numériques non standardisées",
+        "desequilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n_app": 30000,
+        "ap_val": 0.518912481902,
+        "auc_roc_val": 0.683183974039,
+        "seuil": 0.43153275678,
+        "precision_val": 0.801075268817,
+        "rappel_val": 0.06259189246,
+        "f1_val": 0.116111435808,
+        "alertes_val": 372,
+        "atteint": true,
+        "temps_app_s": 0.32399116701,
+        "temps_score_val_s": 0.099633958016
+      },
+      {
+        "famille": "LOF",
+        "nom": "LOF | n_neighbors=10",
+        "pretraitement": "one-hot + standardisation numérique",
+        "desequilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n_app": 30000,
+        "ap_val": 0.348963219966,
+        "auc_roc_val": 0.436102619133,
+        "seuil": 0.911106325525,
+        "precision_val": 0.396915381409,
+        "rappel_val": 1.0,
+        "f1_val": 0.568274051086,
+        "alertes_val": 11995,
+        "atteint": false,
+        "temps_app_s": 0.526883083017,
+        "temps_score_val_s": 0.232766832982
+      },
+      {
+        "famille": "LOF",
+        "nom": "LOF | n_neighbors=20",
+        "pretraitement": "one-hot + standardisation numérique",
+        "desequilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n_app": 30000,
+        "ap_val": 0.399400568433,
+        "auc_roc_val": 0.470148553256,
+        "seuil": 0.957646846883,
+        "precision_val": 0.398337810611,
+        "rappel_val": 0.996639361479,
+        "f1_val": 0.56918371019,
+        "alertes_val": 11912,
+        "atteint": false,
+        "temps_app_s": 0.570489541977,
+        "temps_score_val_s": 0.248623041
+      },
+      {
+        "famille": "LOF",
+        "nom": "LOF | n_neighbors=50",
+        "pretraitement": "one-hot + standardisation numérique",
+        "desequilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n_app": 30000,
+        "ap_val": 0.44929251664,
+        "auc_roc_val": 0.492083230584,
+        "seuil": 3.064195435521,
+        "precision_val": 0.801538461538,
+        "rappel_val": 0.10943079185,
+        "f1_val": 0.192570689337,
+        "alertes_val": 650,
+        "atteint": true,
+        "temps_app_s": 0.583502499998,
+        "temps_score_val_s": 0.249061292008
+      },
+      {
+        "famille": "LOF",
+        "nom": "LOF | n_neighbors=100",
+        "pretraitement": "one-hot + standardisation numérique",
+        "desequilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n_app": 30000,
+        "ap_val": 0.42875537289,
+        "auc_roc_val": 0.464008911797,
+        "seuil": 3.850746452759,
+        "precision_val": 0.812199036918,
+        "rappel_val": 0.106280193237,
+        "f1_val": 0.187964338782,
+        "alertes_val": 623,
+        "atteint": true,
+        "temps_app_s": 0.709827166982,
+        "temps_score_val_s": 0.283937291999
+      }
+    ],
+    "test": [
+      {
+        "famille": "XGBoost",
+        "méthode": "XGBoost | n_estimators=100, max_depth=3",
+        "prétraitement": "colonnes",
+        "déséquilibre": "scale_pos_weight (apprentissage)",
+        "n apprentissage fourni": 30000,
+        "seuil": 0.044918864965,
+        "ap": 0.999948450916,
+        "auc_roc": 0.999965643716,
+        "precision": 0.971609477124,
+        "rappel": 0.999369747899,
+        "f1": 0.985294117647,
+        "balanced_accuracy": 0.990085426436,
+        "alertes": 4896,
+        "fausses_alertes": 139,
+        "manquees": 3,
+        "objectif validation": "atteint",
+        "objectif test": "atteint",
+        "temps app. (s)": 0.258197542018,
+        "temps score test (s)": 0.009189792007,
+        "sélectionnée sur validation": true
+      },
+      {
+        "famille": "RUSBoost",
+        "méthode": "RUSBoost | n_estimators=50, max_depth=2",
+        "prétraitement": "colonnes",
+        "déséquilibre": "sous-échantillonnage interne",
+        "n apprentissage fourni": 30000,
+        "seuil": 0.304810111195,
+        "ap": 0.999834051316,
+        "auc_roc": 0.999891693556,
+        "precision": 0.840989399293,
+        "rappel": 1.0,
+        "f1": 0.913627639155,
+        "balanced_accuracy": 0.937845303867,
+        "alertes": 5660,
+        "fausses_alertes": 900,
+        "manquees": 0,
+        "objectif validation": "atteint",
+        "objectif test": "atteint",
+        "temps app. (s)": 0.51522029101,
+        "temps score test (s)": 0.016483374988,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "EasyEnsemble",
+        "méthode": "EasyEnsemble | n_estimators=5",
+        "prétraitement": "colonnes",
+        "déséquilibre": "sous-échantillonnage interne",
+        "n apprentissage fourni": 30000,
+        "seuil": 0.405317114363,
+        "ap": 0.999472347423,
+        "auc_roc": 0.999637372905,
+        "precision": 0.823071601522,
+        "rappel": 0.999789915966,
+        "f1": 0.90286473155,
+        "balanced_accuracy": 0.929245786712,
+        "alertes": 5782,
+        "fausses_alertes": 1023,
+        "manquees": 1,
+        "objectif validation": "atteint",
+        "objectif test": "atteint",
+        "temps app. (s)": 2.451784125005,
+        "temps score test (s)": 0.246871457988,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "Régression logistique",
+        "méthode": "Régression logistique | C=1.0 | class_weight",
+        "prétraitement": "colonnes_standard",
+        "déséquilibre": "class_weight",
+        "n apprentissage fourni": 30000,
+        "seuil": 0.002934813065,
+        "ap": 0.994472575774,
+        "auc_roc": 0.998898451646,
+        "precision": 0.811465620201,
+        "rappel": 0.999159663866,
+        "f1": 0.895584219942,
+        "balanced_accuracy": 0.923267677237,
+        "alertes": 5861,
+        "fausses_alertes": 1105,
+        "manquees": 4,
+        "objectif validation": "atteint",
+        "objectif test": "atteint",
+        "temps app. (s)": 0.15504487502,
+        "temps score test (s)": 0.008901708003,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "Arbre de décision",
+        "méthode": "Arbre de décision | max_depth=8 | RandomOverSampler",
+        "prétraitement": "colonnes",
+        "déséquilibre": "RandomOverSampler",
+        "n apprentissage fourni": 30000,
+        "seuil": 0.010579345088,
+        "ap": 0.996953999607,
+        "auc_roc": 0.998659060309,
+        "precision": 0.849009459218,
+        "rappel": 0.999369747899,
+        "f1": 0.918073916819,
+        "balanced_accuracy": 0.941259459585,
+        "alertes": 5603,
+        "fausses_alertes": 846,
+        "manquees": 3,
+        "objectif validation": "atteint",
+        "objectif test": "atteint",
+        "temps app. (s)": 0.107181792002,
+        "temps score test (s)": 0.007658750023,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "LOF",
+        "méthode": "LOF | n_neighbors=50",
+        "prétraitement": "one-hot + standardisation numérique",
+        "déséquilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n apprentissage fourni": 30000,
+        "seuil": 3.064195435521,
+        "ap": 0.443936297681,
+        "auc_roc": 0.493801969683,
+        "precision": 0.782012195122,
+        "rappel": 0.107773109244,
+        "f1": 0.189438700148,
+        "balanced_accuracy": 0.544010864014,
+        "alertes": 656,
+        "fausses_alertes": 143,
+        "manquees": 4247,
+        "objectif validation": "atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.583502499998,
+        "temps score test (s)": 0.24103116701,
+        "sélectionnée sur validation": false
+      },
+      {
+        "famille": "Isolation Forest",
+        "méthode": "Isolation Forest | n_estimators=300, max_samples=2048",
+        "prétraitement": "one-hot + numériques non standardisées",
+        "déséquilibre": "aucun (non supervisé, apprentissage contaminé)",
+        "n apprentissage fourni": 30000,
+        "seuil": 0.43153275678,
+        "ap": 0.511615007178,
+        "auc_roc": 0.678217100376,
+        "precision": 0.772727272727,
+        "rappel": 0.060714285714,
+        "f1": 0.112582781457,
+        "balanced_accuracy": 0.524486977111,
+        "alertes": 374,
+        "fausses_alertes": 85,
+        "manquees": 4471,
+        "objectif validation": "atteint",
+        "objectif test": "non atteint",
+        "temps app. (s)": 0.32399116701,
+        "temps score test (s)": 0.105465250002,
+        "sélectionnée sur validation": false
+      }
+    ],
+    "informations": {
+      "source": "https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html",
+      "archive_officielle": "https://kdd.ics.uci.edu/databases/kddcup99/kddcup.data_10_percent.gz",
+      "recuperation": "sklearn.datasets.fetch_kddcup99(percent10=True), export CSV gzip ASCII",
+      "fichier_local": "data/kddcup99_10_percent.csv.gz",
+      "sha256_fichier_fourni": "7e704c56479ba6179ecb14f79bbc25a77ac07247e336f82771f8c3f20602b388",
+      "effectifs_bruts": {
+        "total": 494021,
+        "normales": 97278,
+        "intrusions": 396743,
+        "proportion_intrusions": 0.8030893423558918
+      },
+      "attaques_brutes": {
+        "smurf.": 280790,
+        "neptune.": 107201,
+        "normal.": 97278,
+        "back.": 2203,
+        "satan.": 1589,
+        "ipsweep.": 1247,
+        "portsweep.": 1040,
+        "warezclient.": 1020,
+        "teardrop.": 979,
+        "pod.": 264,
+        "nmap.": 231,
+        "guess_passwd.": 53,
+        "buffer_overflow.": 30,
+        "land.": 21,
+        "warezmaster.": 20,
+        "imap.": 12,
+        "rootkit.": 10,
+        "loadmodule.": 9,
+        "ftp_write.": 8,
+        "multihop.": 7,
+        "phf.": 4,
+        "perl.": 3,
+        "spy.": 2
+      },
+      "conflits_binaires_lignes": 2,
+      "conflits_binaires_groupes": 1,
+      "conflits_etiquettes_detaillees_lignes": 4,
+      "conflits_etiquettes_detaillees_groupes": 2,
+      "regle_dedoublonnage": "Exclure tout groupe prédictif à cible binaire contradictoire, puis garder un représentant par vecteur à cible binaire univoque, avant toute partition.",
+      "cible": "intrusion = 1 si attaque != normal. ; normale = 0, sans inversion",
+      "limites": "Corpus historique de connexions simulées, attaques smurf/neptune dominantes dans le brut et nombreuses répétitions ; le dédoublonnage change la prévalence. La stratification aléatoire ne teste ni le futur ni des attaques inédites.",
+      "doublons_univoques_retires": 348436,
+      "effectifs_dedoublonnes": {
+        "total": 145583,
+        "normales": 87831,
+        "intrusions": 57752,
+        "proportion_intrusions": 0.39669466902042133
+      },
+      "effectifs_echantillon": {
+        "total": 60000,
+        "normales": 36198,
+        "intrusions": 23802,
+        "proportion_intrusions": 0.3967
+      },
+      "graine": 42,
+      "limite_echantillon": 60000,
+      "limite_apprentissage": 30000,
+      "tailles_partitions": {
+        "app": 36000,
+        "val": 12000,
+        "test": 12000
+      },
+      "effectifs_apprentissage_effectif": {
+        "total": 30000,
+        "normales": 18099,
+        "intrusions": 11901,
+        "proportion_intrusions": 0.3967
+      },
+      "apprentissage_commun": "Même sous-échantillon stratifié pour les sept familles",
+      "precision_min": 0.8,
+      "choix_precision_min": "0.8 choisi a priori à titre pédagogique, non imposé spécifiquement à KDD",
+      "sampling_strategy": "auto : équilibrer la minorité, sans inverser la cible intrusion=1",
+      "poids_positif_xgboost": 1.5207965717166625,
+      "sur_echantillonnage": "RandomOverSampler : copies de vecteurs, catégories préservées"
+    },
+    "matrices": {
+      "XGBoost": [
+        [
+          7101,
+          139
+        ],
+        [
+          3,
+          4757
+        ]
+      ],
+      "RUSBoost": [
+        [
+          6340,
+          900
+        ],
+        [
+          0,
+          4760
+        ]
+      ],
+      "EasyEnsemble": [
+        [
+          6217,
+          1023
+        ],
+        [
+          1,
+          4759
+        ]
+      ],
+      "Régression logistique": [
+        [
+          6135,
+          1105
+        ],
+        [
+          4,
+          4756
+        ]
+      ],
+      "Arbre de décision": [
+        [
+          6394,
+          846
+        ],
+        [
+          3,
+          4757
+        ]
+      ],
+      "LOF": [
+        [
+          7097,
+          143
+        ],
+        [
+          4247,
+          513
+        ]
+      ],
+      "Isolation Forest": [
+        [
+          7155,
+          85
+        ],
+        [
+          4471,
+          289
+        ]
+      ]
+    },
+    "comparaison_seuils_validation": [
+      {
+        "famille": "XGBoost",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.997272345783,
+        "rappel": 0.998319680739,
+        "f1": 0.997795738428,
+        "balanced_accuracy": 0.998261926293,
+        "alertes": 4766,
+        "fausses_alertes": 13,
+        "manquees": 8
+      },
+      {
+        "famille": "XGBoost",
+        "règle": "retenu",
+        "seuil": 0.044918864965,
+        "precision": 0.971038139914,
+        "rappel": 1.0,
+        "f1": 0.985306291391,
+        "balanced_accuracy": 0.990192015472,
+        "alertes": 4903,
+        "fausses_alertes": 142,
+        "manquees": 0
+      },
+      {
+        "famille": "RUSBoost",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.996424815983,
+        "rappel": 0.995169082126,
+        "f1": 0.995796553174,
+        "balanced_accuracy": 0.996410345732,
+        "alertes": 4755,
+        "fausses_alertes": 17,
+        "manquees": 23
+      },
+      {
+        "famille": "RUSBoost",
+        "règle": "retenu",
+        "seuil": 0.304810111195,
+        "precision": 0.836290180924,
+        "rappel": 1.0,
+        "f1": 0.910847522479,
+        "balanced_accuracy": 0.935626467744,
+        "alertes": 5693,
+        "fausses_alertes": 932,
+        "manquees": 0
+      },
+      {
+        "famille": "EasyEnsemble",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.987810004203,
+        "rappel": 0.987187565637,
+        "f1": 0.987498686837,
+        "balanced_accuracy": 0.989587704631,
+        "alertes": 4758,
+        "fausses_alertes": 58,
+        "manquees": 61
+      },
+      {
+        "famille": "EasyEnsemble",
+        "règle": "retenu",
+        "seuil": 0.405317114363,
+        "precision": 0.822421834514,
+        "rappel": 1.0,
+        "f1": 0.902559241706,
+        "balanced_accuracy": 0.928995717641,
+        "alertes": 5789,
+        "fausses_alertes": 1028,
+        "manquees": 0
+      },
+      {
+        "famille": "Régression logistique",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.992041884817,
+        "rappel": 0.994959042218,
+        "f1": 0.993498322148,
+        "balanced_accuracy": 0.994854849193,
+        "alertes": 4775,
+        "fausses_alertes": 38,
+        "manquees": 24
+      },
+      {
+        "famille": "Régression logistique",
+        "règle": "retenu",
+        "seuil": 0.002934813065,
+        "precision": 0.809005947324,
+        "rappel": 1.0,
+        "f1": 0.894420439602,
+        "balanced_accuracy": 0.922364967537,
+        "alertes": 5885,
+        "fausses_alertes": 1124,
+        "manquees": 0
+      },
+      {
+        "famille": "Arbre de décision",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.996848077327,
+        "rappel": 0.996429321571,
+        "f1": 0.996638655462,
+        "balanced_accuracy": 0.997178606082,
+        "alertes": 4759,
+        "fausses_alertes": 15,
+        "manquees": 17
+      },
+      {
+        "famille": "Arbre de décision",
+        "règle": "retenu",
+        "seuil": 0.010579345088,
+        "precision": 0.853479196557,
+        "rappel": 0.999579920185,
+        "f1": 0.920770049337,
+        "balanced_accuracy": 0.943359513898,
+        "alertes": 5576,
+        "fausses_alertes": 817,
+        "manquees": 2
+      },
+      {
+        "famille": "LOF",
+        "règle": "défaut",
+        "seuil": 1.5,
+        "precision": 0.47528774543,
+        "rappel": 0.147448015123,
+        "f1": 0.225072138506,
+        "balanced_accuracy": 0.520194514538,
+        "alertes": 1477,
+        "fausses_alertes": 775,
+        "manquees": 4059
+      },
+      {
+        "famille": "LOF",
+        "règle": "retenu",
+        "seuil": 3.064195435521,
+        "precision": 0.801538461538,
+        "rappel": 0.10943079185,
+        "f1": 0.192570689337,
+        "balanced_accuracy": 0.545805325474,
+        "alertes": 650,
+        "fausses_alertes": 129,
+        "manquees": 4240
+      },
+      {
+        "famille": "Isolation Forest",
+        "règle": "défaut",
+        "seuil": 0.5,
+        "precision": 0.9,
+        "rappel": 0.003780718336,
+        "f1": 0.00752980548,
+        "balanced_accuracy": 0.501752218541,
+        "alertes": 20,
+        "fausses_alertes": 2,
+        "manquees": 4743
+      },
+      {
+        "famille": "Isolation Forest",
+        "règle": "retenu",
+        "seuil": 0.43153275678,
+        "precision": 0.801075268817,
+        "rappel": 0.06259189246,
+        "f1": 0.116111435808,
+        "balanced_accuracy": 0.526184743025,
+        "alertes": 372,
+        "fausses_alertes": 74,
+        "manquees": 4463
+      }
+    ],
+    "maxima_validation": [
+      {
+        "famille": "XGBoost",
+        "critère": "f1",
+        "seuil": 0.502865076065,
+        "precision": 0.997272345783,
+        "rappel": 0.998319680739,
+        "f1": 0.997795738428,
+        "balanced_accuracy": 0.998261926293,
+        "alertes": 4766.0
+      },
+      {
+        "famille": "XGBoost",
+        "critère": "balanced_accuracy",
+        "seuil": 0.502865076065,
+        "precision": 0.997272345783,
+        "rappel": 0.998319680739,
+        "f1": 0.997795738428,
+        "balanced_accuracy": 0.998261926293,
+        "alertes": 4766.0
+      },
+      {
+        "famille": "RUSBoost",
+        "critère": "f1",
+        "seuil": 0.513795710255,
+        "precision": 0.997473152243,
+        "rappel": 0.994959042218,
+        "f1": 0.996214511041,
+        "balanced_accuracy": 0.996650677346,
+        "alertes": 4749.0
+      },
+      {
+        "famille": "RUSBoost",
+        "critère": "balanced_accuracy",
+        "seuil": 0.513795710255,
+        "precision": 0.997473152243,
+        "rappel": 0.994959042218,
+        "f1": 0.996214511041,
+        "balanced_accuracy": 0.996650677346,
+        "alertes": 4749.0
+      },
+      {
+        "famille": "EasyEnsemble",
+        "critère": "f1",
+        "seuil": 0.497388308171,
+        "precision": 0.987641390867,
+        "rappel": 0.990338164251,
+        "f1": 0.988987939171,
+        "balanced_accuracy": 0.991093933624,
+        "alertes": 4774.0
+      },
+      {
+        "famille": "EasyEnsemble",
+        "critère": "balanced_accuracy",
+        "seuil": 0.48092389359,
+        "precision": 0.980165289256,
+        "rappel": 0.996429321571,
+        "f1": 0.988230392667,
+        "balanced_accuracy": 0.991583910682,
+        "alertes": 4840.0
+      },
+      {
+        "famille": "Régression logistique",
+        "critère": "f1",
+        "seuil": 0.539969863434,
+        "precision": 0.992873611402,
+        "rappel": 0.994959042218,
+        "f1": 0.9939152329,
+        "balanced_accuracy": 0.995131130447,
+        "alertes": 4771.0
+      },
+      {
+        "famille": "Régression logistique",
+        "critère": "balanced_accuracy",
+        "seuil": 0.539969863434,
+        "precision": 0.992873611402,
+        "rappel": 0.994959042218,
+        "f1": 0.9939152329,
+        "balanced_accuracy": 0.995131130447,
+        "alertes": 4771.0
+      },
+      {
+        "famille": "Arbre de décision",
+        "critère": "f1",
+        "seuil": 0.333333333333,
+        "precision": 0.996848739496,
+        "rappel": 0.996639361479,
+        "f1": 0.996744039492,
+        "balanced_accuracy": 0.997283626036,
+        "alertes": 4760.0
+      },
+      {
+        "famille": "Arbre de décision",
+        "critère": "balanced_accuracy",
+        "seuil": 0.333333333333,
+        "precision": 0.996848739496,
+        "rappel": 0.996639361479,
+        "f1": 0.996744039492,
+        "balanced_accuracy": 0.997283626036,
+        "alertes": 4760.0
+      },
+      {
+        "famille": "LOF",
+        "critère": "f1",
+        "seuil": 0.956602851386,
+        "precision": 0.39733935743,
+        "rappel": 0.997479521109,
+        "f1": 0.568300125651,
+        "balanced_accuracy": 0.501226291843,
+        "alertes": 11952.0
+      },
+      {
+        "famille": "LOF",
+        "critère": "balanced_accuracy",
+        "seuil": 4.567942162116,
+        "precision": 0.904580152672,
+        "rappel": 0.099558916194,
+        "f1": 0.179375591296,
+        "balanced_accuracy": 0.546325942418,
+        "alertes": 524.0
+      },
+      {
+        "famille": "Isolation Forest",
+        "critère": "f1",
+        "seuil": 0.330680345442,
+        "precision": 0.596790371113,
+        "rappel": 0.999789960092,
+        "f1": 0.747428750883,
+        "balanced_accuracy": 0.777764851575,
+        "alertes": 7976.0
+      },
+      {
+        "famille": "Isolation Forest",
+        "critère": "balanced_accuracy",
+        "seuil": 0.330680345442,
+        "precision": 0.596790371113,
+        "rappel": 0.999789960092,
+        "f1": 0.747428750883,
+        "balanced_accuracy": 0.777764851575,
+        "alertes": 7976.0
+      }
+    ]
+  }
+}
