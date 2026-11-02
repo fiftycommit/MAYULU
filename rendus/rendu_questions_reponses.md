@@ -71,7 +71,7 @@ EasyEnsemble compare 5 et 10 ensembles, chacun avec un AdaBoost de 50 souches. R
 
 LOF Credit Card utilise un sous-échantillon stratifié fixe : 30 000 lignes dont 52 fraudes. Validation et test restent complets. Sur AI4I, on transfère les réglages retenus, sans nouvelle grille.
 
-Le meilleur supervisé global sur Credit Card, ensembles compris, et IF sont transférés à AI4I avec leurs hyperparamètres conservés. La logistique reste une référence historique, pas la gagnante globale de la comparaison étendue Credit Card. Les transformations et modèles sont réajustés sur l’apprentissage AI4I ; les seuils sont choisis à nouveau sur sa validation sous précision ≥ 90 %. Pour XGBoost, `scale_pos_weight` est conservé depuis Credit Card, conformément au transfert demandé : il n’est ni recalculé sur AI4I ni réglé sur son test.
+Le meilleur supervisé global sur Credit Card, ensembles compris, et IF sont transférés à AI4I avec leurs hyperparamètres conservés. Le classique de référence ({classique}) est conservé, sans être la gagnante globale de la comparaison étendue Credit Card. Les transformations et modèles sont réajustés sur l’apprentissage AI4I ; les seuils sont choisis à nouveau sur sa validation sous précision ≥ 90 %. Pour XGBoost, `scale_pos_weight` est conservé depuis Credit Card, conformément au transfert demandé : il n’est ni recalculé sur AI4I ni réglé sur son test.
 
 </details>
 
@@ -298,18 +298,18 @@ Résultats de validation des deux familles classiques (les lignes non conformes 
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Arbre de décision  /  max_depth=4  /  aucun | 165 397 | 0,7206 | 0,8841 | 0,600000 | 0,8590 | 0,7053 | 0,7746 | 78 | oui | 1,6652 | 0,0062 |
-| Arbre de décision  /  max_depth=4  /  class_weight | 165 397 | 0,5083 | 0,9267 | 0,999167 | 0,6293 | 0,7684 | 0,6919 | 116 | non | 1,6674 | 0,0053 |
-| Arbre de décision  /  max_depth=8  /  aucun | 165 397 | 0,6387 | 0,8716 | 1,000000 | 0,8452 | 0,7474 | 0,7933 | 84 | non | 3,3071 | 0,0032 |
-| Arbre de décision  /  max_depth=8  /  class_weight | 165 397 | 0,5371 | 0,9147 | 0,999494 | 0,6577 | 0,7684 | 0,7087 | 111 | non | 2,8294 | 0,0071 |
-| Arbre de décision  /  max_depth=8  /  SMOTE | 165 397 | 0,5732 | 0,9133 | 0,994286 | 0,7579 | 0,7579 | 0,7579 | 95 | non | 3,5853 | 0,0074 |
-| Arbre de décision  /  max_depth=8  /  RandomUnderSampler | 165 397 | 0,0195 | 0,9083 | 1,000000 | 0,0215 | 0,8947 | 0,0421 | 3 947 | non | 0,0198 | 0,0028 |
-| Régression logistique  /  C=0.01  /  aucun | 165 397 | 0,7261 | 0,9658 | 0,999837 | 0,8571 | 0,2526 | 0,3902 | 28 | oui | 0,1411 | 0,0040 |
-| Régression logistique  /  C=0.01  /  class_weight | 165 397 | 0,6780 | 0,9613 | 0,999920 | 0,8022 | 0,7684 | 0,7849 | 91 | non | 0,1965 | 0,0035 |
-| Régression logistique  /  C=1.0  /  aucun | 165 397 | 0,7239 | 0,9636 | 0,423638 | 0,8514 | 0,6632 | 0,7456 | 74 | oui | 0,1536 | 0,0036 |
-| Régression logistique  /  C=1.0  /  class_weight | 165 397 | 0,6762 | 0,9619 | 0,999968 | 0,8000 | 0,8000 | 0,8000 | 95 | non | 0,2149 | 0,0053 |
-| Régression logistique  /  C=1.0  /  SMOTE | 165 397 | 0,7221 | 0,9644 | 1,000000 | 0,8750 | 0,2211 | 0,3529 | 24 | oui | 0,3229 | 0,0038 |
-| Régression logistique  /  C=1.0  /  RandomUnderSampler | 165 397 | 0,2897 | 0,9527 | 0,999993 | 0,3490 | 0,5474 | 0,4262 | 149 | non | 0,0325 | 0,0038 |
+| Arbre de décision  /  max_depth=4  /  aucun | 165 397 | 0,7206 | 0,8841 | 0,600000 | 0,8590 | 0,7053 | 0,7746 | 78 | oui | 2,3038 | 0,0093 |
+| Arbre de décision  /  max_depth=4  /  class_weight | 165 397 | 0,5083 | 0,9267 | 0,999167 | 0,6293 | 0,7684 | 0,6919 | 116 | non | 1,6897 | 0,0033 |
+| Arbre de décision  /  max_depth=8  /  aucun | 165 397 | 0,6387 | 0,8716 | 1,000000 | 0,8452 | 0,7474 | 0,7933 | 84 | oui | 3,3361 | 0,0057 |
+| Arbre de décision  /  max_depth=8  /  class_weight | 165 397 | 0,5371 | 0,9147 | 0,999494 | 0,6577 | 0,7684 | 0,7087 | 111 | non | 2,8196 | 0,0034 |
+| Arbre de décision  /  max_depth=8  /  SMOTE | 165 397 | 0,5732 | 0,9133 | 0,994286 | 0,7579 | 0,7579 | 0,7579 | 95 | non | 3,6988 | 0,0057 |
+| Arbre de décision  /  max_depth=8  /  RandomUnderSampler | 165 397 | 0,0195 | 0,9083 | 1,000000 | 0,0215 | 0,8947 | 0,0421 | 3 947 | non | 0,0221 | 0,0028 |
+| Régression logistique  /  C=0.01  /  aucun | 165 397 | 0,7261 | 0,9658 | 0,213307 | 0,8049 | 0,6947 | 0,7458 | 82 | oui | 0,1481 | 0,0043 |
+| Régression logistique  /  C=0.01  /  class_weight | 165 397 | 0,6780 | 0,9613 | 0,999920 | 0,8022 | 0,7684 | 0,7849 | 91 | oui | 0,1935 | 0,0036 |
+| Régression logistique  /  C=1.0  /  aucun | 165 397 | 0,7239 | 0,9636 | 0,384913 | 0,8442 | 0,6842 | 0,7558 | 77 | oui | 0,1445 | 0,0039 |
+| Régression logistique  /  C=1.0  /  class_weight | 165 397 | 0,6762 | 0,9619 | 0,999968 | 0,8000 | 0,8000 | 0,8000 | 95 | oui | 0,2221 | 0,0035 |
+| Régression logistique  /  C=1.0  /  SMOTE | 165 397 | 0,7221 | 0,9644 | 0,995750 | 0,8140 | 0,7368 | 0,7735 | 86 | oui | 0,3319 | 0,0041 |
+| Régression logistique  /  C=1.0  /  RandomUnderSampler | 165 397 | 0,2897 | 0,9527 | 0,999993 | 0,3490 | 0,5474 | 0,4262 | 149 | non | 0,0335 | 0,0037 |
 
 La pondération modifie les coûts relatifs des classes. SMOTE interpole la minorité ; RUS supprime des observations de la majorité. Aucune correction n’est automatiquement préférable. L’AP maximale et le rappel maximal sous précision minimale ne sélectionnent pas nécessairement la même configuration.
 
@@ -322,14 +322,14 @@ IF et LOF ajustent leurs estimateurs sans cible, sur un apprentissage contaminé
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Isolation Forest  /  n_estimators=100, max_samples=256 | 165 397 | 0,1623 | 0,9478 | 0,656559 | 0,2793 | 0,3263 | 0,3010 | 111 | non | 0,1228 | 0,1313 |
-| Isolation Forest  /  n_estimators=100, max_samples=2048 | 165 397 | 0,1873 | 0,9464 | 0,701385 | 0,4231 | 0,2316 | 0,2993 | 52 | non | 0,2494 | 0,1574 |
-| Isolation Forest  /  n_estimators=300, max_samples=256 | 165 397 | 0,1465 | 0,9478 | 0,644182 | 0,2479 | 0,3158 | 0,2778 | 121 | non | 0,3091 | 0,3943 |
-| Isolation Forest  /  n_estimators=300, max_samples=2048 | 165 397 | 0,2086 | 0,9493 | 0,649011 | 0,2991 | 0,3368 | 0,3168 | 107 | non | 0,7877 | 0,4636 |
-| LOF  /  n_neighbors=10 | 30 000 | 0,0026 | 0,5262 | 2,313252 | 0,0093 | 0,0211 | 0,0129 | 215 | non | 0,3017 | 0,5707 |
-| LOF  /  n_neighbors=20 | 30 000 | 0,0071 | 0,7216 | 2,641017 | 0,0385 | 0,0316 | 0,0347 | 78 | non | 0,3168 | 0,5563 |
-| LOF  /  n_neighbors=50 | 30 000 | 0,1677 | 0,9426 | 2,146801 | 0,2488 | 0,5684 | 0,3462 | 217 | non | 0,3470 | 0,6157 |
-| LOF  /  n_neighbors=100 | 30 000 | 0,3825 | 0,9487 | 2,796372 | 0,4336 | 0,6526 | 0,5210 | 143 | non | 0,4118 | 0,7529 |
+| Isolation Forest  /  n_estimators=100, max_samples=256 | 165 397 | 0,1623 | 0,9478 | 0,656559 | 0,2793 | 0,3263 | 0,3010 | 111 | non | 0,1814 | 0,1496 |
+| Isolation Forest  /  n_estimators=100, max_samples=2048 | 165 397 | 0,1873 | 0,9464 | 0,701385 | 0,4231 | 0,2316 | 0,2993 | 52 | non | 0,3852 | 0,2990 |
+| Isolation Forest  /  n_estimators=300, max_samples=256 | 165 397 | 0,1465 | 0,9478 | 0,644182 | 0,2479 | 0,3158 | 0,2778 | 121 | non | 0,9778 | 1,0916 |
+| Isolation Forest  /  n_estimators=300, max_samples=2048 | 165 397 | 0,2086 | 0,9493 | 0,649011 | 0,2991 | 0,3368 | 0,3168 | 107 | non | 1,8318 | 0,6030 |
+| LOF  /  n_neighbors=10 | 30 000 | 0,0026 | 0,5262 | 2,313252 | 0,0093 | 0,0211 | 0,0129 | 215 | non | 0,5198 | 0,7557 |
+| LOF  /  n_neighbors=20 | 30 000 | 0,0071 | 0,7216 | 2,641017 | 0,0385 | 0,0316 | 0,0347 | 78 | non | 0,4323 | 1,1214 |
+| LOF  /  n_neighbors=50 | 30 000 | 0,1677 | 0,9426 | 2,146801 | 0,2488 | 0,5684 | 0,3462 | 217 | non | 0,4904 | 0,8815 |
+| LOF  /  n_neighbors=100 | 30 000 | 0,3825 | 0,9487 | 2,796372 | 0,4336 | 0,6526 | 0,5210 | 143 | non | 0,6962 | 1,4497 |
 
 </details>
 
@@ -340,25 +340,25 @@ Le classement est résumé par AP et AUC-ROC. Une AUC-ROC élevée peut accompag
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Arbre de décision  /  max_depth=4  /  aucun | 165 397 | 0,7206 | 0,8841 | 0,600000 | 0,8590 | 0,7053 | 0,7746 | 78 | oui | 1,6652 | 0,0062 |
-| Régression logistique  /  C=1.0  /  aucun | 165 397 | 0,7239 | 0,9636 | 0,423638 | 0,8514 | 0,6632 | 0,7456 | 74 | oui | 0,1536 | 0,0036 |
-| EasyEnsemble  /  n_estimators=10 | 165 397 | 0,6998 | 0,9662 | 0,722424 | 0,8800 | 0,2316 | 0,3667 | 25 | oui | 0,5934 | 0,5208 |
-| RUSBoost  /  n_estimators=50, max_depth=2 | 165 397 | 0,4048 | 0,9603 | 0,817290 | 0,4930 | 0,7368 | 0,5907 | 142 | non | 0,1420 | 0,0118 |
-| XGBoost  /  n_estimators=100, max_depth=5 | 165 397 | 0,8371 | 0,9638 | 0,834116 | 0,8539 | 0,8000 | 0,8261 | 89 | oui | 0,6522 | 0,0219 |
-| Isolation Forest  /  n_estimators=300, max_samples=2048 | 165 397 | 0,2086 | 0,9493 | 0,649011 | 0,2991 | 0,3368 | 0,3168 | 107 | non | 0,7877 | 0,4636 |
-| LOF  /  n_neighbors=100 | 30 000 | 0,3825 | 0,9487 | 2,796372 | 0,4336 | 0,6526 | 0,5210 | 143 | non | 0,4118 | 0,7529 |
-| HBOS  /  n_bins=200, alpha=0.1 | 165 397 | 0,2008 | 0,9416 | 46,664026 | 0,3441 | 0,3368 | 0,3404 | 93 | non | 0,2285 | 0,0624 |
+| Arbre de décision  /  max_depth=8  /  aucun | 165 397 | 0,6387 | 0,8716 | 1,000000 | 0,8452 | 0,7474 | 0,7933 | 84 | oui | 3,3361 | 0,0057 |
+| Régression logistique  /  C=1.0  /  class_weight | 165 397 | 0,6762 | 0,9619 | 0,999968 | 0,8000 | 0,8000 | 0,8000 | 95 | oui | 0,2221 | 0,0035 |
+| EasyEnsemble  /  n_estimators=5 | 165 397 | 0,6725 | 0,9669 | 0,658872 | 0,8022 | 0,7684 | 0,7849 | 91 | oui | 2,0577 | 0,3926 |
+| RUSBoost  /  n_estimators=50, max_depth=2 | 165 397 | 0,4048 | 0,9603 | 0,817290 | 0,4930 | 0,7368 | 0,5907 | 142 | non | 0,8923 | 0,0487 |
+| XGBoost  /  n_estimators=100, max_depth=5 | 165 397 | 0,8371 | 0,9638 | 0,695443 | 0,8191 | 0,8105 | 0,8148 | 94 | oui | 0,9683 | 0,0363 |
+| Isolation Forest  /  n_estimators=300, max_samples=2048 | 165 397 | 0,2086 | 0,9493 | 0,649011 | 0,2991 | 0,3368 | 0,3168 | 107 | non | 1,8318 | 0,6030 |
+| LOF  /  n_neighbors=100 | 30 000 | 0,3825 | 0,9487 | 2,796372 | 0,4336 | 0,6526 | 0,5210 | 143 | non | 0,6962 | 1,4497 |
+| HBOS  /  n_bins=200, alpha=0.1 | 165 397 | 0,2008 | 0,9416 | 46,664026 | 0,3441 | 0,3368 | 0,3404 | 93 | non | 0,2427 | 0,0680 |
 
 | Famille | Critère maximisé | Seuil | Précision | Rappel | F1 | BA | Alertes |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | XGBoost | f1 | 0,955971 | 0,9136 | 0,7789 | 0,8409 | 0,8894 | 81,0000 |
 | XGBoost | balanced_accuracy | 0,115237 | 0,2778 | 0,8947 | 0,4239 | 0,9454 | 306,0000 |
-| Arbre de décision | f1 | 0,333333 | 0,7872 | 0,7789 | 0,7831 | 0,8893 | 94,0000 |
-| Arbre de décision | balanced_accuracy | 0,333333 | 0,7872 | 0,7789 | 0,7831 | 0,8893 | 94,0000 |
-| Régression logistique | f1 | 0,384913 | 0,8442 | 0,6842 | 0,7558 | 0,8420 | 77,0000 |
-| Régression logistique | balanced_accuracy | 0,001547 | 0,0422 | 0,9053 | 0,0806 | 0,9349 | 2040,0000 |
-| EasyEnsemble | f1 | 0,663292 | 0,7826 | 0,7579 | 0,7701 | 0,8788 | 92,0000 |
-| EasyEnsemble | balanced_accuracy | 0,492631 | 0,0478 | 0,9158 | 0,0909 | 0,9422 | 1820,0000 |
+| Régression logistique | f1 | 0,999968 | 0,8000 | 0,8000 | 0,8000 | 0,8998 | 95,0000 |
+| Régression logistique | balanced_accuracy | 0,825068 | 0,1913 | 0,8842 | 0,3146 | 0,9389 | 439,0000 |
+| EasyEnsemble | f1 | 0,658872 | 0,8022 | 0,7684 | 0,7849 | 0,8840 | 91,0000 |
+| EasyEnsemble | balanced_accuracy | 0,553695 | 0,1976 | 0,8737 | 0,3223 | 0,9338 | 420,0000 |
+| Arbre de décision | f1 | 1,000000 | 0,8452 | 0,7474 | 0,7933 | 0,8736 | 84,0000 |
+| Arbre de décision | balanced_accuracy | 0,022814 | 0,4898 | 0,7579 | 0,5950 | 0,8783 | 147,0000 |
 | RUSBoost | f1 | 0,817290 | 0,4930 | 0,7368 | 0,5907 | 0,8678 | 142,0000 |
 | RUSBoost | balanced_accuracy | 0,549362 | 0,0594 | 0,9053 | 0,1114 | 0,9402 | 1449,0000 |
 | LOF | f1 | 2,796372 | 0,4336 | 0,6526 | 0,5210 | 0,8256 | 143,0000 |
@@ -382,13 +382,13 @@ Le choix de la comparaison étendue est « XGBoost | n_estimators=100, max_depth
 | Famille | Règle | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | XGBoost | défaut | 0,500000 | 0,7091 | 0,8211 | 0,7610 | 0,9102 | 110 | 32 | 17 |
-| XGBoost | retenu | 0,834116 | 0,8539 | 0,8000 | 0,8261 | 0,8999 | 89 | 13 | 19 |
-| Arbre de décision | défaut | 0,500000 | 0,8590 | 0,7053 | 0,7746 | 0,8525 | 78 | 11 | 28 |
-| Arbre de décision | retenu | 0,600000 | 0,8590 | 0,7053 | 0,7746 | 0,8525 | 78 | 11 | 28 |
-| Régression logistique | défaut | 0,500000 | 0,8406 | 0,6105 | 0,7073 | 0,8052 | 69 | 11 | 37 |
-| Régression logistique | retenu | 0,423638 | 0,8514 | 0,6632 | 0,7456 | 0,8315 | 74 | 11 | 32 |
-| EasyEnsemble | défaut | 0,500000 | 0,0558 | 0,9053 | 0,1052 | 0,9394 | 1 540 | 1 454 | 9 |
-| EasyEnsemble | retenu | 0,722424 | 0,8800 | 0,2316 | 0,3667 | 0,6158 | 25 | 3 | 73 |
+| XGBoost | retenu | 0,695443 | 0,8191 | 0,8105 | 0,8148 | 0,9051 | 94 | 17 | 18 |
+| Régression logistique | défaut | 0,500000 | 0,0587 | 0,8947 | 0,1102 | 0,9350 | 1 447 | 1 362 | 10 |
+| Régression logistique | retenu | 0,999968 | 0,8000 | 0,8000 | 0,8000 | 0,8998 | 95 | 19 | 19 |
+| EasyEnsemble | défaut | 0,500000 | 0,0591 | 0,8737 | 0,1107 | 0,9248 | 1 405 | 1 322 | 12 |
+| EasyEnsemble | retenu | 0,658872 | 0,8022 | 0,7684 | 0,7849 | 0,8840 | 91 | 18 | 22 |
+| Arbre de décision | défaut | 0,500000 | 0,8452 | 0,7474 | 0,7933 | 0,8736 | 84 | 13 | 24 |
+| Arbre de décision | retenu | 1,000000 | 0,8452 | 0,7474 | 0,7933 | 0,8736 | 84 | 13 | 24 |
 | RUSBoost | défaut | 0,500000 | 0,0461 | 0,9053 | 0,0877 | 0,9365 | 1 866 | 1 780 | 9 |
 | RUSBoost | retenu | 0,817290 | 0,4930 | 0,7368 | 0,5907 | 0,8678 | 142 | 72 | 25 |
 | LOF | défaut | 1,500000 | 0,0318 | 0,8526 | 0,0612 | 0,9039 | 2 550 | 2 469 | 14 |
@@ -411,10 +411,10 @@ Les modèles ajustés et seuils de validation sont appliqués au test sans nouve
 
 | Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| XGBoost | 0,7923 | 0,9759 | 0,834116 | 0,8111 | 0,7766 | 0,7935 | 0,8881 | 90 | 17 | 21 | atteint |
-| Arbre de décision | 0,6642 | 0,8563 | 0,600000 | 0,8551 | 0,6277 | 0,7239 | 0,8137 | 69 | 10 | 35 | atteint |
-| Régression logistique | 0,6988 | 0,9733 | 0,423638 | 0,8621 | 0,5319 | 0,6579 | 0,7659 | 58 | 8 | 44 | atteint |
-| EasyEnsemble | 0,6838 | 0,9797 | 0,722424 | 0,8400 | 0,2234 | 0,3529 | 0,6117 | 25 | 4 | 73 | atteint |
+| XGBoost | 0,7923 | 0,9759 | 0,695443 | 0,7789 | 0,7872 | 0,7831 | 0,8934 | 95 | 21 | 20 | non atteint |
+| Régression logistique | 0,6798 | 0,9835 | 0,999968 | 0,7753 | 0,7340 | 0,7541 | 0,8668 | 89 | 20 | 25 | non atteint |
+| EasyEnsemble | 0,6785 | 0,9776 | 0,658872 | 0,7848 | 0,6596 | 0,7168 | 0,8296 | 79 | 17 | 32 | non atteint |
+| Arbre de décision | 0,6811 | 0,8439 | 1,000000 | 0,9200 | 0,7340 | 0,8166 | 0,8670 | 75 | 6 | 25 | atteint |
 | RUSBoost | 0,4018 | 0,9674 | 0,817290 | 0,4889 | 0,7021 | 0,5764 | 0,8504 | 135 | 69 | 28 | non atteint |
 | LOF | 0,3295 | 0,9396 | 2,796372 | 0,4677 | 0,6170 | 0,5321 | 0,8079 | 124 | 66 | 36 | non atteint |
 | HBOS | 0,1640 | 0,9265 | 46,664026 | 0,3065 | 0,2021 | 0,2436 | 0,6007 | 62 | 43 | 75 | non atteint |
@@ -422,14 +422,14 @@ Les modèles ajustés et seuils de validation sont appliqués au test sans nouve
 
 | Configuration retenue | Prétraitement | Déséquilibre | n apprentissage fourni | Apprentissage (s) | Score test (s) |
 | --- | --- | --- | --- | --- | --- |
-| XGBoost  /  n_estimators=100, max_depth=5 | log_amount | scale_pos_weight (apprentissage) | 165 397 | 0,6522 | 0,0244 |
-| Arbre de décision  /  max_depth=4  /  aucun | log_amount | aucun | 165 397 | 1,6652 | 0,0025 |
-| Régression logistique  /  C=1.0  /  aucun | log_amount + standard | aucun | 165 397 | 0,1536 | 0,0040 |
-| EasyEnsemble  /  n_estimators=10 | log_amount | sous-échantillonnage interne | 165 397 | 0,5934 | 0,5015 |
-| RUSBoost  /  n_estimators=50, max_depth=2 | log_amount | sous-échantillonnage interne | 165 397 | 0,1420 | 0,0132 |
-| LOF  /  n_neighbors=100 | log_amount + standard | aucun (non supervisé) | 30 000 | 0,4118 | 0,7857 |
-| HBOS  /  n_bins=200, alpha=0.1 | log_amount | aucun (non supervisé) | 165 397 | 0,2285 | 0,0670 |
-| Isolation Forest  /  n_estimators=300, max_samples=2048 | log_amount | aucun (non supervisé) | 165 397 | 0,7877 | 0,4832 |
+| XGBoost  /  n_estimators=100, max_depth=5 | log_amount | scale_pos_weight (apprentissage) | 165 397 | 0,9683 | 0,0300 |
+| Régression logistique  /  C=1.0  /  class_weight | log_amount + standard | class_weight | 165 397 | 0,2221 | 0,0071 |
+| EasyEnsemble  /  n_estimators=5 | log_amount | sous-échantillonnage interne | 165 397 | 2,0577 | 0,4318 |
+| Arbre de décision  /  max_depth=8  /  aucun | log_amount | aucun | 165 397 | 3,3361 | 0,0028 |
+| RUSBoost  /  n_estimators=50, max_depth=2 | log_amount | sous-échantillonnage interne | 165 397 | 0,8923 | 0,0133 |
+| LOF  /  n_neighbors=100 | log_amount + standard | aucun (non supervisé) | 30 000 | 0,6962 | 0,9332 |
+| HBOS  /  n_bins=200, alpha=0.1 | log_amount | aucun (non supervisé) | 165 397 | 0,2427 | 0,0725 |
+| Isolation Forest  /  n_estimators=300, max_samples=2048 | log_amount | aucun (non supervisé) | 165 397 | 1,8318 | 0,4924 |
 
 ![Matrices test Credit Card, modèles légendés par panneau](figures/p2_matrices_confusion.png)
 
@@ -440,13 +440,13 @@ Les temps viennent de cette exécution et ne sont pas des mesures répétées. L
 <details>
 <summary>2.3.d. Combien d&#x27;enquêtes, de fraudes manquées, et la contrainte résiste-t-elle au test ?</summary>
 
-XGBoost : 90 alertes, dont 73 fraudes et 17 fausses alertes ; 21 cas manqués. Précision 0,8111, rappel 0,7766, objectif au test atteint.
+XGBoost : 95 alertes, dont 74 fraudes et 21 fausses alertes ; 20 cas manqués. Précision 0,7789, rappel 0,7872, objectif au test non atteint.
 
-Arbre de décision : 69 alertes, dont 59 fraudes et 10 fausses alertes ; 35 cas manqués. Précision 0,8551, rappel 0,6277, objectif au test atteint.
+Régression logistique : 89 alertes, dont 69 fraudes et 20 fausses alertes ; 25 cas manqués. Précision 0,7753, rappel 0,7340, objectif au test non atteint.
 
-Régression logistique : 58 alertes, dont 50 fraudes et 8 fausses alertes ; 44 cas manqués. Précision 0,8621, rappel 0,5319, objectif au test atteint.
+EasyEnsemble : 79 alertes, dont 62 fraudes et 17 fausses alertes ; 32 cas manqués. Précision 0,7848, rappel 0,6596, objectif au test non atteint.
 
-EasyEnsemble : 25 alertes, dont 21 fraudes et 4 fausses alertes ; 73 cas manqués. Précision 0,8400, rappel 0,2234, objectif au test atteint.
+Arbre de décision : 75 alertes, dont 69 fraudes et 6 fausses alertes ; 25 cas manqués. Précision 0,9200, rappel 0,7340, objectif au test atteint.
 
 RUSBoost : 135 alertes, dont 66 fraudes et 69 fausses alertes ; 28 cas manqués. Précision 0,4889, rappel 0,7021, objectif au test non atteint.
 
@@ -458,6 +458,19 @@ Isolation Forest : 75 alertes, dont 15 fraudes et 60 fausses alertes ; 79 cas ma
 
 Une précision exigée sur validation n’est pas garantie au test. Les échecs restent visibles ; aucun seuil n’est retouché pour les effacer. Le choix historique logistique et le choix global étendu ne doivent pas être confondus.
 
+Variante complémentaire, distincte de la règle de l’énoncé (80 %) : seuils cherchés à 85 % sur validation (marge de 5 points fixée a priori, la validation ne comptant que peu de fraudes). Modèle choisi « XGBoost | n_estimators=100, max_depth=5 » : précision 0,8111, rappel 0,7766 au test, objectif de 80 % atteint. Le résultat principal reste celui de la règle de l’énoncé. Cette variante est comparée séparément ; le test Credit Card ayant déjà été lu, elle reste exploratoire.
+
+| Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| XGBoost | 0,7923 | 0,9759 | 0,834116 | 0,8111 | 0,7766 | 0,7935 | 0,8881 | 90 | 17 | 21 | atteint |
+| Arbre de décision | 0,6642 | 0,8563 | 0,600000 | 0,8551 | 0,6277 | 0,7239 | 0,8137 | 69 | 10 | 35 | atteint |
+| Régression logistique | 0,6988 | 0,9733 | 0,423638 | 0,8621 | 0,5319 | 0,6579 | 0,7659 | 58 | 8 | 44 | atteint |
+| EasyEnsemble | 0,6838 | 0,9797 | 0,722424 | 0,8400 | 0,2234 | 0,3529 | 0,6117 | 25 | 4 | 73 | atteint |
+| RUSBoost | 0,4018 | 0,9674 | 0,817290 | 0,4889 | 0,7021 | 0,5764 | 0,8504 | 135 | 69 | 28 | non atteint |
+| LOF | 0,3295 | 0,9396 | 2,796372 | 0,4677 | 0,6170 | 0,5321 | 0,8079 | 124 | 66 | 36 | non atteint |
+| HBOS | 0,1640 | 0,9265 | 46,664026 | 0,3065 | 0,2021 | 0,2436 | 0,6007 | 62 | 43 | 75 | non atteint |
+| Isolation Forest | 0,1524 | 0,9430 | 0,649011 | 0,2000 | 0,1596 | 0,1775 | 0,5792 | 75 | 60 | 79 | non atteint |
+
 </details>
 
 <details>
@@ -465,10 +478,10 @@ Une précision exigée sur validation n’est pas garantie au test. Les échecs 
 
 | Modèle | FPR (%) | FNR (%) | Alertes inutiles (%) | Erreur globale (%) |
 | --- | --- | --- | --- | --- |
-| XGBoost | 0,0309 | 22,3404 | 18,8889 | 0,0689 |
-| Arbre de décision | 0,0182 | 37,2340 | 14,4928 | 0,0816 |
-| Régression logistique | 0,0145 | 46,8085 | 13,7931 | 0,0943 |
-| EasyEnsemble | 0,0073 | 77,6596 | 16,0000 | 0,1397 |
+| XGBoost | 0,0382 | 21,2766 | 22,1053 | 0,0744 |
+| Régression logistique | 0,0363 | 26,5957 | 22,4719 | 0,0816 |
+| EasyEnsemble | 0,0309 | 34,0426 | 21,5190 | 0,0889 |
+| Arbre de décision | 0,0109 | 26,5957 | 8,0000 | 0,0562 |
 | RUSBoost | 0,1254 | 29,7872 | 51,1111 | 0,1759 |
 | LOF | 0,1199 | 38,2979 | 53,2258 | 0,1850 |
 | HBOS | 0,0781 | 79,7872 | 69,3548 | 0,2140 |
@@ -509,9 +522,9 @@ HBOS utilise les partitions communes et log(1 + Amount), sans standardisation ni
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| HBOS  /  n_bins=10, alpha=0.1 | 165 397 | 0,1631 | 0,9501 | 26,102088 | 0,2440 | 0,4316 | 0,3118 | 168 | non | 0,1399 | 0,0289 |
-| HBOS  /  n_bins=50, alpha=0.1 | 165 397 | 0,1681 | 0,9483 | 39,477502 | 0,2360 | 0,4000 | 0,2969 | 161 | non | 0,1811 | 0,0449 |
-| HBOS  /  n_bins=200, alpha=0.1 | 165 397 | 0,2008 | 0,9416 | 46,664026 | 0,3441 | 0,3368 | 0,3404 | 93 | non | 0,2285 | 0,0624 |
+| HBOS  /  n_bins=10, alpha=0.1 | 165 397 | 0,1631 | 0,9501 | 26,102088 | 0,2440 | 0,4316 | 0,3118 | 168 | non | 0,2516 | 0,0348 |
+| HBOS  /  n_bins=50, alpha=0.1 | 165 397 | 0,1681 | 0,9483 | 39,477502 | 0,2360 | 0,4000 | 0,2969 | 161 | non | 0,2002 | 0,0535 |
+| HBOS  /  n_bins=200, alpha=0.1 | 165 397 | 0,2008 | 0,9416 | 46,664026 | 0,3441 | 0,3368 | 0,3404 | 93 | non | 0,2427 | 0,0680 |
 
 </details>
 
@@ -522,9 +535,9 @@ Sur validation, les configurations retenues par famille sont :
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Isolation Forest  /  n_estimators=300, max_samples=2048 | 165 397 | 0,2086 | 0,9493 | 0,649011 | 0,2991 | 0,3368 | 0,3168 | 107 | non | 0,7877 | 0,4636 |
-| LOF  /  n_neighbors=100 | 30 000 | 0,3825 | 0,9487 | 2,796372 | 0,4336 | 0,6526 | 0,5210 | 143 | non | 0,4118 | 0,7529 |
-| HBOS  /  n_bins=200, alpha=0.1 | 165 397 | 0,2008 | 0,9416 | 46,664026 | 0,3441 | 0,3368 | 0,3404 | 93 | non | 0,2285 | 0,0624 |
+| Isolation Forest  /  n_estimators=300, max_samples=2048 | 165 397 | 0,2086 | 0,9493 | 0,649011 | 0,2991 | 0,3368 | 0,3168 | 107 | non | 1,8318 | 0,6030 |
+| LOF  /  n_neighbors=100 | 30 000 | 0,3825 | 0,9487 | 2,796372 | 0,4336 | 0,6526 | 0,5210 | 143 | non | 0,6962 | 1,4497 |
+| HBOS  /  n_bins=200, alpha=0.1 | 165 397 | 0,2008 | 0,9416 | 46,664026 | 0,3441 | 0,3368 | 0,3404 | 93 | non | 0,2427 | 0,0680 |
 
 ![IF, LOF et HBOS sur validation](figures/p3_non_supervises.png)
 
@@ -578,15 +591,15 @@ AI4I contient 10 000 observations synthétiques et 339 pannes. La cible d’orig
 <details>
 <summary>4.c. Quels modèles transférer et que conserve-t-on ?</summary>
 
-Le meilleur supervisé global sur Credit Card, ensembles compris, et IF sont transférés à AI4I avec leurs hyperparamètres conservés. La logistique reste une référence historique, pas la gagnante globale de la comparaison étendue Credit Card. Les transformations et modèles sont réajustés sur l’apprentissage AI4I ; les seuils sont choisis à nouveau sur sa validation sous précision ≥ 90 %. Pour XGBoost, `scale_pos_weight` est conservé depuis Credit Card, conformément au transfert demandé : il n’est ni recalculé sur AI4I ni réglé sur son test.
+Le meilleur supervisé global sur Credit Card, ensembles compris, et IF sont transférés à AI4I avec leurs hyperparamètres conservés. Le classique de référence (régression logistique) est conservé, sans être la gagnante globale de la comparaison étendue Credit Card. Les transformations et modèles sont réajustés sur l’apprentissage AI4I ; les seuils sont choisis à nouveau sur sa validation sous précision ≥ 90 %. Pour XGBoost, `scale_pos_weight` est conservé depuis Credit Card, conformément au transfert demandé : il n’est ni recalculé sur AI4I ni réglé sur son test.
 
 Configurations effectivement réajustées :
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| XGBoost  /  n_estimators=100, max_depth=5 (AI4I) | 6 000 | 0,7199 | 0,9542 | 0,988007 | 0,9091 | 0,5882 | 0,7143 | 44 | oui | 0,0519 | 0,0025 |
-| Isolation Forest  /  n_estimators=300, max_samples=2048 (AI4I) | 6 000 | 0,1514 | 0,7816 | 0,681207 | 1,0000 | 0,0294 | 0,0571 | 2 | oui | 0,2180 | 0,0426 |
-| Arbre de décision  /  max_depth=4  /  aucun (AI4I) | 6 000 | 0,3693 | 0,8500 | 0,353846 | 0,4762 | 0,5882 | 0,5263 | 84 | non | 0,0073 | 0,0012 |
+| XGBoost  /  n_estimators=100, max_depth=5 (AI4I) | 6 000 | 0,7199 | 0,9542 | 0,988007 | 0,9091 | 0,5882 | 0,7143 | 44 | oui | 0,0528 | 0,0032 |
+| Isolation Forest  /  n_estimators=300, max_samples=2048 (AI4I) | 6 000 | 0,1514 | 0,7816 | 0,681207 | 1,0000 | 0,0294 | 0,0571 | 2 | oui | 0,2292 | 0,0466 |
+| Régression logistique  /  C=1.0  /  class_weight (AI4I) | 6 000 | 0,4072 | 0,8811 | 0,979916 | 0,9167 | 0,1618 | 0,2750 | 12 | oui | 0,0087 | 0,0016 |
 
 </details>
 
@@ -597,9 +610,9 @@ Sur validation AI4I, le choix est « XGBoost | n_estimators=100, max_depth=5 (AI
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| XGBoost  /  n_estimators=100, max_depth=5 (AI4I) | 6 000 | 0,7199 | 0,9542 | 0,988007 | 0,9091 | 0,5882 | 0,7143 | 44 | oui | 0,0519 | 0,0025 |
-| Isolation Forest  /  n_estimators=300, max_samples=2048 (AI4I) | 6 000 | 0,1514 | 0,7816 | 0,681207 | 1,0000 | 0,0294 | 0,0571 | 2 | oui | 0,2180 | 0,0426 |
-| Arbre de décision  /  max_depth=4  /  aucun (AI4I) | 6 000 | 0,3693 | 0,8500 | 0,353846 | 0,4762 | 0,5882 | 0,5263 | 84 | non | 0,0073 | 0,0012 |
+| XGBoost  /  n_estimators=100, max_depth=5 (AI4I) | 6 000 | 0,7199 | 0,9542 | 0,988007 | 0,9091 | 0,5882 | 0,7143 | 44 | oui | 0,0528 | 0,0032 |
+| Isolation Forest  /  n_estimators=300, max_samples=2048 (AI4I) | 6 000 | 0,1514 | 0,7816 | 0,681207 | 1,0000 | 0,0294 | 0,0571 | 2 | oui | 0,2292 | 0,0466 |
+| Régression logistique  /  C=1.0  /  class_weight (AI4I) | 6 000 | 0,4072 | 0,8811 | 0,979916 | 0,9167 | 0,1618 | 0,2750 | 12 | oui | 0,0087 | 0,0016 |
 
 ![Courbes de validation AI4I](figures/p4_ai4i.png)
 
@@ -608,8 +621,8 @@ Résultats finaux aux seuils conservés :
 | Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | XGBoost | 0,6985 | 0,9715 | 0,988007 | 0,8039 | 0,6029 | 0,6891 | 0,7989 | 51 | 10 | 27 | non atteint |
+| Régression logistique | 0,4087 | 0,9046 | 0,979916 | 1,0000 | 0,0588 | 0,1111 | 0,5294 | 4 | 0 | 64 | atteint |
 | Isolation Forest | 0,0919 | 0,7465 | 0,681207 | 0,5000 | 0,0147 | 0,0286 | 0,5071 | 2 | 1 | 67 | non atteint |
-| Arbre de décision | 0,3958 | 0,8320 | 0,353846 | 0,5000 | 0,5735 | 0,5342 | 0,7767 | 78 | 39 | 29 | non atteint |
 
 ![Matrices AI4I : chaque panneau indique son modèle](figures/p4_matrices_confusion.png)
 
@@ -620,6 +633,13 @@ Résultats finaux aux seuils conservés :
 | Classe 0 | 1922 | 10 |
 | Classe 1 | 27 | 41 |
 
+### Régression logistique
+
+| Réalité / prédiction | Classe 0 | Classe 1 |
+|---|---:|---:|
+| Classe 0 | 1932 | 0 |
+| Classe 1 | 64 | 4 |
+
 ### Isolation Forest
 
 | Réalité / prédiction | Classe 0 | Classe 1 |
@@ -627,27 +647,20 @@ Résultats finaux aux seuils conservés :
 | Classe 0 | 1931 | 1 |
 | Classe 1 | 67 | 1 |
 
-### Arbre de décision
-
-| Réalité / prédiction | Classe 0 | Classe 1 |
-|---|---:|---:|
-| Classe 0 | 1893 | 39 |
-| Classe 1 | 29 | 39 |
-
 XGBoost : 51 alertes, dont 41 pannes et 10 fausses alertes ; 27 cas manqués. Précision 0,8039, rappel 0,6029, objectif au test non atteint.
+
+Régression logistique : 4 alertes, dont 4 pannes et 0 fausses alertes ; 64 cas manqués. Précision 1,0000, rappel 0,0588, objectif au test atteint.
 
 Isolation Forest : 2 alertes, dont 1 pannes et 1 fausses alertes ; 67 cas manqués. Précision 0,5000, rappel 0,0147, objectif au test non atteint.
 
-Arbre de décision : 78 alertes, dont 39 pannes et 39 fausses alertes ; 29 cas manqués. Précision 0,5000, rappel 0,5735, objectif au test non atteint.
-
-La référence logistique reste visible même si un modèle transféré plus performant est sélectionné. Peu d’interventions toutes correctes ne suffisent pas lorsque la plupart des pannes sont manquées.
+La référence classique (régression logistique) reste visible même si un modèle transféré plus performant est sélectionné. Peu d’interventions toutes correctes ne suffisent pas lorsque la plupart des pannes sont manquées.
 
 </details>
 
 <details>
 <summary>4.e. Pourquoi le gagnant sur les fraudes peut-il changer, et pourquoi ne pas comparer directement les AP des deux jeux ?</summary>
 
-Les variables, interactions et distributions changent entre fraude et maintenance. Conserver une famille et ses hyperparamètres ne garantit pas le même classement des méthodes. Les mécanismes synthétiques d’AI4I peuvent limiter une frontière linéaire ; les seules métriques ne prouvent cependant pas la cause de ses erreurs. Le transfert inclut désormais le meilleur supervisé global et IF, avec logistique de référence : l’ancien contrôle isolé d’arbre ne sert plus de résultat complémentaire.
+Les variables, interactions et distributions changent entre fraude et maintenance. Conserver une famille et ses hyperparamètres ne garantit pas le même classement des méthodes. Les mécanismes synthétiques d’AI4I peuvent limiter une frontière linéaire ; les seules métriques ne prouvent cependant pas la cause de ses erreurs. Le transfert inclut désormais le meilleur supervisé global et IF, avec régression logistique de référence : l’ancien contrôle isolé d’arbre ne sert plus de résultat complémentaire.
 
 L’AP dépend de la prévalence positive, différente entre les jeux. Les cibles et contraintes diffèrent aussi. On compare les méthodes au sein d’une même partition, sans attribuer leurs écarts entre jeux à une seule cause.
 
@@ -659,8 +672,8 @@ L’AP dépend de la prévalence positive, différente entre les jeux. Les cible
 | Modèle | FPR (%) | FNR (%) | Alertes inutiles (%) | Erreur globale (%) |
 | --- | --- | --- | --- | --- |
 | XGBoost | 0,5176 | 39,7059 | 19,6078 | 1,8500 |
+| Régression logistique | 0,0000 | 94,1176 | 0,0000 | 3,2000 |
 | Isolation Forest | 0,0518 | 98,5294 | 50,0000 | 3,4000 |
-| Arbre de décision | 2,0186 | 42,6471 | 50,0000 | 3,4000 |
 
 La fiabilité des alertes et leur couverture sont distinctes. Un résultat de test inférieur à la contrainte reste rapporté, sans nouvelle sélection.
 
@@ -797,12 +810,12 @@ L’extension (RUS, ensembles et KDD) a été réalisée après une première le
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| EasyEnsemble  /  n_estimators=5 | 165 397 | 0,6725 | 0,9669 | 0,741551 | 1,0000 | 0,1053 | 0,1905 | 10 | oui | 2,0469 | 0,3698 |
-| EasyEnsemble  /  n_estimators=10 | 165 397 | 0,6998 | 0,9662 | 0,722424 | 0,8800 | 0,2316 | 0,3667 | 25 | oui | 0,5934 | 0,5208 |
-| RUSBoost  /  n_estimators=50, max_depth=2 | 165 397 | 0,4048 | 0,9603 | 0,817290 | 0,4930 | 0,7368 | 0,5907 | 142 | non | 0,1420 | 0,0118 |
-| RUSBoost  /  n_estimators=100, max_depth=2 | 165 397 | 0,4048 | 0,9603 | 0,817290 | 0,4930 | 0,7368 | 0,5907 | 142 | non | 0,1348 | 0,0113 |
-| XGBoost  /  n_estimators=100, max_depth=3 | 165 397 | 0,7587 | 0,9680 | 0,997335 | 0,8533 | 0,6737 | 0,7529 | 75 | oui | 0,5179 | 0,0155 |
-| XGBoost  /  n_estimators=100, max_depth=5 | 165 397 | 0,8371 | 0,9638 | 0,834116 | 0,8539 | 0,8000 | 0,8261 | 89 | oui | 0,6522 | 0,0219 |
+| EasyEnsemble  /  n_estimators=5 | 165 397 | 0,6725 | 0,9669 | 0,658872 | 0,8022 | 0,7684 | 0,7849 | 91 | oui | 2,0577 | 0,3926 |
+| EasyEnsemble  /  n_estimators=10 | 165 397 | 0,6998 | 0,9662 | 0,676962 | 0,8171 | 0,7053 | 0,7571 | 82 | oui | 0,7071 | 2,3750 |
+| RUSBoost  /  n_estimators=50, max_depth=2 | 165 397 | 0,4048 | 0,9603 | 0,817290 | 0,4930 | 0,7368 | 0,5907 | 142 | non | 0,8923 | 0,0487 |
+| RUSBoost  /  n_estimators=100, max_depth=2 | 165 397 | 0,4048 | 0,9603 | 0,817290 | 0,4930 | 0,7368 | 0,5907 | 142 | non | 0,5844 | 0,0588 |
+| XGBoost  /  n_estimators=100, max_depth=3 | 165 397 | 0,7587 | 0,9680 | 0,973944 | 0,8085 | 0,8000 | 0,8042 | 94 | oui | 5,0708 | 0,1047 |
+| XGBoost  /  n_estimators=100, max_depth=5 | 165 397 | 0,8371 | 0,9638 | 0,695443 | 0,8191 | 0,8105 | 0,8148 | 94 | oui | 0,9683 | 0,0363 |
 
 </details>
 
@@ -872,32 +885,32 @@ La précision minimale de 0,80 est un choix pédagogique annoncé a priori, pas 
 
 | Configuration | n apprentissage | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | Alertes | Objectif atteint | Apprentissage (s) | Score validation (s) |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Arbre de décision  /  max_depth=4  /  aucun | 30 000 | 0,9845 | 0,9872 | 0,214286 | 0,9785 | 0,9748 | 0,9766 | 4 743 | oui | 0,0621 | 0,0066 |
-| Arbre de décision  /  max_depth=4  /  class_weight | 30 000 | 0,9845 | 0,9872 | 0,293168 | 0,9785 | 0,9748 | 0,9766 | 4 743 | oui | 0,0613 | 0,0066 |
-| Arbre de décision  /  max_depth=8  /  aucun | 30 000 | 0,9979 | 0,9984 | 0,014516 | 0,9481 | 0,9973 | 0,9721 | 5 008 | oui | 0,0859 | 0,0058 |
-| Arbre de décision  /  max_depth=8  /  class_weight | 30 000 | 0,9975 | 0,9981 | 0,021910 | 0,9479 | 0,9971 | 0,9718 | 5 008 | oui | 0,0877 | 0,0059 |
-| Arbre de décision  /  max_depth=8  /  RandomOverSampler | 30 000 | 0,9979 | 0,9990 | 0,010579 | 0,8535 | 0,9996 | 0,9208 | 5 576 | oui | 0,1006 | 0,0062 |
-| Arbre de décision  /  max_depth=8  /  RandomUnderSampler | 30 000 | 0,9963 | 0,9984 | 0,010172 | 0,8492 | 0,9992 | 0,9181 | 5 602 | oui | 0,0696 | 0,0058 |
-| Régression logistique  /  C=0.01  /  aucun | 30 000 | 0,9957 | 0,9988 | 0,033001 | 0,8124 | 0,9981 | 0,8958 | 5 849 | oui | 0,0666 | 0,0067 |
-| Régression logistique  /  C=0.01  /  class_weight | 30 000 | 0,9957 | 0,9988 | 0,044697 | 0,8158 | 0,9981 | 0,8978 | 5 825 | oui | 0,0585 | 0,0067 |
-| Régression logistique  /  C=1.0  /  aucun | 30 000 | 0,9983 | 0,9995 | 0,003293 | 0,8416 | 0,9998 | 0,9139 | 5 656 | oui | 0,2098 | 0,0068 |
-| Régression logistique  /  C=1.0  /  class_weight | 30 000 | 0,9983 | 0,9996 | 0,002935 | 0,8090 | 1,0000 | 0,8944 | 5 885 | oui | 0,1590 | 0,0071 |
-| Régression logistique  /  C=1.0  /  RandomOverSampler | 30 000 | 0,9983 | 0,9996 | 0,002979 | 0,8205 | 0,9998 | 0,9013 | 5 801 | oui | 0,2479 | 0,0077 |
-| Régression logistique  /  C=1.0  /  RandomUnderSampler | 30 000 | 0,9983 | 0,9996 | 0,004137 | 0,8283 | 0,9998 | 0,9060 | 5 747 | oui | 0,1214 | 0,0068 |
-| EasyEnsemble  /  n_estimators=5 | 30 000 | 0,9994 | 0,9996 | 0,405317 | 0,8224 | 1,0000 | 0,9026 | 5 789 | oui | 2,4117 | 0,2385 |
-| EasyEnsemble  /  n_estimators=10 | 30 000 | 0,9994 | 0,9996 | 0,407594 | 0,8183 | 1,0000 | 0,9001 | 5 818 | oui | 3,9006 | 0,3342 |
-| RUSBoost  /  n_estimators=50, max_depth=2 | 30 000 | 0,9998 | 0,9999 | 0,304810 | 0,8363 | 1,0000 | 0,9108 | 5 693 | oui | 0,4982 | 0,0164 |
-| RUSBoost  /  n_estimators=100, max_depth=2 | 30 000 | 0,9998 | 0,9999 | 0,304810 | 0,8363 | 1,0000 | 0,9108 | 5 693 | oui | 0,5812 | 0,0166 |
-| XGBoost  /  n_estimators=100, max_depth=3 | 30 000 | 1,0000 | 1,0000 | 0,044919 | 0,9710 | 1,0000 | 0,9853 | 4 903 | oui | 0,2641 | 0,0111 |
-| XGBoost  /  n_estimators=100, max_depth=5 | 30 000 | 1,0000 | 1,0000 | 0,011448 | 0,9667 | 1,0000 | 0,9831 | 4 925 | oui | 0,3012 | 0,0108 |
-| Isolation Forest  /  n_estimators=100, max_samples=256 | 30 000 | 0,5062 | 0,6926 | 0,547489 | 0,8087 | 0,0195 | 0,0381 | 115 | oui | 0,0944 | 0,0373 |
-| Isolation Forest  /  n_estimators=100, max_samples=2048 | 30 000 | 0,4847 | 0,6434 | 0,443062 | 0,8090 | 0,0489 | 0,0923 | 288 | oui | 0,1208 | 0,0363 |
-| Isolation Forest  /  n_estimators=300, max_samples=256 | 30 000 | 0,5329 | 0,7171 | 0,530159 | 0,8128 | 0,0319 | 0,0614 | 187 | oui | 0,2505 | 0,0941 |
-| Isolation Forest  /  n_estimators=300, max_samples=2048 | 30 000 | 0,5189 | 0,6832 | 0,431533 | 0,8011 | 0,0626 | 0,1161 | 372 | oui | 0,3055 | 0,0978 |
-| LOF  /  n_neighbors=10 | 30 000 | 0,3490 | 0,4361 | 0,911106 | 0,3969 | 1,0000 | 0,5683 | 11 995 | non | 0,5837 | 0,2285 |
-| LOF  /  n_neighbors=20 | 30 000 | 0,3994 | 0,4701 | 0,957647 | 0,3983 | 0,9966 | 0,5692 | 11 912 | non | 0,5754 | 0,2229 |
-| LOF  /  n_neighbors=50 | 30 000 | 0,4493 | 0,4921 | 3,064195 | 0,8015 | 0,1094 | 0,1926 | 650 | oui | 0,5502 | 0,2472 |
-| LOF  /  n_neighbors=100 | 30 000 | 0,4288 | 0,4640 | 3,850746 | 0,8122 | 0,1063 | 0,1880 | 623 | oui | 0,6747 | 0,2693 |
+| Arbre de décision  /  max_depth=4  /  aucun | 30 000 | 0,9845 | 0,9872 | 0,214286 | 0,9785 | 0,9748 | 0,9766 | 4 743 | oui | 0,0733 | 0,0115 |
+| Arbre de décision  /  max_depth=4  /  class_weight | 30 000 | 0,9845 | 0,9872 | 0,293168 | 0,9785 | 0,9748 | 0,9766 | 4 743 | oui | 0,0733 | 0,0077 |
+| Arbre de décision  /  max_depth=8  /  aucun | 30 000 | 0,9979 | 0,9984 | 0,014516 | 0,9481 | 0,9973 | 0,9721 | 5 008 | oui | 0,1207 | 0,0304 |
+| Arbre de décision  /  max_depth=8  /  class_weight | 30 000 | 0,9975 | 0,9981 | 0,021910 | 0,9479 | 0,9971 | 0,9718 | 5 008 | oui | 0,1233 | 0,0074 |
+| Arbre de décision  /  max_depth=8  /  RandomOverSampler | 30 000 | 0,9979 | 0,9990 | 0,010579 | 0,8535 | 0,9996 | 0,9208 | 5 576 | oui | 0,1237 | 0,0069 |
+| Arbre de décision  /  max_depth=8  /  RandomUnderSampler | 30 000 | 0,9963 | 0,9984 | 0,010172 | 0,8492 | 0,9992 | 0,9181 | 5 602 | oui | 0,0780 | 0,0069 |
+| Régression logistique  /  C=0.01  /  aucun | 30 000 | 0,9957 | 0,9988 | 0,033001 | 0,8124 | 0,9981 | 0,8958 | 5 849 | oui | 0,0796 | 0,0083 |
+| Régression logistique  /  C=0.01  /  class_weight | 30 000 | 0,9957 | 0,9988 | 0,044697 | 0,8158 | 0,9981 | 0,8978 | 5 825 | oui | 0,0907 | 0,0091 |
+| Régression logistique  /  C=1.0  /  aucun | 30 000 | 0,9983 | 0,9995 | 0,003293 | 0,8416 | 0,9998 | 0,9139 | 5 656 | oui | 0,2614 | 0,0082 |
+| Régression logistique  /  C=1.0  /  class_weight | 30 000 | 0,9983 | 0,9996 | 0,002935 | 0,8090 | 1,0000 | 0,8944 | 5 885 | oui | 0,1961 | 0,0079 |
+| Régression logistique  /  C=1.0  /  RandomOverSampler | 30 000 | 0,9983 | 0,9996 | 0,002979 | 0,8205 | 0,9998 | 0,9013 | 5 801 | oui | 0,2996 | 0,0076 |
+| Régression logistique  /  C=1.0  /  RandomUnderSampler | 30 000 | 0,9983 | 0,9996 | 0,004137 | 0,8283 | 0,9998 | 0,9060 | 5 747 | oui | 0,1379 | 0,0077 |
+| EasyEnsemble  /  n_estimators=5 | 30 000 | 0,9994 | 0,9996 | 0,405317 | 0,8224 | 1,0000 | 0,9026 | 5 789 | oui | 3,1034 | 0,1690 |
+| EasyEnsemble  /  n_estimators=10 | 30 000 | 0,9994 | 0,9996 | 0,407594 | 0,8183 | 1,0000 | 0,9001 | 5 818 | oui | 5,0010 | 0,3734 |
+| RUSBoost  /  n_estimators=50, max_depth=2 | 30 000 | 0,9998 | 0,9999 | 0,304810 | 0,8363 | 1,0000 | 0,9108 | 5 693 | oui | 0,5615 | 0,0195 |
+| RUSBoost  /  n_estimators=100, max_depth=2 | 30 000 | 0,9998 | 0,9999 | 0,304810 | 0,8363 | 1,0000 | 0,9108 | 5 693 | oui | 0,6221 | 0,0551 |
+| XGBoost  /  n_estimators=100, max_depth=3 | 30 000 | 1,0000 | 1,0000 | 0,044919 | 0,9710 | 1,0000 | 0,9853 | 4 903 | oui | 0,2748 | 0,0112 |
+| XGBoost  /  n_estimators=100, max_depth=5 | 30 000 | 1,0000 | 1,0000 | 0,011448 | 0,9667 | 1,0000 | 0,9831 | 4 925 | oui | 0,3794 | 0,0162 |
+| Isolation Forest  /  n_estimators=100, max_samples=256 | 30 000 | 0,5062 | 0,6926 | 0,547489 | 0,8087 | 0,0195 | 0,0381 | 115 | oui | 0,1242 | 0,0445 |
+| Isolation Forest  /  n_estimators=100, max_samples=2048 | 30 000 | 0,4847 | 0,6434 | 0,443062 | 0,8090 | 0,0489 | 0,0923 | 288 | oui | 0,1289 | 0,0397 |
+| Isolation Forest  /  n_estimators=300, max_samples=256 | 30 000 | 0,5329 | 0,7171 | 0,530159 | 0,8128 | 0,0319 | 0,0614 | 187 | oui | 0,3815 | 0,1024 |
+| Isolation Forest  /  n_estimators=300, max_samples=2048 | 30 000 | 0,5189 | 0,6832 | 0,431533 | 0,8011 | 0,0626 | 0,1161 | 372 | oui | 0,6762 | 0,1072 |
+| LOF  /  n_neighbors=10 | 30 000 | 0,3490 | 0,4361 | 0,911106 | 0,3969 | 1,0000 | 0,5683 | 11 995 | non | 0,5996 | 0,6262 |
+| LOF  /  n_neighbors=20 | 30 000 | 0,3994 | 0,4701 | 0,957647 | 0,3983 | 0,9966 | 0,5692 | 11 912 | non | 1,5788 | 0,4244 |
+| LOF  /  n_neighbors=50 | 30 000 | 0,4493 | 0,4921 | 3,064195 | 0,8015 | 0,1094 | 0,1926 | 650 | oui | 0,7693 | 0,5482 |
+| LOF  /  n_neighbors=100 | 30 000 | 0,4288 | 0,4640 | 3,850746 | 0,8122 | 0,1063 | 0,1880 | 623 | oui | 1,0469 | 0,5158 |
 
 ![Courbes de validation KDDCup99](figures/p6_courbes_val.png)
 
@@ -920,13 +933,13 @@ Le choix de validation est « XGBoost | n_estimators=100, max_depth=3 ».
 
 | Configuration | n apprentissage fourni | Apprentissage (s) | Score test (s) |
 | --- | --- | --- | --- |
-| XGBoost  /  n_estimators=100, max_depth=3 | 30 000 | 0,2641 | 0,0084 |
-| RUSBoost  /  n_estimators=50, max_depth=2 | 30 000 | 0,4982 | 0,0158 |
-| EasyEnsemble  /  n_estimators=5 | 30 000 | 2,4117 | 0,2377 |
-| Régression logistique  /  C=1.0  /  class_weight | 30 000 | 0,1590 | 0,0072 |
-| Arbre de décision  /  max_depth=8  /  RandomOverSampler | 30 000 | 0,1006 | 0,0066 |
-| LOF  /  n_neighbors=50 | 30 000 | 0,5502 | 0,2495 |
-| Isolation Forest  /  n_estimators=300, max_samples=2048 | 30 000 | 0,3055 | 0,1022 |
+| XGBoost  /  n_estimators=100, max_depth=3 | 30 000 | 0,2748 | 0,0094 |
+| RUSBoost  /  n_estimators=50, max_depth=2 | 30 000 | 0,5615 | 0,0167 |
+| EasyEnsemble  /  n_estimators=5 | 30 000 | 3,1034 | 0,2621 |
+| Régression logistique  /  C=1.0  /  class_weight | 30 000 | 0,1961 | 0,0075 |
+| Arbre de décision  /  max_depth=8  /  RandomOverSampler | 30 000 | 0,1237 | 0,0064 |
+| LOF  /  n_neighbors=50 | 30 000 | 0,7693 | 0,3011 |
+| Isolation Forest  /  n_estimators=300, max_samples=2048 | 30 000 | 0,6762 | 0,1076 |
 
 ![Matrices test KDDCup99, modèle indiqué sur chaque panneau](figures/p6_matrices_confusion.png)
 

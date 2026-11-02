@@ -120,7 +120,9 @@ def calculer_creditcard(graine=GRAINE):
                         "pretraitement": "log_amount", "desequilibre": "aucun (non supervisé)",
                         "modele": Pipeline(utils.pretraitement_creditcard(False) + [("modele", utils.HBOS(
                             n_bins=cases, alpha=0.1))])})
-    experience = choisir_configurations(parts, configs, 0.80, marge=0.05)
+    experience = choisir_configurations(parts, configs, 0.80)
+    # Variante complémentaire, fixée a priori : seuils cherchés à 85 % sur validation.
+    experience["variante_marge"] = choisir_configurations(parts, configs, 0.80, marge=0.05)
     experience["informations"] = {"observations": len(X), "positifs": int(y.sum()),
                                   "app_lof": len(X_sous), "positifs_app_lof": int(y_sous.sum()),
                                   "time_min": float(temps_transactions.min()),
@@ -268,7 +270,7 @@ def calculer_resultats():
     ai4i = calculer_ai4i(creditcard)
     kdd = calculer_kdd()
     kdd.setdefault("precision_min", 0.80)
-    for experience in [creditcard, ai4i, kdd]:
+    for experience in [creditcard, creditcard["variante_marge"], ai4i, kdd]:
         evaluer_test(experience)
     return {"mouse": mouse, "creditcard": creditcard, "ai4i": ai4i, "kdd": kdd,
             "robustesse": calculer_robustesse(mouse), "shap": calculer_shap(creditcard)}
@@ -478,6 +480,10 @@ def exporter_resultats(resultats, chemin=RACINE / "rendus/resultats.json"):
         export[jeu] = {"validation": lignes(e["resultats_validation"]), "test": lignes(e["test"]),
                        "informations": e["informations"],
                        "matrices": {n: m.tolist() for n, m in e["matrices"].items()}}
+        if jeu == "creditcard":
+            v = e["variante_marge"]
+            export[jeu]["variante_marge"] = {"marge": v["marge_validation"], "validation": lignes(v["resultats_validation"]),
+                                             "test": lignes(v["test"])}
         comparaisons, maxima = [], []
         X_val, y_val = e["parts"]["val"]
         for famille, ligne in e["retenues"].iterrows():
