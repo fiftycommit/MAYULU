@@ -1,12 +1,12 @@
 # Compte rendu du TP Détection d’anomalies
 
-M’BEY Max — M2 Data Science
+M’BEY Max, FERCHICHE Fares — M2 Data Science
 
-J’ai séparé les calculs et la présentation. Le notebook montre les résultats finaux et les figures ; les expériences et réglages sont dans les fichiers Python. Le Q/R garde les comparaisons de validation et les explications détaillées.
+Nous avons séparé les calculs et la présentation. Le notebook suit l’énoncé sous-étape par sous-étape et ne contient que des appels de fonctions ; le code est dans les fichiers Python. Le Q/R reprend les réponses détaillées.
 
 ## Mouse : classer ne suffit pas
 
-J’ai commencé par ajuster IF et LOF sans étiquettes sur Mouse, puis comparé les seuils par défaut, IQR et KMeans. Les étiquettes servent à évaluer, pas à régler ces deux règles. Le choix du seuil change fortement les alertes sans changer l’AP ou l’AUC-ROC.
+Nous avons commencé par ajuster IF et LOF sans étiquettes sur Mouse, puis comparé les seuils par défaut, IQR et KMeans. Les étiquettes servent à évaluer, pas à régler ces deux règles. Le choix du seuil change fortement les alertes sans changer l’AP ou l’AUC-ROC.
 
 | Méthode | Règle | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -19,7 +19,7 @@ J’ai commencé par ajuster IF et LOF sans étiquettes sur Mouse, puis comparé
 
 ![Mouse : décisions selon le modèle et le seuil](figures/p1_matrices_confusion.png)
 
-Pour les nouveautés, j’ai constitué une référence normale et réservé un test distinct. Cette référence exige les étiquettes, donc la comparaison n’est pas faite à information identique.
+Pour les nouveautés, nous avons constitué une référence normale et réservé un test distinct. Cette référence exige les étiquettes, donc la comparaison n’est pas faite à information identique.
 
 | Règle | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -28,15 +28,15 @@ Pour les nouveautés, j’ai constitué une référence normale et réservé un 
 
 ## Credit Card : choisir avant le test
 
-J’ai retiré les répétitions de prédicteurs avant le découpage pour éviter de tester une copie d’une transaction apprise. Amount est transformée par log(1 + Amount), puis les méthodes sensibles à l’échelle sont standardisées. Les transformations et rééchantillonnages concernent seulement l’apprentissage. Les mêmes validations et tests servent à toutes les familles.
+Nous avons retiré les répétitions de prédicteurs avant le découpage pour éviter de tester une copie d’une transaction apprise. Amount est transformée par log(1 + Amount), puis les méthodes sensibles à l’échelle sont standardisées. Les transformations et rééchantillonnages concernent seulement l’apprentissage. Les mêmes validations et tests servent à toutes les familles.
 
 Les familles classiques ont six configurations au total, pas six par variante. Pour l’arbre (profondeurs 4 et 8) et la logistique (C=0,01 et 1), on croise les deux valeurs avec absence de correction ou poids équilibrés, soit quatre essais. On ajoute un seul sur-échantillonnage au réglage fort et un seul RandomUnderSampler au réglage fort. Sur Credit Card, SMOTE vise un ratio positif/négatif de 0,1 et RUS équilibre les classes (`auto`). Sur KDD, RandomOverSampler remplace SMOTE pour préserver les catégories : il copie des lignes réelles au lieu d’interpoler leurs encodages. ROS et RUS utilisent `auto`. Cette correction porte sur la validité des données synthétiques, pas sur le choix d’un meilleur score de test.
 
 EasyEnsemble compare 5 et 10 ensembles, chacun avec un AdaBoost de 50 souches. RUSBoost compare 50 et 100 arbres de profondeur 2. XGBoost compare les profondeurs 3 et 5 avec 100 arbres et un taux d’apprentissage de 0,1 ; son poids positif est le rapport négatifs/positifs de l’apprentissage seulement. IF compare 100/300 arbres × 256/2048 points ; LOF compare 10/20/50/100 voisins en mode nouveauté. HBOS compare 10, 50 et 200 cases, avec alpha=0,1.
 
-La sélection étendue sur validation retient « XGBoost | n_estimators=100, max_depth=5 ». La logistique pondérée était le choix historique, avant les ensembles ; ses mauvais résultats de test restent visibles. Pour chaque configuration, je maximise le rappel sous précision ≥ 80 %, ou rapporte le meilleur compromis F1 si cette contrainte est inaccessible.
+La sélection étendue sur validation retient « XGBoost | n_estimators=100, max_depth=5 ». Les résultats de test du meilleur modèle classique (régression logistique) restent visibles. Pour chaque configuration, nous maximisons le rappel sous précision ≥ 80 %, ou rapportons le meilleur compromis F1 si cette contrainte est inaccessible.
 
-L’extension (RUS, ensembles et KDD) a été réalisée après une première lecture du test Credit Card. Les réglages sont annoncés a priori et les seuils utilisent uniquement la validation, mais cette comparaison reste exploratoire : le test ne peut plus être présenté comme un holdout entièrement vierge. Une confirmation demanderait de nouvelles données.
+L’extension (RUS, ensembles et KDD) a été réalisée après une première lecture du test Credit Card. Les réglages forment une petite grille usuelle et les seuils utilisent uniquement la validation, mais cette comparaison reste exploratoire : le test ne peut plus être présenté comme un holdout entièrement vierge. Une confirmation demanderait de nouvelles données.
 
 | Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -49,13 +49,13 @@ L’extension (RUS, ensembles et KDD) a été réalisée après une première le
 | HBOS | 0,1640 | 0,9265 | 46,664026 | 0,3065 | 0,2021 | 0,2436 | 0,6007 | 62 | 43 | 75 | non atteint |
 | Isolation Forest | 0,1524 | 0,9430 | 0,649011 | 0,2000 | 0,1596 | 0,1775 | 0,5792 | 75 | 60 | 79 | non atteint |
 
-Les objectifs de précision ne sont pas des garanties sur le test. Je conserve les seuils de validation, y compris quand les résultats passent sous la contrainte.
+Les objectifs de précision ne sont pas des garanties sur le test. Nous conservons les seuils de validation, y compris quand les résultats passent sous la contrainte.
 
 ![Credit Card : matrices finales des familles comparées](figures/p2_matrices_confusion.png)
 
 ## HBOS : des raretés marginales
 
-HBOS additionne −log(hauteur normalisée + alpha) sur des histogrammes ajustés par variable. Les composantes d’ACP sont décorrélées, pas nécessairement indépendantes. La méthode est lisible mais ignore les dépendances : une combinaison rare de valeurs banales peut lui échapper. J’ai comparé trois nombres de cases sur validation, avec le même critère de choix que les autres méthodes.
+HBOS additionne −log(hauteur normalisée + alpha) sur des histogrammes ajustés par variable. Les composantes d’ACP sont décorrélées, pas nécessairement indépendantes. La méthode est lisible mais ignore les dépendances : une combinaison rare de valeurs banales peut lui échapper. Nous avons comparé trois nombres de cases sur validation, avec le même critère de choix que les autres méthodes.
 
 | Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -65,11 +65,11 @@ HBOS additionne −log(hauteur normalisée + alpha) sur des histogrammes ajusté
 
 ## AI4I : transférer les réglages, pas les modèles appris
 
-J’ai conservé Machine failure comme cible et retiré identifiants et modes de panne des entrées. L’audit relève 27 discordances avec ces modes ; je les signale sans réétiqueter les lignes. AI4I est synthétique : les résultats ne décrivent pas directement une usine réelle.
+Nous avons conservé Machine failure comme cible et retiré identifiants et modes de panne des entrées. L’audit relève 27 discordances avec ces modes ; nous les signalons sans réétiqueter les lignes. AI4I est synthétique : les résultats ne décrivent pas directement une usine réelle.
 
-Le meilleur supervisé global sur Credit Card, ensembles compris, et IF sont transférés à AI4I avec leurs hyperparamètres conservés. Le classique de référence ({classique}) est conservé, sans être la gagnante globale de la comparaison étendue Credit Card. Les transformations et modèles sont réajustés sur l’apprentissage AI4I ; les seuils sont choisis à nouveau sur sa validation sous précision ≥ 90 %. Pour XGBoost, `scale_pos_weight` est conservé depuis Credit Card, conformément au transfert demandé : il n’est ni recalculé sur AI4I ni réglé sur son test.
+Le meilleur supervisé global sur Credit Card, ensembles compris, et IF sont transférés à AI4I avec leurs hyperparamètres conservés. Le classique de référence (régression logistique) est conservé, sans être la gagnante globale de la comparaison étendue Credit Card. Les transformations et modèles sont réajustés sur l’apprentissage AI4I ; les seuils sont choisis à nouveau sur sa validation sous précision ≥ 90 %. Pour XGBoost, `scale_pos_weight` est conservé depuis Credit Card, conformément au transfert demandé : il n’est ni recalculé sur AI4I ni réglé sur son test.
 
-Le choix sur validation AI4I est « XGBoost | n_estimators=100, max_depth=5 (AI4I) ». Les résultats de tous les modèles, y compris la référence historique, restent publiés :
+Le choix sur validation AI4I est « XGBoost | n_estimators=100, max_depth=5 (AI4I) ». Les résultats de tous les modèles, y compris la référence classique, restent publiés :
 
 | Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -79,13 +79,13 @@ Le choix sur validation AI4I est « XGBoost | n_estimators=100, max_depth=5 (AI4
 
 XGBoost : 51 alertes, dont 41 pannes et 10 fausses alertes ; 27 cas manqués. Précision 0,8039, rappel 0,6029, objectif au test non atteint.
 
-Régression logistique : 4 alertes, dont 4 pannes et 0 fausses alertes ; 64 cas manqués. Précision 1,0000, rappel 0,0588, objectif au test atteint.
+Régression logistique : 4 alertes, dont 4 pannes et 0 fausse alerte ; 64 cas manqués. Précision 1,0000, rappel 0,0588, objectif au test atteint.
 
-Isolation Forest : 2 alertes, dont 1 pannes et 1 fausses alertes ; 67 cas manqués. Précision 0,5000, rappel 0,0147, objectif au test non atteint.
+Isolation Forest : 2 alertes, dont 1 panne et 1 fausse alerte ; 67 cas manqués. Précision 0,5000, rappel 0,0147, objectif au test non atteint.
 
 ## Robustesse et SHAP
 
-J’ai remplacé des points de la référence normale Mouse par des points uniformes dans sa boîte élargie, en gardant taille d’apprentissage et test fixes. Trois graines permettent de voir une dispersion, pas de garantir une stabilité générale. Une amélioration avec cette contamination ne vaut pas pour tous les générateurs.
+Nous avons remplacé des points de la référence normale Mouse par des points uniformes dans sa boîte élargie, en gardant taille d’apprentissage et test fixes. Trois graines permettent de voir une dispersion, pas de garantir une stabilité générale. Une amélioration avec cette contamination ne vaut pas pour tous les générateurs.
 
 | Méthode | Contamination | AP moyenne | Écart-type AP | AUC-ROC moyenne | Écart-type AUC-ROC |
 | --- | --- | --- | --- | --- | --- |
@@ -102,7 +102,7 @@ SHAP explique la longueur moyenne de chemin corrigée d’IF : les contributions
 
 ## KDDCup99 : une comparaison d’intrusions historique
 
-J’ai utilisé le corpus officiel à 10 %, disponible localement, après exclusion du groupe à cible binaire contradictoire et dédoublonnage. Un tirage stratifié de 60 000 lignes précède la partition. Les sept familles partagent 30 000 lignes d’apprentissage effectif, et les mêmes validations et tests de 12 000 lignes. Intrusion reste la classe 1. La précision minimale de 80 % est un choix pédagogique, pas une exigence propre à ce jeu.
+Nous avons utilisé le corpus officiel à 10 %, disponible localement, après exclusion du groupe à cible binaire contradictoire et dédoublonnage. Un tirage stratifié de 60 000 lignes précède la partition. Les sept familles partagent 30 000 lignes d’apprentissage effectif, et les mêmes validations et tests de 12 000 lignes. Intrusion reste la classe 1. La précision minimale de 80 % est un choix pédagogique, pas une exigence propre à ce jeu.
 
 | Famille | AP | AUC-ROC | Seuil | Précision | Rappel | F1 | BA | Alertes | FP | FN | Objectif test |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -118,7 +118,7 @@ Le choix de validation est « XGBoost | n_estimators=100, max_depth=3 ». Le cor
 
 ## Sources
 
-- Sujet : *Atelier : Détection d’anomalies avec Python*, 2026–2027, et cours de H. Elghazel, fournis à la racine.
+- Sujet : *Atelier : Détection d’anomalies avec Python*, 2026–2027, et cours de H. Elghazel.
 - Mouse : fichier fourni avec le TP, `data/mouse.txt`.
 - Credit Card : https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
 - AI4I 2020 : https://doi.org/10.24432/C5HS5C

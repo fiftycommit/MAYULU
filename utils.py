@@ -69,6 +69,38 @@ def charger_creditcard(chemin="data/creditcard.csv"):
     return df[variables], df["Class"], df["Time"]
 
 
+def audit_creditcard(chemin="data/creditcard.csv"):
+    """
+    Rôles : Contrôler le fichier brut Credit Card : types, manquants, doublons, échelles.
+    Saisies :
+        - chemin : chemin du fichier
+    Résultat : dictionnaire (controles, echelles, montants)
+    """
+    df = pd.read_csv(chemin)
+    variables = [c for c in df.columns if c not in ("Time", "Class")]
+    conflits = df.groupby(variables, sort=False)["Class"].nunique().gt(1).sum()
+    types = df.dtypes.astype(str).value_counts()
+    controles = {
+        "lignes": len(df),
+        "colonnes": df.shape[1],
+        "types": ", ".join(f"{t} : {n}" for t, n in types.items()),
+        "valeurs manquantes": int(df.isna().sum().sum()),
+        "doublons complets": int(df.duplicated().sum()),
+        "doublons sur les prédicteurs": int(df.duplicated(subset=variables).sum()),
+        "groupes de prédicteurs à étiquettes contradictoires": int(conflits),
+        "fraudes": int(df["Class"].sum()),
+        "proportion de fraudes": float(df["Class"].mean()),
+    }
+    ecarts = df[[c for c in variables if c != "Amount"]].std()
+    colonnes = {"Amount": df["Amount"], "log(1 + Amount)": np.log1p(df["Amount"]),
+                f"plus petit écart-type parmi V ({ecarts.idxmin()})": df[ecarts.idxmin()],
+                f"plus grand écart-type parmi V ({ecarts.idxmax()})": df[ecarts.idxmax()]}
+    echelles = pd.DataFrame({nom: {"moyenne": c.mean(), "écart-type": c.std(), "minimum": c.min(),
+                                   "médiane": c.median(), "maximum": c.max()}
+                             for nom, c in colonnes.items()}).T
+    return {"controles": controles, "echelles": echelles, "montants": df["Amount"]}
+
+
 def charger_ai4i(chemin="data/ai4i2020.csv"):
     """
     Rôles : Charger AI4I 2020 sans identifiants ni types de panne.
@@ -372,6 +404,25 @@ def comparer_configurations(configurations, app, val, precision_min):
             "temps_app_s": t_app, "temps_score_val_s": t_score,
         })
     return pd.DataFrame(lignes), modeles
+
+
+def desaccords(y, alertes_a, alertes_b, noms=("A", "B")):
+    """
+    Rôles : Compter les alertes communes et propres à chacune de deux méthodes.
+    Saisies :
+        - y : vraies étiquettes (1 = anomalie)
+        - alertes_a, alertes_b : décisions booléennes
+        - noms : noms des deux méthodes
+    Résultat : dictionnaire de comptes, avec les anomalies parmi les alertes propres
+    """
+    y, a, b = np.asarray(y) == 1, np.asarray(alertes_a, dtype=bool), np.asarray(alertes_b, dtype=bool)
+    return {
+        "communes": int((a & b).sum()),
+        f"seulement {noms[0]}": int((a & ~b).sum()),
+        f"seulement {noms[1]}": int((b & ~a).sum()),
+        f"anomalies seulement {noms[0]}": int((a & ~b & y).sum()),
+        f"anomalies seulement {noms[1]}": int((b & ~a & y).sum()),
+    }
 
 
 def ligne_evaluation(y, scores, seuil):

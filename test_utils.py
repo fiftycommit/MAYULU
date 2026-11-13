@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.ensemble import IsolationForest
 from sklearn.neighbors import LocalOutlierFactor
 
-from utils import score_anomalie, seuil_defaut
+from utils import desaccords, score_anomalie, seuil_defaut
 
 
 class SeuilDefautTests(unittest.TestCase):
@@ -26,6 +26,13 @@ class SeuilDefautTests(unittest.TestCase):
                 obtenu = score_anomalie(detecteur, nouvelles_observations) >= seuil_defaut(detecteur)
                 self.assertFalse(attendu[0])
                 np.testing.assert_array_equal(obtenu, attendu)
+
+
+class DesaccordsTests(unittest.TestCase):
+    def test_compte_les_alertes_propres_et_les_anomalies(self):
+        resultat = desaccords([1, 1, 0, 0], [1, 1, 1, 0], [1, 0, 0, 1], ("IF", "LOF"))
+        self.assertEqual(resultat, {"communes": 1, "seulement IF": 2, "seulement LOF": 1,
+                                    "anomalies seulement IF": 1, "anomalies seulement LOF": 0})
 
 
 if __name__ == "__main__":

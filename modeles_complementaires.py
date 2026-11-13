@@ -1,4 +1,7 @@
-"""Configurations supervisées fixées avant consultation des jeux de test.
+"""Configurations supervisées évaluées sur validation ; aucune ne consulte le test.
+
+Les ensembles et RandomUnderSampler ont été ajoutés après une première lecture du
+test Credit Card : cette extension reste exploratoire.
 
 Chaque prétraitement et chaque rééchantillonnage appartient au Pipeline : seuls
 les exemples d'apprentissage servent à ajuster les transformations et à produire
@@ -38,7 +41,6 @@ def configurations_supervisees(pretraitement, graine=42, sampling_strategy=0.1,
 
     Pour chaque famille : les deux valeurs sans correction, les deux valeurs
     avec poids équilibrés, puis sur-échantillonnage et sous-échantillonnage à la valeur forte.
-    Les noms des configurations historiques conservées restent inchangés.
     ``pretraitement(standardiser)`` doit fournir des étapes neuves de Pipeline.
     ``sampling_strategy`` vaut 0.1 pour SMOTE sur Credit Card et « auto » sur KDD.
     KDD utilise RandomOverSampler : les copies gardent leurs catégories valides.
@@ -77,7 +79,7 @@ def configurations_supervisees(pretraitement, graine=42, sampling_strategy=0.1,
 
 
 def configurations_ensembles(pretraitement, y_app, graine=42):
-    """Construire deux réglages a priori par ensemble, sans accès au test.
+    """Construire deux réglages par ensemble, sans accès au test.
 
     EasyEnsemble agrège 5 ou 10 AdaBoost de 50 arbres de profondeur 1, chacun
     appris sur un sous-échantillon équilibré. RUSBoost équilibre les données à

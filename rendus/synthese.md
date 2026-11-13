@@ -1,10 +1,10 @@
 # Synthèse — Détection d’anomalies
 
-M’BEY Max — M2 Data Science
+M’BEY Max, FERCHICHE Fares — M2 Data Science
 
 ## Protocole et données
 
-Classe positive = anomalie, fraude, panne ou intrusion ; score élevé = suspect. Partitions stratifiées 60/20/20, graine 42. Transformations et rééchantillonnages sur apprentissage seulement. La validation sélectionne configurations et seuils : rappel maximal sous précision ≥ 80 % (fraude), ≥ 90 % (maintenance), puis précision et AP ; à défaut, compromis au meilleur F1 signalé non conforme. Le test conserve ces choix. Le notebook présente les résultats ; calculs dans les modules Python, analyses de validation dans le Q/R.
+Classe positive = anomalie, fraude, panne ou intrusion ; score élevé = suspect. Partitions stratifiées 60/20/20, graine 42. Transformations et rééchantillonnages sur apprentissage seulement. La validation sélectionne configurations et seuils : rappel maximal sous précision ≥ 80 % (fraude), ≥ 90 % (maintenance), puis précision et AP ; à défaut, compromis au meilleur F1 signalé non conforme. Le test conserve ces choix. Le notebook suit le TP étape par étape, par appels de fonctions ; le code est dans les modules Python.
 
 Credit Card : 275 663 transactions et 473 fraudes après dédoublonnage des prédicteurs avant partage. Time est exclue ; Amount devient log(1 + Amount). Standardisation pour logistique, LOF et SMOTE. AI4I : 10 000 observations, 339 pannes. Identifiants et modes de panne exclus ; cible d’origine conservée malgré 27 discordances avec les modes. Type est encodé en one-hot.
 
@@ -25,7 +25,7 @@ Grille classique : six essais par famille (profondeur 4/8 ou C=0,01/1 × aucun/p
 | HBOS | 0,1640 | 0,3065 | 0,2021 | 43 | 75 |
 | Isolation Forest | 0,1524 | 0,2000 | 0,1596 | 60 | 79 |
 
-Le choix étendu de validation est « XGBoost | n_estimators=100, max_depth=5 ». La logistique était le choix historique avant les ensembles ; ses métriques restent visibles, sans la présenter comme gagnante globale. Les seuils suivent la règle de l’énoncé (précision ≥ 80 % sur validation) et ne sont jamais retouchés. Variante complémentaire, distincte de la règle de l’énoncé (80 %) : seuils cherchés à 85 % sur validation (marge de 5 points fixée a priori, la validation ne comptant que peu de fraudes). Modèle choisi « XGBoost | n_estimators=100, max_depth=5 » : précision 0,8111, rappel 0,7766 au test, objectif de 80 % atteint. L’extension (RUS, ensembles et KDD) a été réalisée après une première lecture du test Credit Card. Les réglages sont annoncés a priori et les seuils utilisent uniquement la validation, mais cette comparaison reste exploratoire : le test ne peut plus être présenté comme un holdout entièrement vierge. Une confirmation demanderait de nouvelles données.
+Le choix étendu de validation est « XGBoost | n_estimators=100, max_depth=5 ». Les métriques du meilleur classique (régression logistique) restent visibles. Les seuils suivent la règle de l’énoncé (précision ≥ 80 % sur validation) et ne sont jamais retouchés. Analyse a posteriori, distincte de la règle de l’énoncé (80 %) : seuils cherchés à 85 % sur validation (marge de 5 points ajoutée après lecture du test). Modèle choisi « XGBoost | n_estimators=100, max_depth=5 » : précision 0,8111, rappel 0,7766 au test, objectif de 80 % atteint. L’extension (RUS, ensembles et KDD) a été réalisée après une première lecture du test Credit Card. Les réglages forment une petite grille usuelle et les seuils utilisent uniquement la validation, mais cette comparaison reste exploratoire : le test ne peut plus être présenté comme un holdout entièrement vierge. Une confirmation demanderait de nouvelles données.
 
 HBOS somme −log(hauteur normalisée + alpha) sur des histogrammes marginaux ; 10/50/200 cases, alpha=0,1. Décorrélation des composantes ACP ne signifie pas indépendance. Le score est décomposable, mais une combinaison rare de valeurs marginalement ordinaires peut lui échapper. Les coûts mesurés sont ponctuels, à effectifs d’apprentissage différents pour LOF.
 
